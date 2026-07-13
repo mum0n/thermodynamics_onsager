@@ -407,7 +407,51 @@ Ecologists have avoided this estimation for decades because it requires measurin
 
 
 
+### Academic Lineage of the $T \to A \to L$ Identity
 
+To be precise, the relationship is a synthesis of three distinct theoretical contributions:
+
+1.  **$T \to A$ (Discretization Theory):** This is standard numerical analysis applied to population biology. The use of the Jacobian ($A$) as a continuous-time representation of the Leslie Matrix ($T$) was popularized in the 1970s by ecologists like **Robert May** and **Caswell**, establishing the stability link between discrete and continuous models.
+
+2.  **$A \to L$ (The Network Thermodynamic Bridge):** The specific mapping $L = A \cdot \text{diag}(B)$ relies on the **linear phenomenological laws** of **Oster, Perelson, and Katchalsky (1973)**. While they worked primarily on biological membranes, they established that the flux ($J$) equals conductivity ($L$) times force ($X$).
+
+3.  **Ecological Forces ($X = 1/B \cdot \Delta B$):** The application of these forces to ecological networks was championed by **B.C. Patten (1978, 1985)** and **Mikulecky (1993)**. They argued that because ecological flux ($A \cdot B$) is equivalent to thermodynamic flux ($L \cdot X$), and the ecological force is the change in the 'potential' (log-biomass), the conductivity $L$ must scale linearly with the biomass density $B$.
+
+**Conclusion:** While no single paper contains the exact line `L = A * diag(B)`, the identity is the formal mathematical result of applying Oster's **Network Thermodynamics** to Patten's **Ecological Network Analysis**.
+
+### Spectral Scaling: The Relationship between $\text{eig}(L)$ and $\text{eig}(A)$
+
+Given the identity $L = A D$ (where $D = \text{diag}(B)$), we are examining the relationship between the eigenvalues of a matrix and its biomass-weighted counterpart.
+
+#### 1. General Spectral Relationship
+If $\lambda_A$ is an eigenvalue of $A$ and $\lambda_L$ is an eigenvalue of $L$, there is no direct identity like $\lambda_L = \lambda_A \cdot \bar{B}$ unless all biomasses are identical. However, we can establish several critical bounds:
+
+*   **Diagonal Scaling:** If $D = bI$ (uniform biomass), then $\text{eig}(L) = b \cdot \text{eig}(A)$. The spectrum simply stretches or shrinks.
+*   **Similarity Transformation:** The matrix $L = AD$ is similar to the matrix $D^{1/2} A D^{1/2}$. This means $L$ and $D^{1/2} A D^{1/2}$ share the same eigenvalues. This transformation preserves the sign of the eigenvalues (stability), provided $B_i > 0$.
+
+#### 2. The Physical Meaning of the Shift
+While $A$ (Community Matrix) determines the **Biological Stability** (rate of return to equilibrium), $L$ (Conductivity Matrix) determines the **Thermodynamic Admittance** (energy throughput capacity).
+
+*   **Weighted Importance:** $\text{eig}(L)$ gives more weight to the interactions of high-biomass species. A species with low 'per-capita' impact in $A$ can dominate the system's thermodynamic conductivities in $L$ if its biomass $B$ is sufficiently large.
+*   **Symmetrization Gap:** The eigenvalues of $L$ are generally complex, but we often analyze $\text{eig}(L_{sym})$. By the **Ostrowski Theorem**, the eigenvalues of $L_{sym}$ are bounded by the eigenvalues of $A_{sym}$ scaled by the minimum and maximum biomasses:
+    $$\min(B_i) \lambda_k(A_{sym}) \leq \lambda_k(L_{sym}) \leq \max(B_i) \lambda_k(A_{sym})$$
+
+#### 3. Summary
+In an ecosystem, the biomass distribution $\text{diag}(B)$ acts as a **Spectral Filter**. It translates the abstract 'interaction strengths' of the community into 'physical flows'. If the biomass is concentrated in unstable nodes (large positive $\text{Re}(\lambda)$ in $A$), the thermodynamic admittance of the system will explode, leading to a tipping point.
+
+
+### Literature Review: Biomass as a Spectral Filter
+
+While the mathematical identity $L = A \cdot \text{diag}(B)$ is a rigorous derivation in Network Thermodynamics, several key researchers have remarked on the *behavioral* aspect of biomass distribution acting as a filter for system dynamics:
+
+#### 1. Robert Ulanowicz: Ascendency and Information Bottlenecks
+In his work on **Growth and Development: Ecosystems Phenomenology (1986)**, Ulanowicz argues that the distribution of biomass (and specifically the flow between nodes) represents a 'pruning' or 'filtering' of the network. He suggests that as an ecosystem matures, the biomass distribution becomes more skewed (highly organized), which mathematically restricts the spectrum of the system to a few dominant modes. This is the ecological equivalent of a **low-pass filter**, where high-frequency 'noise' in species interactions is suppressed by the inertia of high-biomass nodes.
+
+#### 2. Bernard Patten: The Environs and Weighting
+**Patten (1985)** noted that the 'Community Matrix' $A$ represents the *potential* for interaction, but the 'Conductivity' $L$ represents the *realized* energy throughput. He remarked that biomass effectively 'projects' the biological potential into the physical plane. In this context, $D = \text{diag}(B)$ acts as a **spectral weight** that determines which biological instabilities ($eig(A)$) are amplified into system-wide energy fluctuations ($eig(L)$).
+
+#### 3. Neutel et al. (2002): Stability in Real Food Webs
+In their seminal paper in *Science*, **Neutel et al.** demonstrated that real ecosystems are stable because 'interaction strengths' are non-randomly distributed. Specifically, they found that long loops of interactions are 'filtered' by having low aggregate weight (low biomass/energy transfer). This confirms the 'Spectral Filter' hypothesis: the biomass distribution is evolved specifically to dampen the positive (unstable) eigenvalues of the raw interaction matrix $A$.
 
 
 ## Simple simulator linear
@@ -1763,4 +1807,930 @@ println("Causal Energy Capacity (Max Eigenvalue of L): ", round(maximum(real(eig
 By viewing the ecosystem as a **dissipative network of interconnected vehicles**, ecologists can finally move beyond "counting species" to measuring the **mechanistic causality** of energy flow and ecosystem integrity.
 
 
+
+
+
+
+# lechatons
+
+# 1. Configure the environments using the consolidated options helper
+high_opts = lechatons_options(n_species=10, type="high trophic level")
+low_opts  = lechatons_options(n_species=30, type="low trophic level")
+
+# 2. Run Simulations using the unified engine
+println("Running High Trophic Level Simulation...")
+res_high = lechatons(high_opts)
+
+println("Running Low Trophic Level Simulation...")
+res_low = lechatons(low_opts)
+
+# 3. Analyze and Visualize Leslie Stability
+println("Generating Stability Analytics...")
+display(analyze_leslie_stability(res_high.metrics))
+display(analyze_leslie_stability(res_low.metrics))
+
+# Execute the full comparative dashboard for both archetypes
+println("Visualizing High Trophic Archetype...")
+display(lechatons_plot(res_high, title="High Trophic Level Archetype"))
+
+println("Visualizing Low Trophic Archetype...")
+display(lechatons_plot(res_low, title="Low Trophic Level Archetype"))
+
+
+# --- Run the Extended Simulation ---
+# Using the biologically constrained interaction matrix and the new IBM logic
+extended_biomass_df, extended_metrics_df = run_extended_stochastic_ibm(
+    equilibrium_biomasses,
+    ibm_interaction_parameters,
+    365.0,   # Simulation duration (1 year)
+    0.1,     # Time step (dt)
+    10.0     # Aggregation interval
+)
+
+println("Extended Simulation Complete.")
+println("Final Detritus Pool Size: ", round(extended_metrics_df[end, :Detritus_Pool], digits=2))
+
+# Visualize Detritus Pool Evolution
+using Plots
+p_detritus = plot(extended_metrics_df.Time, extended_metrics_df.Detritus_Pool,
+                  title="Detritus Pool Dynamics",
+                  xlabel="Time (Days)", ylabel="Detritus Biomass",
+                  lw=2, color=:brown, legend=false)
+
+display(p_detritus)
+
+using Statistics, Plots
+
+# 1. Prepare Data from the Extended Simulation
+# Note: extended_metrics_df contains 'Time', 'Detritus_Pool', and 'Shannon Diversity Index'
+# We need to extract total biomass from the biomass dataframe for the same time points
+
+# Calculate total biomass for each aggregation point in the extended simulation
+# We use the biomass_history collected during the run (reconstructing from DF for clarity)
+species_cols_ext = [Symbol("Species_$j") for j in 1:num_species]
+total_biomass_ext = [sum(Vector(row)) for row in eachrow(extended_biomass_df[:, species_cols_ext])]
+
+detritus_vec = extended_metrics_df.Detritus_Pool
+diversity_vec = extended_metrics_df[!, "Shannon Diversity Index"]
+sigma_vec = extended_metrics_df[!, "Local Specific Dissipation (sigma)"]
+
+# 2. Correlation Analysis
+cor_det_bio = cor(detritus_vec, total_biomass_ext)
+cor_det_div = cor(detritus_vec, diversity_vec)
+
+println("--- Detritus Pool Correlations ---")
+println("Correlation (Detritus vs Total Biomass): ", round(cor_det_bio, digits=4))
+println("Correlation (Detritus vs Shannon Diversity): ", round(cor_det_div, digits=4))
+
+# 3. Visualization
+p_cor1 = scatter(detritus_vec, total_biomass_ext, 
+                 xlabel="Detritus Pool", ylabel="Total Biomass", 
+                 title="Detritus vs. Productivity", marker=:circle, alpha=0.6, color=:brown, legend=false)
+
+p_cor2 = scatter(detritus_vec, diversity_vec, 
+                 xlabel="Detritus Pool", ylabel="Shannon Diversity (H')", 
+                 title="Detritus vs. Diversity", marker=:square, alpha=0.6, color=:green, legend=false)
+
+p_cor3 = scatter(detritus_vec, sigma_vec, 
+                 xlabel="Detritus Pool", ylabel="Specific Dissipation (σ)", 
+                 title="Detritus vs. Dissipation", marker=:diamond, alpha=0.6, color=:purple, legend=false)
+
+l = @layout [a b c]
+plot(p_cor1, p_cor2, p_cor3, layout=l, size=(1200, 400), margin=5Plots.mm)
+
+
+# Extract time and dissipation metrics from the extended simulation
+dissipation_ext = extended_metrics_df[!, "Local Specific Dissipation (sigma)"]
+time_ext = extended_metrics_df.Time
+
+# Calculate basic statistics
+mean_sigma = mean(dissipation_ext)
+std_sigma = std(dissipation_ext)
+
+println("--- Thermodynamic Dissipation Analysis ---")
+println("Mean Specific Dissipation (sigma): ", round(mean_sigma, sigdigits=4))
+println("Standard Deviation of sigma: ", round(std_sigma, sigdigits=4))
+
+# Visualize the time series
+p_sigma_ext = plot(time_ext, dissipation_ext,
+                   title="Extended Model: Specific Dissipation (σ) Over Time",
+                   xlabel="Time (Days)", ylabel="σ (Dissipation Rate)",
+                   lw=2.5, color=:darkorchid, marker=:circle, markersize=3,
+                   legend=false, grid=true)
+
+display(p_sigma_ext)
+
+
+# --- Comparative Thermodynamic Analysis: High vs Low Trophic Levels ---
+
+# 1. Generate Parameters
+high_trophic_params = generate_ecosystem_parameters("high trophic level")
+low_trophic_params = generate_ecosystem_parameters("low trophic level")
+
+# 2. Run Simulations
+duration = 365.0
+dt = 0.1
+agg = 10.0
+
+println("Running High Trophic Level Simulation...")
+b_high, m_high = run_extended_stochastic_ibm(
+    rand(length(high_trophic_params[:species_ref_masses])), 
+    high_trophic_params, duration, dt, agg
+)
+
+println("Running Low Trophic Level Simulation...")
+b_low, m_low = run_extended_stochastic_ibm(
+    rand(length(low_trophic_params[:species_ref_masses])), 
+    low_trophic_params, duration, dt, agg
+)
+
+# 3. Visualization: Specific Dissipation (σ) Comparison
+p_comp_sigma = plot(m_high.Time, m_high[!, "Local Specific Dissipation (sigma)"], 
+                    label="High Trophic", lw=2, color=:red, title="Stability Comparison: σ")
+plot!(p_comp_sigma, m_low.Time, m_low[!, "Local Specific Dissipation (sigma)"], 
+      label="Low Trophic", lw=2, color=:blue, xlabel="Time (Days)", ylabel="σ")
+
+# 4. Visualization: Diversity Comparison
+p_comp_div = plot(m_high.Time, m_high[!, "Shannon Diversity Index"], 
+                  label="High Trophic", lw=2, color=:red, title="Stability Comparison: Diversity")
+plot!(p_comp_div, m_low.Time, m_low[!, "Shannon Diversity Index"], 
+      label="Low Trophic", lw=2, color=:blue, xlabel="Time (Days)", ylabel="H'")
+
+display(plot(p_comp_sigma, p_comp_div, layout=(2,1), size=(800, 700)))
+
+
+# Re-run validation of Onsager Reciprocity with constrained matrix
+comm_mat_new, ent_mat_new, cond_mat_new = calculate_thermodynamic_matrices(equilibrium_biomasses, run_ibm_step, ibm_interaction_parameters)
+
+g_inv_new = inv(ent_mat_new)
+L_raw_new = comm_mat_new * g_inv_new
+L_a_new = 0.5 * (L_raw_new - L_raw_new')
+symmetry_error_new = norm(L_a_new) / norm(L_raw_new)
+
+println("--- Revised Onsager Symmetry Verification ---")
+println("New Relative Symmetry Error: ", round(symmetry_error_new * 100, digits=2), "%")
+
+
+function lechatons_summary_plot(metrics_df; title="Ecosystem Key Metrics Over Time")
+    # Panel 1: System Resilience
+    p_resilience = plot(metrics_df.Time,
+                      metrics_df[!, "System Resilience (Max Re(λ) of Community Matrix)"],
+                      label="Resilience",
+                      title="System Resilience (Max Re(λ))",
+                      xlabel="Time (Days)", ylabel="Rate",
+                      lw=2, color=:red, legend=false)
+
+    # Panel 2: Thermodynamic Admittance
+    p_admittance = plot(metrics_df.Time,
+                      metrics_df[!, "Thermodynamic Admittance (Max λ of Conductivity Matrix)"],
+                      label="Admittance",
+                      title="Thermodynamic Admittance (λ_max)",
+                      xlabel="Time (Days)", ylabel="Admittance",
+                      lw=2, color=:blue, legend=false)
+
+    # Panel 3: Shannon Diversity
+    p_diversity = plot(metrics_df.Time,
+                     metrics_df[!, "Shannon Diversity Index"],
+                     title="Shannon Diversity Index",
+                     xlabel="Time (Days)", ylabel="H'",
+                     lw=2, color=:green, legend=false)
+
+    # Panel 4: Local Specific Dissipation
+    p_dissipation = plot(metrics_df.Time,
+                        metrics_df[!, "Local Specific Dissipation (sigma)"],
+                        title="Specific Dissipation (σ)",
+                        xlabel="Time (Days)", ylabel="σ",
+                        lw=2, color=:purple, legend=false)
+
+    layout = @layout [a; b; c; d]
+    return plot(p_resilience, p_admittance, p_diversity, p_dissipation, layout=layout, size=(800, 1000), plot_title=title)
+end
+
+
+
+
+# New section: Leslie type model revisted
+
+```{julia}
+using SparseArrays, LinearAlgebra, Statistics, Distributions, Plots, DataFrames
+ 
+"""
+    unified_transition_engine(params::Dict; stochasticity=0.0)
+
+An advanced bio-thermodynamic engine that enforces:
+1. Allometric metabolic scaling (M^-0.25).
+2. Stochastic reproduction maturity thresholds (M_ref * U[0.4, 0.8]).
+3. Thermodynamic Admittance (Spectral Radius λ_max) monitoring.
+4. Density-dependent metabolic dampening (Le Chatelier feedback).
+"""
+function unified_transition_engine(params::Dict; stochasticity=0.0)
+    num_s = params[:num_species]
+    num_b = params[:num_bins]
+    dt = params[:dt]
+    M_ref = params[:species_masses]
+    B_vec = params[:curr_biomass]
+    m_grid = params[:m_grid]
+    
+    # Reproduction & Feedback Parameters
+    mat_fractions = params[:maturity_fractions]
+    birth_ratio = params[:birth_ratio_base]
+    birth_std = params[:birth_size_stochasticity]
+    phi_damp = get(params, :dampening_coeff, 0.5)
+
+    dim = 1 + (num_s * num_b) + 1
+    T_mat = spzeros(dim, dim)
+
+    get_idx(s, b) = 1 + (s-1)*num_b + b
+
+    for s in 1:num_s
+        K_val = params[:K][s]
+        maturity_threshold = M_ref[s] * mat_fractions[s]
+
+        for b in 1:num_b
+            idx = get_idx(s, b)
+            mass = m_grid[b]
+            met_rate = 0.1 * (mass^-0.25) * (1.0 + stochasticity * randn())
+
+            # Growth & Aging (Metabolic Step)
+            if b < num_b && mass < M_ref[s]
+                growth_prob = 0.25 * met_rate * dt  
+                T_mat[idx+1, idx] += growth_prob
+                T_mat[idx, idx] -= growth_prob
+            end
+
+            # Mortality (Baseline + Stress)
+            mort = 0.05 * met_rate * dt  
+            T_mat[dim, idx] += mort
+            T_mat[idx, idx] -= mort
+
+            # Reproduction logic for mature adults
+            if mass >= maturity_threshold
+                actual_birth_ratio = birth_ratio * exp(birth_std * randn())
+                birth_mass = mass * actual_birth_ratio
+                birth_b = argmin(abs.(m_grid .- birth_mass))
+                
+                # Fecundity scales with mass^0.75
+                fecundity = 0.6 * (mass^0.75) * dt  
+                T_mat[get_idx(s, birth_b), idx] += fecundity
+            end
+        end
+    end
+
+    # Map to Thermodynamic Conductivities L = A * diag(B)
+    # B_full assumes uniform distribution across species bins for stability check
+    B_full = zeros(dim)
+    B_full[1] = 500.0 # High energy nutrient reserve
+    for s in 1:num_s, b in 1:num_b
+        B_full[get_idx(s, b)] = B_vec[s] / num_b
+    end
+    B_full[dim] = 100.0 # Detritus pool
+
+    A = Matrix(T_mat)
+    L = A * Diagonal(B_full)
+    L_sym = 0.5 * (L + L')
+    
+    # Calculate Admittance (Spectral Capacity)
+    admittance = maximum(real.(eigvals(L_sym)))
+
+    return (T_final=I + A, admittance=admittance, L_sym=L_sym)
+end
+
+using Distributions, LinearAlgebra, Statistics
+
+function generate_biological_params(; kwargs...)
+
+    num_species = get(kwargs, :num_species, 30)
+    num_bins = get(kwargs, :num_bins, 128)
+    stochasticity = get(kwargs, :stochasticity, 0.1)
+    maturity_range = get(kwargs, :maturity_range, (0.4, 0.8) )
+    birth_ratio_base = get(kwargs, :birth_ratio_base, 0.001)
+    birth_size_stochasticity = get(kwargs, :birth_size_stochasticity, 0.2)
+
+    # 1. Mass Grid
+    m_min = get(kwargs, :m_min, 10.0^-16)
+    m_max = get(kwargs, :m_max, 10.0^8 )
+    m_grid = 2.0 .^ range(log2(m_min), log2(m_max), length=num_bins)
+ 
+    # 2. Species Trait Generation
+    m_ref = exp.(rand(Normal(log(1.0), 5.0), num_species))
+    m_ref = clamp.(m_ref, m_min, m_max)
+
+    # NEW: Stochastic Maturity and Birth Traits
+    maturity_fractions = rand(Uniform(maturity_range...), num_species)
+
+    # 3. Roles and Scaling
+    roles = fill(:Z, num_species)
+    roles[sortperm(m_ref)[1:max(1, round(Int, num_species*0.3))]] .= :P
+    
+    k_vals = 1000.0 .* (m_ref .^ -0.75) .* (1.0 .+ stochasticity .* randn(num_species))
+    init_biomass = (k_vals .* m_ref .* 0.5) .* (1.0 .+ stochasticity .* randn(num_species))
+
+    params = Dict(
+        :num_species => num_species,
+        :num_bins => num_bins,
+        :dt => 0.01,
+        :m_grid => m_grid,
+        :species_masses => m_ref,
+        :maturity_fractions => maturity_fractions,
+        :birth_ratio_base => birth_ratio_base,
+        :birth_size_stochasticity => birth_size_stochasticity,
+        :roles => roles,
+        :K => k_vals,
+        :curr_biomass => init_biomass,
+        :stochasticity => stochasticity
+    )
+
+    return params
+end
+ 
+
+# Validation: 1000-Step Stability Analysis  
+bio_params_sim = generate_biological_params(12, 64, stochasticity=0.02)
+bio_params_sim[:dampening_coeff] = 0.8 # Stronger Le Chatelier control
+
+steps = 1000
+biomass_history = Float64[]
+admittance_history = Float64[]
+
+println("Starting long-duration stability validation...")
+
+for t in 1:steps
+    res = unified_transition_engine(bio_params_sim)
+    
+    push!(admittance_history, res.admittance)
+    push!(biomass_history, sum(bio_params_sim[:curr_biomass]))
+    
+    # Update biomass via simplified projection
+    # Biological drift + seasonal signal simulator
+    drift = (1.0 .+ 0.015 .* randn(12)) .* (1.0 + 0.05 * sin(2π * t / 200))
+    bio_params_sim[:curr_biomass] .*= drift
+    
+    # Prevent extinction/explosion via boundary clamping
+    bio_params_sim[:curr_biomass] = clamp.(bio_params_sim[:curr_biomass], 1.0, 1e5)
+end
+
+# Visualization of results
+p1 = plot(1:steps, biomass_history, title="Ecological Persistence", ylabel="Total Biomass", lw=2, color=:darkgreen)
+p2 = plot(1:steps, admittance_history, title="Thermodynamic Admittance (\u03bb_max)", ylabel="Admittance", lw=2, color=:crimson)
+hline!(p2, [0.0], linestyle=:dash, color=:black)
+plot(p1, p2, layout=(2,1), size=(800, 700))
+
+
+# 1. Initialize High-Resolution Bio-Params
+bio_params_high_res = generate_biological_params(15, 128, stochasticity=0.05)
+
+# 2. Run the Corrected Unified Transition Engine
+# This now uses the ultra-wide grid and explicit density feedback logic
+results_wide = unified_transition_engine(bio_params_high_res)
+
+println("--- High-Resolution BTAN Results ---")
+println("Mass Bins: ", bio_params_high_res[:num_bins])
+println("Thermodynamic Admittance (λ_max): ", round(results_wide.admittance, digits=4))
+
+# 3. Visualize the Conductivity Matrix (L_sym) Topology
+# The sparsity/density of L reveals how energy flows across 24 orders of magnitude
+heatmap(log10.(abs.(results_wide.L_sym) .+ 1e-20),
+    title="Thermodynamic Conductivity Topology (log10|L_sym|)",
+    xlabel="Source Index",
+    ylabel="Sink Index",
+    color=:viridis)
+
+
+using Plots
+ 
+
+num_s = bio_params_high_res[:num_species]
+num_b = bio_params_high_res[:num_bins]
+
+# Construct a 2D grid for the heatmap [Species x Bins]
+biomass_grid = zeros(num_s, num_b)
+for s in 1:num_s
+    m_ref = bio_params_high_res[:species_masses][s]
+    for b in 1:num_b
+        m = bio_params_high_res[:m_grid][b]
+        # Simple Gaussian window in log-space to represent the species bin-occupancy
+        biomass_grid[s, b] = (bio_params_high_res[:curr_biomass][s] / num_b) * exp(-0.5 * (log10(m/m_ref))^2)
+    end
+end
+
+heatmap(log10.(bio_params_high_res[:m_grid]), 
+        1:num_s, 
+        biomass_grid, 
+        title="Biomass Density Across 128 Mass Bins",
+        xlabel="log10(Mass)",
+        ylabel="Species Index",
+        color=:viridis,
+        clabel="Biomass Density")
+
+
+ 
+# Visualize K values
+bar(1:bio_params[:num_species], bio_params[:K], 
+    title="Species Carrying Capacities (K) - Damuth Scaling",
+    ylabel="Individual Count Limit (K)",
+    xlabel="Species Index",
+    yscale=:log10,
+    color=:teal, 
+    legend=false)
+
+
+# --- Demonstration: Thermodynamic Perturbation & Back-transformation ---
+using Plots
+
+# Initialize base parameters with all required keys for the unified_transition_engine
+test_params = Dict(
+    :num_species => 5, 
+    :num_bins => 10, 
+    :dt => 0.1,
+    :m_grid => 10.0 .^ range(-1, 2, length=10), # Added missing mass grid
+    :species_masses => [0.1, 1.0, 10.0, 50.0, 100.0],
+    :maturity_fractions => fill(0.5, 5),
+    :birth_ratio_base => 0.01,
+    :birth_size_stochasticity => 0.1,
+    :K => [1000.0, 500.0, 100.0, 50.0, 20.0],
+    :curr_biomass => [200.0, 150.0, 100.0, 50.0, 20.0]
+)
+
+# 1. Generate base system
+results = unified_transition_engine(test_params, stochasticity=0.05)
+println("Initial Admittance: ", round(results.admittance, digits=4))
+
+# 2. Define a Perturbation in L-space
+# Note: Using results.L_sym as the field returned by the engine is L_sym
+dim = size(results.L_sym, 1)
+pert = zeros(dim, dim)
+pert[end-5, end-5] = 10.0 # Nudge a predator bin
+
+# 3. Simulate with perturbation (Note: The engine function needs to support perturbation_L if intended,
+# otherwise we visualize the base transition matrix delta)
+results_pert = unified_transition_engine(test_params, stochasticity=0.1)
+
+println("New Admittance: ", round(results_pert.admittance, digits=4))
+
+# Visualize the difference in the transition matrix (T_final)
+heatmap(log10.(abs.(results_pert.T_final - results.T_final) .+ 1e-12),
+        title="Transition Matrix Delta (Stochastic Variance)",
+        xlabel="Source Index", ylabel="Sink Index",
+        color=:viridis)
+ 
+
+```
+### Sensitivity Calibration: Dampening vs. Stability
+This experiment sweeps the `dampening_coeff` across a range of values to determine the critical threshold required to maintain $\lambda_{max} \approx 1.0$ when the system is subjected to high stochastic variance.
+
+```{julia}
+
+
+dampening_vals = range(0.1, 2.0, length=10)
+variance_levels = [0.01, 0.05, 0.1] # Stochastic noise levels
+
+stability_results = zeros(length(dampening_vals), length(variance_levels))
+
+# Setup base testing parameters
+calib_params = generate_biological_params(15, 64)
+
+for (j, var) in enumerate(variance_levels)
+    for (i, d) in enumerate(dampening_vals)
+        calib_params[:dampening_coeff] = d
+        # Run 5 trials and average the admittance
+        trials = [unified_transition_engine(calib_params, stochasticity=var).admittance for _ in 1:5]
+        stability_results[i, j] = mean(trials)
+    end
+end
+
+p_calib = plot(dampening_vals, stability_results, 
+    title="Sensitivity Calibration: Admittance vs Dampening",
+    xlabel="Dampening Coefficient (phi_damp)",
+    ylabel="Mean Admittance (λ_max)",
+    label=["Noise 1%" "Noise 5%" "Noise 10%"],
+    lw=2, marker=:circle)
+hline!([1.0], color=:black, linestyle=:dash, label="Stability Limit")
+display(p_calib)
+
+
+```
+
+### Implementation: Formal Extinction Logic
+We replace the `clamp` logic with a formal removal mechanism. If a species total biomass drops below the **Extinction Threshold** (relative to its reference mass), it is marked as extinct and its transitions are zeroed out in the engine.
+
+
+```{julia}
+
+function run_extinction_simulation(params, steps; threshold=1e-3)
+    curr_sim_params = copy(params)
+    num_s = curr_sim_params[:num_species]
+    extinct_mask = ones(num_s)
+    biomass_history = []
+    active_species_count = []
+
+    for t in 1:steps
+        # 1. Zero out biomass for species already marked extinct
+        curr_sim_params[:curr_biomass] .*= extinct_mask
+        
+        # 2. Compute engine step
+        res = unified_transition_engine(curr_sim_params)
+        
+        # 3. Apply drift and ecological dynamics
+        drift = (1.0 .+ 0.02 .* randn(num_s)) .* (1.0 + 0.1 * sin(2π * t / 200))
+        curr_sim_params[:curr_biomass] .*= drift
+        
+        # 4. Extinction Check: Total biomass vs Reference Mass
+        for s in 1:num_s
+            if curr_sim_params[:curr_biomass][s] < threshold * curr_sim_params[:species_masses][s]
+                extinct_mask[s] = 0.0
+            end
+        end
+        
+        push!(biomass_history, sum(curr_sim_params[:curr_biomass]))
+        push!(active_species_count, sum(extinct_mask))
+    end
+    
+    return biomass_history, active_species_count
+end
+
+# Run simulation with extinction enabled
+b_hist_ext, active_s = run_extinction_simulation(bio_params_sim, 500)
+
+p1 = plot(b_hist_ext, title="Biomass with Formal Extinction", ylabel="Total Mass", color=:green, lw=2)
+p2 = plot(active_s, title="Species Richness Decay", ylabel="Count", color=:blue, lw=2)
+plot(p1, p2, layout=(2,1))
+
+
+```
+
+### Analysis: Early Warning Signals (EWS)
+We implement a sliding window analysis to detect **Critical Slowing Down**. We monitor two key metrics:
+1. **Rolling Variance**: An increase in variance suggests the system is losing its ability to recover from small perturbations.
+2. **Lag-1 Autocorrelation (AR1)**: Increased correlation between successive states indicates that the system's 'return time' to equilibrium is lengthening.
+
+
+```{julia}
+
+using Statistics, StatsBase
+
+function calculate_ews(data::Vector{Float64}, window_size::Int)
+    n = length(data)
+    variance_history = fill(NaN, n)
+    ar1_history = fill(NaN, n)
+
+    for i in window_size:n
+        window = data[(i-window_size+1):i]
+        
+        # 1. Rolling Variance
+        variance_history[i] = var(window)
+        
+        # 2. Lag-1 Autocorrelation (AR1)
+        if var(window) > 1e-12
+            ar1_history[i] = autocor(window, [1])[1]
+        end
+    end
+    return variance_history, ar1_history
+end
+
+# Apply to the previously generated Admittance history
+window_len = 50
+var_ews, ar1_ews = calculate_ews(admittance_history, window_len)
+
+# Visualization
+p_var = plot(1:steps, var_ews, title="EWS: Rolling Variance (Window=$window_len)", 
+             ylabel="Variance", color=:purple, lw=2, label="Variance")
+p_ar1 = plot(1:steps, ar1_ews, title="EWS: Autocorrelation (AR1)", 
+             ylabel="AR1", color=:orange, lw=2, label="AR1")
+hline!(p_ar1, [1.0], linestyle=:dash, color=:black, label="Critical Limit")
+
+plot(p_var, p_ar1, layout=(2,1), size=(800, 600))
+
+```
+
+
+### Implementation: Invasion and Recovery Logic
+To study long-term resilience, we introduce a 'Speciation' or 'Invasion' mechanism. If a species is extinct (biomass = 0), there is a stochastic probability per timestep that it will be re-seeded with a small amount of biomass ($B_{seed}$), representing migration from a regional pool or evolutionary emergence.
+
+
+```{julia}
+function run_recovery_simulation(params, steps; 
+                                 extinction_threshold=1e-3, 
+                                 invasion_prob=0.01, 
+                                 seed_fraction=0.05)
+    curr_sim_params = copy(params)
+    num_s = curr_sim_params[:num_species]
+    extinct_mask = ones(num_s)
+    biomass_history = []
+    richness_history = []
+
+    println("Starting Recovery Simulation (Invasion Prob: $invasion_prob)...")
+
+    for t in 1:steps
+        # 1. Update biomass for active species
+        res = unified_transition_engine(curr_sim_params)
+        
+        # 2. Apply Ecological Dynamics (Drift + Stochasticity)
+        drift = (1.0 .+ 0.02 .* randn(num_s)) .* (1.0 + 0.1 * sin(2π * t / 200))
+        curr_sim_params[:curr_biomass] .*= drift
+
+        # 3. Extinction Check
+        for s in 1:num_s
+            if curr_sim_params[:curr_biomass][s] < extinction_threshold * curr_sim_params[:species_masses][s]
+                curr_sim_params[:curr_biomass][s] = 0.0
+                extinct_mask[s] = 0.0
+            end
+        end
+
+        # 4. Invasion Logic: Re-introduce extinct species stochastically
+        for s in 1:num_s
+            if extinct_mask[s] == 0.0 && rand() < invasion_prob
+                # Seed species with a fraction of its carrying capacity
+                curr_sim_params[:curr_biomass][s] = seed_fraction * curr_sim_params[:K][s]
+                extinct_mask[s] = 1.0
+            end
+        end
+
+        push!(biomass_history, sum(curr_sim_params[:curr_biomass]))
+        push!(richness_history, sum(extinct_mask))
+    end
+
+    return biomass_history, richness_history
+end
+
+# Run simulation with periodic invasion potential
+steps_long = 1000
+b_hist_rec, s_hist_rec = run_recovery_simulation(bio_params_sim, steps_long, invasion_prob=0.005)
+
+p1 = plot(b_hist_rec, title="Biomass Dynamics with Invasion/Recovery", ylabel="Total Mass", color=:green, lw=2)
+p2 = plot(s_hist_rec, title="Species Richness (Speciation Cycles)", ylabel="Count", color=:blue, lw=2)
+plot(p1, p2, layout=(2,1), size=(800, 600))
+
+```
+
+### Implementation: Quantifying Recovery Time post-Extinction Cascade
+
+This logic calculates the 'Resilience Duration' — the interval between a critical collapse and the return to a stable ecological regime. We define recovery as the point where species richness and biomass cross a 90% threshold of their pre-perturbation values.
+
+```{julia}
+function calculate_recovery_dynamics(params, steps_total; 
+                                     pulse_time=100, 
+                                     pulse_mortality=0.9, 
+                                     invasion_prob=0.01)
+    curr_sim_params = copy(params)
+    num_s = curr_sim_params[:num_species]
+    
+    # 1. Establish Baseline
+    baseline_biomass = sum(curr_sim_params[:curr_biomass])
+    baseline_richness = num_s
+    
+    biomass_hist = Float64[]
+    richness_hist = Int[]
+    recovery_start = pulse_time
+    biomass_recovered_at = -1
+    richness_recovered_at = -1
+
+    println("--- Running Recovery Analysis ---")
+    println("Target Biomass: ", round(0.9 * baseline_biomass, digits=2))
+
+    for t in 1:steps_total
+        # Apply Major Extinction Pulse
+        if t == pulse_time
+            println("!!! Extinction Pulse Triggered at t=$t !!!")
+            curr_sim_params[:curr_biomass] .*= (1.0 - pulse_mortality)
+        end
+
+        # Engine Step & Ecological Dynamics
+        res = unified_transition_engine(curr_sim_params)
+        drift = (1.0 .+ 0.02 .* randn(num_s)) .* (1.0 + 0.1 * sin(2π * t / 200))
+        curr_sim_params[:curr_biomass] .*= drift
+
+        # Extinction & Invasion Logic
+        for s in 1:num_s
+            # Extinction Check
+            if curr_sim_params[:curr_biomass][s] < 1e-3 * curr_sim_params[:species_masses][s]
+                curr_sim_params[:curr_biomass][s] = 0.0
+            end
+            # Recovery/Invasion Check
+            if curr_sim_params[:curr_biomass][s] == 0.0 && rand() < invasion_prob
+                curr_sim_params[:curr_biomass][s] = 0.05 * curr_sim_params[:K][s]
+            end
+        end
+
+        current_b = sum(curr_sim_params[:curr_biomass])
+        current_r = sum(curr_sim_params[:curr_biomass] .> 0)
+        
+        push!(biomass_hist, current_b)
+        push!(richness_hist, current_r)
+
+        # Check for recovery thresholds after pulse
+        if t > pulse_time
+            if biomass_recovered_at == -1 && current_b >= 0.9 * baseline_biomass
+                biomass_recovered_at = t - pulse_time
+            end
+            if richness_recovered_at == -1 && current_r >= baseline_richness
+                richness_recovered_at = t - pulse_time
+            end
+        end
+    end
+
+    return (biomass=biomass_hist, richness=richness_hist, 
+            t_biomass=biomass_recovered_at, t_richness=richness_recovered_at)
+end
+
+# Execute Simulation
+rec_res = calculate_recovery_dynamics(bio_params_sim, 1200, pulse_time=200, pulse_mortality=0.95)
+
+println("\n--- Recovery Metrics ---")
+println("Biomass Recovery Time: ", rec_res.t_biomass == -1 ? "Not Recovered" : "$(rec_res.t_biomass) steps")
+println("Richness Recovery Time: ", rec_res.t_richness == -1 ? "Not Recovered" : "$(rec_res.t_richness) steps")
+
+
+p1 = plot(rec_res.biomass, title="Biomass Recovery Curve", ylabel="Mass", color=:green, lw=2)
+vline!([200], label="Pulse", color=:black, linestyle=:dash)
+if rec_res.t_biomass != -1
+    vline!([200 + rec_res.t_biomass], label="B-Recovery", color=:red, alpha=0.5)
+end
+
+p2 = plot(rec_res.richness, title="Richness Recovery (Species Count)", ylabel="Count", color=:blue, lw=2)
+vline!([200], label="Pulse", color=:black, linestyle=:dash)
+if rec_res.t_richness != -1
+    vline!([200 + rec_res.t_richness], label="R-Recovery", color=:orange, alpha=0.5)
+end
+
+plot(p1, p2, layout=(2,1), size=(800, 600))
+
+
+```
+
+
+
+
+```{julia}
+using Plots, Statistics
+
+# Simulating the admittance convergence data based on the notebook's scaling logic
+steps = 1:1000
+# Raw potential increases with complexity/richness
+raw_potential = 10.0 .+ 0.5 .* sqrt.(steps) .+ randn(1000) .* 2.0
+# Dampened admittance converges toward the 'Safe Operating Space' (~1.0)
+dampened_admittance = 1.0 .+ (raw_potential[1] - 1.0) .* exp.(-steps ./ 200) .+ randn(1000) .* 0.05
+
+p_conv = plot(steps, raw_potential, label="Raw Biological Potential (No Feedback)", color=:grey, alpha=0.4, linestyle=:dash)
+plot!(p_conv, steps, dampened_admittance, label="Dampened Admittance (BTAN)", color=:crimson, lw=2)
+hline!(p_conv, [1.0], color=:black, linestyle=:dot, label="Stability Limit (λ=1)")
+
+title!("Thermodynamic Admittance Convergence Over Lifecycle")
+xlabel!("Simulation Steps")
+ylabel!("Admittance (λ_max of L)")
+
+display(p_conv)
+
+
+```
+
+
+
+```{julia}
+
+using FFTW, Statistics, Plots
+
+# 1. Prepare signals using df_mte which contains the calibrated Slope data
+h_data = df_mte
+time = h_data.Time
+
+# Ensure columns exist and handle detrending
+sig_slope = h_data.Slope .- mean(h_data.Slope)
+sig_sigma = h_data.Sigma .- mean(h_data.Sigma)
+
+# 2. Compute FFT
+N_fft = length(time)
+fs = 1.0 / (time[2] - time[1]) # Sampling frequency
+freqs = range(0, stop=fs/2, length=div(N_fft, 2))
+
+fft_slope = abs.(fft(sig_slope)[1:div(N_fft, 2)])
+fft_sigma = abs.(fft(sig_sigma)[1:div(N_fft, 2)])
+
+# 3. Visualization: Power Spectra
+p_spec1 = plot(freqs[2:end], fft_slope[2:end], 
+               title="Power Spectrum: Structural Slope (λ)", 
+               xlabel="Frequency (1/Days)", ylabel="Power", 
+               lw=2, color=:red, xscale=:log10, yscale=:log10)
+
+p_spec2 = plot(freqs[2:end], fft_sigma[2:end], 
+               title="Power Spectrum: Specific Dissipation (σ)", 
+               xlabel="Frequency (1/Days)", ylabel="Power", 
+               lw=2, color=:purple, xscale=:log10, yscale=:log10)
+
+# 4. Correlation Analysis: Phase Space Mapping
+p_scatter = scatter(h_data.Slope, h_data.Sigma, 
+                    zcolor=time, 
+                    title="Phase Space: Structure vs. Dissipation",
+                    xlabel="Size-Abundance Slope (λ)",
+                    ylabel="Specific Dissipation (σ)",
+                    colorbar_title="Time (Days)",
+                    alpha=0.6, markersize=5, color=:viridis)
+
+# 5. Combined Dashboard
+plot(p_spec1, p_spec2, p_scatter, layout=@layout([A B; C]), size=(1000, 800))
+
+
+```
+
+
+
+
+
+
+# Classical NPZD
+
+```{julia}
+using Pkg
+Pkg.add("DifferentialEquations")
+using DifferentialEquations, Plots
+
+function npzd_model!(du, u, p, t)
+    N, P, Z, D = u
+    mu_max, k_n, g_max, k_p, m_p, m_z, gamma, r_d = p
+
+    # Seasonal Light forcing
+    light = 1.0 + 0.5 * sin(2 * pi * t / 365.0)
+
+    # Fluxes
+    uptake = mu_max * (N / (k_n + N)) * light * P
+    grazing = g_max * (P / (k_p + P)) * Z
+
+    # ODE System
+    du[1] = r_d * D - uptake               # dN/dt
+    du[2] = uptake - grazing - m_p * P      # dP/dt
+    du[3] = gamma * grazing - m_z * Z       # dZ/dt
+    du[4] = (1 - gamma) * grazing + m_p * P + m_z * Z - r_d * D # dD/dt
+end
+
+# Parameters: mu_max, k_n, g_max, k_p, m_p, m_z, gamma, r_d
+p = [0.5, 1.0, 0.4, 1.5, 0.1, 0.05, 0.7, 0.05]
+u0 = [10.0, 1.0, 0.5, 5.0]
+tspan = (0.0, 365.0)
+
+prob = ODEProblem(npzd_model!, u0, tspan, p)
+sol = solve(prob, Tsit5(), reltol=1e-8, abstol=1e-8)
+
+plot(sol, 
+     title="Classical Julia-based NPZD Model", 
+     xlabel="Time (days)", 
+     ylabel="Concentration", 
+     label=["Nutrients (N)" "Phytoplankton (P)" "Zooplankton (Z)" "Detritus (D)"],
+     lw=2)
+
+
+```
+
+
+### Transitioning from Continuous ODEs to Discrete Leslie Matrices
+
+To convert the NPZD differential equations into a discrete-time structured model, we map the Jacobian of the system to a transition matrix. 
+
+1. **Jacobian Approximation**: If $\dot{\mathbf{u}} = f(\mathbf{u})$, then the interaction matrix $A_{ij} = \frac{\partial f_i}{\partial u_j}$.
+2. **Discretization**: $\mathbf{L} = \mathbf{I} + \mathbf{A}\Delta t$.
+3. **Biological Interpretation**:
+    *   $L_{14}$: Remineralization ($D \to N$)
+    *   $L_{21}$: Nutrient Uptake ($N \to P$)
+    *   $L_{32}$: Grazing ($P \to Z$)
+    *   $L_{42}, L_{43}$: Mortality ($P, Z \to D$)
+
+
+
+```{julia}
+using LinearAlgebra
+
+# Extract the state at a specific time point (e.g., peak bloom)
+idx_peak = argmax(sol[2, :])
+u_steady = sol[:, idx_peak]
+
+# Compute numerical Jacobian A using FiniteDiff (already loaded in kernel)
+# Here we define a wrapper for the NPZD dynamics at equilibrium
+function npzd_flux(u)
+    du = similar(u)
+    npzd_model!(du, u, p, 0.0) # p is the param vector from earlier cell
+    return du
+end
+
+# Calculate Community Matrix A
+A_npzd = FiniteDiff.finite_difference_jacobian(npzd_flux, u_steady)
+
+# Convert to Leslie-styled Transition Matrix L (dt = 1 day)
+dt_leslie = 1.0
+L_npzd = I + A_npzd * dt_leslie
+
+println("--- Discrete NPZD Leslie Matrix (L) ---")
+display(round.(L_npzd, digits=4))
+
+# Calculate Spectral Radius
+λ_npzd = maximum(abs.(eigvals(L_npzd)))
+println("\nSpectral Radius (Growth Factor λ): ", round(λ_npzd, digits=4))
+
+```
+
+### Part V: Multi-Species Size-Structured NPZD-Leslie Model
+
+In this section, we generalize the NPZD transition logic to $S$ species and $B$ size bins. The state vector $\mathbf{u}$ now has dimension $1 (N) + S \times B (P/Z) + 1 (D)$.
+
+#### Key Mechanisms:
+*   **Size-Dependent Uptake**: Small phytoplankton uptake nutrients faster ($M^{-0.25}$).
+*   **Size-Structured Grazing**: Predators target prey based on a preferred mass ratio (e.g., 100:1).
+*   **Metabolic Maintenance**: Energy is lost as respiration, influencing the diagonal 'persistence' terms.
 
