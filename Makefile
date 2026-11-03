@@ -1,4 +1,4 @@
-FILENAME=thermodynamics_onsager
+FILENAME=thermodynamics_onsager_I
 TEMPLATE=my_template.tex
 PDFENGINE=lualatex
 
