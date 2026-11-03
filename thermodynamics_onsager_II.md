@@ -12,7 +12,7 @@ affiliation:
 keyword: |
   Keywords - Onsager Reciprocal Relations, Community Matrix, Phenomenological Conductivity, Fluctuation-Dissipation, Probability Circulation, Detailed Balance, Biomass Capacitance, Resistance, Resilience, Energy Dissipation Cascade, Canopy Impedance Filtering, Size Spectrum, Quasi-Potential Landscape, Early Warning Signals
 abstract: |
-  Theoretical ecology describes living communities through demographic interaction matrices that are fundamentally asymmetric due to directional trophic predation and body size disparities. In a companion paper (Choi 2026a), this historical schism with physical thermodynamics was resolved by demonstrating that the demographic community matrix conflates underlying physical transport conductivities with heterogeneous biomass storage capacities. Through continuous Lyapunov covariance factorization, the demographic matrix resolves into a symmetric Onsager dissipative conductivity that drives monotonic downhill thermodynamic relaxation, and an antisymmetric probability circulation tensor that quantifies non-equilibrium cyclic flows in state space. Here, the focus shifts to empirical validation across contrasting ecological biomes, the extension of the thermodynamic framework to allometric size spectra, and the elaboration of a multi-scale energy cascade analogous to fluid turbulence. The empirical framework is tested on two canonical aquatic regimes: the detritus-buffered benthic cold-spring food web (Cone Spring) and the solar-driven open-ocean plankton ecosystem at the Bermuda Atlantic Time-series Study (BATS) site in the Sargasso Sea. In Cone Spring, massive detrital biomass capacitance provides high entropic Resistance (shock absorption) and slow turnover (period of approximately 296 days), operating at low entropy production rate density (90.35 per year). In contrast, the upper mixed layer at the BATS site prioritizes kinetic Resilience (recovery turnover, period of approximately 40 days) over standing storage, operating at nearly triple the entropy production rate density (257.65 per year). Simulating industrial exploitation in an extended pelagic fishery (NPZD-Fish) demonstrates that harvesting top predatory biomass strips the slow storage capacitor, triggering a surge in probability circulation volatility and driving entropy production to 425.03 per year, which destabilizes the non-equilibrium attractor. Extending this framework to continuous allometric size spectra via the Sheldon distribution and Kleiber scaling, a physical model of a flexible canopy coupled to a Kolmogorov turbulence cascade is developed. Macroscopic organisms act as structural capacitors that absorb bulk environmental momentum; non-linear cross-scale interactions circulate energy through an inertial subrange via probability circulation; and microscopic organisms act as viscous heat sinks that dissipate energy through metabolic respiration without structural fracture. Formal mathematical proofs, coordinate invariance theorems, empirical flow matrices, stochastic chemical master equations, circuit analogies, and conceptual reconciliations with classical and contemporary ecological paradigms are detailed in Appendices A to E, supported by reproducible open-source software.
+  Theoretical ecology describes living communities through demographic interaction matrices that are fundamentally asymmetric due to directional trophic predation and body size disparities. In a companion paper (Choi 2026a), this historical schism with physical thermodynamics was resolved by demonstrating that the demographic community matrix conflates underlying physical transport conductivities with heterogeneous biomass storage capacities. Through continuous Lyapunov covariance factorization, the demographic matrix resolves into a symmetric Onsager dissipative conductivity that drives monotonic downhill thermodynamic relaxation, and an antisymmetric probability circulation tensor that quantifies non-equilibrium cyclic flows in state space. Here, the focus shifts to empirical validation across contrasting ecological biomes, the extension of the thermodynamic framework to allometric size spectra, and the elaboration of a multi-scale energy cascade analogous to fluid turbulence. The empirical framework is tested on two canonical aquatic regimes: the detritus-buffered benthic cold-spring food web (Cone Spring) and the solar-driven open-ocean plankton ecosystem at the Bermuda Atlantic Time-series Study (BATS) site in the Sargasso Sea. In Cone Spring, massive detrital biomass capacitance provides high entropic Resistance (shock absorption) and slow turnover (period of approximately 296 days), operating at low entropy production rate density (90.35 per year). In contrast, the upper mixed layer at the BATS site prioritizes kinetic Resilience (recovery turnover, period of approximately 40 days) over standing storage, operating at nearly triple the entropy production rate density (257.65 per year). Simulating industrial exploitation in an extended pelagic fishery (NPZD-Fish) demonstrates that harvesting top predatory biomass strips the slow storage capacitor, triggering a surge in probability circulation volatility and driving entropy production to 425.03 per year, which destabilizes the non-equilibrium attractor. Extending this framework to continuous allometric size spectra via the Sheldon distribution and Kleiber scaling, a physical model of a flexible canopy coupled to a Kolmogorov turbulence cascade is developed. Macroscopic organisms act as structural capacitors that absorb bulk environmental momentum; non-linear cross-scale interactions circulate energy through an inertial subrange via probability circulation; and microscopic organisms act as viscous heat sinks that dissipate energy through metabolic respiration without structural fracture. Formal mathematical proofs, coordinate invariance theorems, empirical flow matrices, stochastic chemical master equations, and circuit analogies are detailed in Appendices A to D, supported by reproducible open-source software. The reconciliation with classical and contemporary ecological paradigms is given in the companion paper (Choi 2026a).
 
 unnumberedsections: false
 ---
@@ -27,14 +27,14 @@ When theoretical ecologists and physicists first attempted to map ecological com
 
 In the companion paper (Choi 2026a), this historical schism was shown to stem from a fundamental category error: the demographic community matrix $\mathbf{A}$ is not the physical Onsager conductivity $\mathbf{L}$. The demographic matrix describes the rate of change of population abundances ($\delta\dot{\mathbf{x}} = \mathbf{A}\delta\mathbf{x}$), whereas Onsager conductivities relate thermodynamic fluxes to intensive driving forces ($\mathbf{J} = \mathbf{L}\mathbf{X}$). The community matrix is a composite dynamical operator that conflates underlying physical transport conductivities with the heterogeneous biomass storage capacities of biological compartments. Through continuous Lyapunov covariance factorization ($\mathbf{A}\mathbf{C} + \mathbf{C}\mathbf{A}^{\mathsf{T}} = -2\mathbf{D}_{\mathrm{sym}}$), the demographic matrix resolves cleanly into a symmetric Onsager dissipative conductivity $\mathbf{D}_{\mathrm{sym}}$ that satisfies the Second Law, and an antisymmetric probability circulation tensor $\boldsymbol{\Omega}$ that quantifies cyclic flows in state space sustained by continuous external energy throughput (Choi 2026a).
 
-Building upon that conceptual reconciliation, the present work develops the empirical and multi-scale dimensions of this thermodynamic synthesis across five core areas. First, the framework is empirically validated across contrasting biomes, comparing a benthic detritus-buffered spring (Cone Spring) with an open-ocean planktonic ecosystem at the Bermuda Atlantic Time-series Study (BATS) site, alongside an exploited marine pelagic fishery. Second, stability is extended to continuous allometric size spectra by linking biomass capacitance and metabolic turnover to organismal body mass through Kleiber scaling and the Sheldon size spectrum. Third, a physical model of a flexible living canopy coupled to a Kolmogorov turbulence cascade is developed to explain how macroscopic structural capacitors absorb bulk environmental energy, cross-scale circulation transports it across frequency octaves, and microscopic organisms dissipate it harmlessly into heat. Fourth, the framework is extended to non-linear Fokker-Planck quasi-potential landscapes, identifying physical early-warning signals for catastrophic regime shifts. Finally, formal derivations, coordinate invariance proofs, empirical flow matrices, stochastic chemical master equations, circuit analogies, and conceptual reconciliations with classical ecological paradigms are compiled in Appendices A to E to preserve narrative clarity.
+Building upon that conceptual reconciliation, the present work develops the empirical and multi-scale dimensions of this thermodynamic synthesis across five core areas. First, the framework is empirically validated across contrasting biomes, comparing a benthic detritus-buffered spring (Cone Spring) with an open-ocean planktonic ecosystem at the Bermuda Atlantic Time-series Study (BATS) site, alongside an exploited marine pelagic fishery. Second, stability is extended to continuous allometric size spectra by linking biomass capacitance and metabolic turnover to organismal body mass through Kleiber scaling and the Sheldon size spectrum. Third, a physical model of a flexible living canopy coupled to a Kolmogorov turbulence cascade is developed to explain how macroscopic structural capacitors absorb bulk environmental energy, cross-scale circulation transports it across frequency octaves, and microscopic organisms dissipate it harmlessly into heat. Fourth, the framework is extended to non-linear Fokker-Planck quasi-potential landscapes, identifying physical early-warning signals for catastrophic regime shifts. Finally, formal derivations, coordinate invariance proofs, empirical flow matrices, stochastic chemical master equations, and circuit analogies are compiled in Appendices A to D to preserve narrative clarity.
 
 
 # The Dual Nature of Ecological Matrices: Conceptual Bridge
 
 To understand why ecological communities appear asymmetric while remaining obedient to physical thermodynamics, two distinct mechanisms must be distinguished. The first mechanism is directional trophic feeding with incomplete assimilation: biomass flows unidirectionally from prey to predator with imperfect metabolic conversion ($\epsilon < 1$), producing opposing demographic signs that are negative for the prey and positive for the predator. The second mechanism is unequal biomass storage capacity: the shift in intensive thermodynamic potential induced by adding mass depends inversely on the physical storage capacity of the receiving compartment. Adding a unit of carbon to a massive detrital reservoir induces an imperceptible change in chemical potential, whereas adding that same mass to a tiny predator population produces a substantial potential shift. The demographic community matrix conflates physical transport with these unequal storage vessels.
 
-When this conflation is unraveled using the stationary fluctuation covariance matrix $\mathbf{C} = \langle \delta\mathbf{x}\delta\mathbf{x}^{\mathsf{T}}\rangle$ as the metric tensor of the state space, the demographic operator $-\mathbf{A}\mathbf{C}$ splits uniquely into two distinct physical operators (Choi 2026a, Appendix A.1). The symmetric component $\mathbf{D}_{\mathrm{sym}} = -\frac{1}{2}(\mathbf{A}\mathbf{C} + \mathbf{C}\mathbf{A}^{\mathsf{T}})$ represents the irreversible dissipation of free energy through metabolic respiration, physiological maintenance, and heat loss; as required by the Second Law of Thermodynamics, $\mathbf{D}_{\mathrm{sym}}$ is strictly positive definite ($\mathbf{D}_{\mathrm{sym}} \succ 0$), driving perturbations monotonically downhill toward the stationary state. In contrast, the skew-symmetric component $\boldsymbol{\Omega} = \frac{1}{2}(\mathbf{C}\mathbf{A}^{\mathsf{T}} - \mathbf{A}\mathbf{C})$ represents non-dissipative cyclic motion in state space, such as predator-prey oscillations, seasonal plankton cycles, and microbial recycling loops. Because $\boldsymbol{\Omega}$ is skew-symmetric, it performs no net thermodynamic work against the potential gradient ($\delta\mathbf{x}^{\mathsf{T}}\mathbf{C}^{-1}\boldsymbol{\Omega}\mathbf{C}^{-1}\delta\mathbf{x} = 0$), functioning as a non-dissipative energy and nutrient shuttler.
+When this conflation is unraveled using the stationary fluctuation covariance matrix $\mathbf{C} = \langle \delta\mathbf{x}\delta\mathbf{x}^{\mathsf{T}}\rangle$ as the metric tensor of the state space, the demographic operator $-\mathbf{A}\mathbf{C}$ splits uniquely into two distinct physical operators (Choi 2026: Appendix A). The symmetric component $\mathbf{D}_{\mathrm{sym}} = -\frac{1}{2}(\mathbf{A}\mathbf{C} + \mathbf{C}\mathbf{A}^{\mathsf{T}})$ represents the irreversible dissipation of free energy through metabolic respiration, physiological maintenance, and heat loss; as required by the Second Law of Thermodynamics, $\mathbf{D}_{\mathrm{sym}}$ is strictly positive definite ($\mathbf{D}_{\mathrm{sym}} \succ 0$), driving perturbations monotonically downhill toward the stationary state. In contrast, the skew-symmetric component $\boldsymbol{\Omega} = \frac{1}{2}(\mathbf{C}\mathbf{A}^{\mathsf{T}} - \mathbf{A}\mathbf{C})$ represents non-dissipative cyclic motion in state space, such as predator-prey oscillations, seasonal plankton cycles, and microbial recycling loops. Because $\boldsymbol{\Omega}$ is skew-symmetric, it performs no net thermodynamic work against the potential gradient ($\delta\mathbf{x}^{\mathsf{T}}\mathbf{C}^{-1}\boldsymbol{\Omega}\mathbf{C}^{-1}\delta\mathbf{x} = 0$), functioning as a non-dissipative energy and nutrient shuttler.
 
 These physical operators map directly to ecological mechanisms. Biological standing stocks function as entropic capacitors or biomass warehouses ($\mathbf{C}$): massive detrital beds or old-growth forest boles store extensive reserves of carbon and nutrients, providing physical inertia that buffers the community against seasonal droughts and resource lean periods. Metabolic dissipation ($\mathbf{D}_{\mathrm{sym}}$) represents the unavoidable metabolic tax paid to maintain living structure against spontaneous thermal decay, where respiration, cellular repair, basal maintenance, and foraging locomotion dissipate high-grade chemical energy into waste heat, pulling perturbations monotonically back toward stationary balance. Finally, probability circulation ($\boldsymbol{\Omega}$) operates as a non-dissipative conveyor belt or trophic carousel: feeding loops, predator-prey oscillations, and microbial recycling loops continuously shuttle matter and energy across species boundaries without degrading the local free-energy gradient.
 
@@ -46,7 +46,28 @@ The non-equilibrium circulation ratio $\chi = \|\boldsymbol{\Omega}\|_F / \|\mat
 
 A long-standing source of confusion in ecological thermodynamics is the convention of normalizing ecosystem states by arbitrary geographic area (square meters) or water depth (cubic meters). This convention introduces severe dimensional artifacts. An open-water plankton column, a rocky intertidal bench, and a forest stand are not closed physical boxes. Defining thermodynamic intensive potentials per unit spatial area assumes that spatial boundaries define the heat and work containers of the ecosystem.
 
-In physical thermodynamics, extensive potentials depend on the amount of physical material present to store energy and entropy. In biological communities, the true physical container is living and detrital biomass ($B$). As derived from dimensional considerations in Appendix B.1, the entropic storage capacity of an ecological compartment is proportional to its standing biomass:
+In physical thermodynamics, extensive potentials depend on the amount of physical material present to store energy and entropy. In biological communities, the true physical container is living and detrital biomass ($B$). 
+
+
+Let an ecological compartment contain standing biomass $B_i^*$ (in $\mathrm{g\,C}$ or wet biovolume $\mathrm{cm}^3$). In chemical thermodynamics, the chemical potential of a dilute biological constituent is $\mu_i = \mu_i^0 + R_{\mathrm{gas}}T \ln(x_i / x_0)$. Differentiating with respect to extensive state $x_i$ yields the local entropic curvature:
+
+$$H_{ii} = \frac{1}{T}\frac{\partial \mu_i}{\partial x_i} = \frac{R_{\mathrm{gas}}}{x_i^*}$$
+
+In an ecological compartment, stored biomass $B_i^*$ acts as the physical capacitance container. Defining relative departures $\delta\tilde{x}_i = \delta B_i / B_i^*$ non-dimensionalizes the state coordinates by standing crop.
+
+Total ecosystem Resistance represents the physical capacity to absorb an external thermodynamic force perturbation $\Delta\mathbf{X}$:
+
+$$\delta\mathbf{x} = \mathbf{H}^{-1}\Delta\mathbf{X} = \frac{1}{k_{\mathrm{B}}}\mathbf{C}\Delta\mathbf{X}$$
+
+Because $\mathbf{C} \propto \operatorname{Diag}(\mathbf{B}^*)$, state displacement $\delta\mathbf{x}$ scales inversely with total biomass: a massive standing stock ($B_{\text{tot}}$) minimizes relative displacement, providing high entropic Resistance.
+
+Total ecosystem Resilience is the aggregate mass-specific dissipation rate:
+
+$$\mathcal{R} = \frac{\sum_i R_i}{\sum_i B_i^*} \quad (\mathrm{yr}^{-1})$$
+
+representing the mean eigenvalue return rate to the stationary attractor.
+
+Due to these dimensional considerations, the entropic storage capacity of an ecological compartment is proportional to its standing biomass:
 
 $$C_i = \frac{B_i^*}{k_{\mathrm{B}}}$$
 
@@ -73,9 +94,39 @@ To demonstrate the empirical utility of this non-equilibrium thermodynamic frame
 
 Cone Spring is a cold limnocrene freshwater spring in Iowa characterized by steady subterranean discharge, a stenothermal temperature regime (approximately 10 degrees Celsius year-round), and heavy reliance on allochthonous organic matter inputs (Tilly 1968, Patten 1978, Ulanowicz 1986). The biological community is organized into five well-defined functional guilds: primary producers ($x_1$), organic detritus ($x_2$), decomposer microbes ($x_3$), benthic shredders and grazers ($x_4$), and benthic predators ($x_5$). Primary producers are dominated by rooted macrophyte beds of freshwater watercress (*Nasturtium officinale*) and epiphytic benthic microalgae that carpet the spring substrate, fixing solar irradiance during the spring and summer. The organic detritus pool constitutes a massive non-living organic matter reservoir comprising decaying deciduous tree litter—predominantly oak, elm, and hickory foliage from the surrounding riparian forest canopy—intermixed with submerged particulate organic muck. Decomposer microbes consist of benthic heterotrophic bacteria and microbial biofilms adhering to decaying leaves, actively secreting extracellular enzymes to digest cellulose and refractory structural lignin. Benthic shredders and grazers are dominated by dense populations of cold-adapted amphipod crustacea (*Gammarus pseudolimnaeus*) and aquatic isopods (*Asellus militaris*), which shred coarse organic leaf litter while simultaneously assimilating the nutrient-rich bacterial biofilms coating leaf surfaces. Finally, benthic predators represent secondary and tertiary consumers comprising freshwater planarians (*Phagocata morgani*), leech populations, and predatory larval salamanders (*Eurycea bislineata*) that feed upon active amphipods and detritivores.
 
-Evaluating the thermodynamic metrics across these biological guilds reveals the physical architecture of cold-spring persistence. First, massive detrital storage capacitance dominates the system; the detrital reservoir constitutes the primary physical capacitor of the ecosystem ($B_2^* = 3580\ \mathrm{kcal\ m^{-2}}$, or approximately $358.3\ \mathrm{g\ C\ m^{-2}}$), accounting for over 88% of total network energy standing stock. This massive storage capacity functions as an entropic shock absorber (Resistance), ensuring that seasonal pulses of autumnal leaf fall are stored rather than immediately oxidized, preventing boom-and-bust starvation cycles in detritivores. Second, the community exhibits slow relaxation dynamics and low dissipation. Spectral decomposition of the living community matrix $\mathbf{A}_{\mathrm{CS}}$ yields a dominant real eigenvalue $\lambda_1 = -2.80\ \mathrm{yr^{-1}}$ and a complex oscillatory pair $\lambda_{2,3} = -2.11 \pm 7.74i\ \mathrm{yr^{-1}}$, corresponding to an internal relaxation timescale of approximately 296 days. The system operates at a low entropy production rate density of $\sigma = 90.35\ \mathrm{yr^{-1}}$, achieving stability through slow, detritus-buffered conservation of structural order. Third, trophic probability circulation operates continuously on the benthic carousel, strictly violating detailed balance. Solving the continuous Lyapunov equation reveals non-zero off-diagonal circulation entries in $\boldsymbol{\Omega}_{\mathrm{CS}}$ (Appendix B.2.1). Amphipods consume bacterial biofilms, planarians prey upon amphipods, and animal mortality returns organic matter to detritus, driving continuous probability circulation ($\chi = 0.85$) that sustains ecosystem function without destabilizing the thermodynamic attractor (Fig. \ref{fig_app3_cone_spring}).
+Evaluating the thermodynamic metrics across these biological guilds reveals the physical architecture of cold-spring persistence. First, massive detrital storage capacitance dominates the system; the detrital reservoir constitutes the primary physical capacitor of the ecosystem ($B_2^* = 3580\ \mathrm{kcal\ m^{-2}}$, or approximately $358.3\ \mathrm{g\ C\ m^{-2}}$), accounting for over 88% of total network energy standing stock. This massive storage capacity functions as an entropic shock absorber (Resistance), ensuring that seasonal pulses of autumnal leaf fall are stored rather than immediately oxidized, preventing boom-and-bust starvation cycles in detritivores. Second, the community exhibits slow relaxation dynamics and low dissipation. Spectral decomposition of the living community matrix $\mathbf{A}_{\mathrm{CS}}$ yields a dominant real eigenvalue $\lambda_1 = -2.80\ \mathrm{yr^{-1}}$ and a complex oscillatory pair $\lambda_{2,3} = -2.11 \pm 7.74i\ \mathrm{yr^{-1}}$, corresponding to an internal relaxation timescale of approximately 296 days. The system operates at a low entropy production rate density of $\sigma = 90.35\ \mathrm{yr^{-1}}$, achieving stability through slow, detritus-buffered conservation of structural order. Third, trophic probability circulation operates continuously on the benthic carousel, strictly violating detailed balance. Solving the continuous Lyapunov equation reveals non-zero off-diagonal circulation entries in $\boldsymbol{\Omega}_{\mathrm{CS}}$ (see below). Amphipods consume bacterial biofilms, planarians prey upon amphipods, and animal mortality returns organic matter to detritus, driving continuous probability circulation ($\chi = 0.85$) that sustains ecosystem function without destabilizing the thermodynamic attractor (Fig. \ref{fig_app3_cone_spring}).
 
 ![Thermodynamic flow network decomposition of the Cone Spring benthic ecosystem (Tilly 1968). (A) Resolution of the indefinite symmetric part paradox: while the raw community matrix sum $\mathbf{A} + \mathbf{A}^{\mathsf{T}}$ contains spurious negative eigenvalues, the continuous Lyapunov transformation $-\mathbf{A}\mathbf{C} - \mathbf{C}\mathbf{A}^{\mathsf{T}} = 2\mathbf{D}_{\mathrm{sym}}$ is strictly positive-definite. (B) Monotonic Lyapunov decay: relaxation trajectories follow negative-definite quadratic potentials $V(\delta\mathbf{x}) = \delta\mathbf{x}^{\mathsf{T}}\mathbf{C}^{-1}\delta\mathbf{x}$, demonstrating global asymptotic stability. (C) Stationary covariance structure: cross-compartment correlations across the five trophic pools (Plants, Detritus, Herbivores, Carnivores, Deposit Feeders). (D) Resistance vs. Resilience across compartments: detritus dominates biomass capacitance ($B_2^* = 358.3\ \mathrm{g\,C\,m^{-2}}$, high Resistance), while active carnivores and herbivores govern kinetic turnover (high Resilience).](media/fig_app3_cone_spring.png){#fig_app3_cone_spring width=85%}
+
+ 
+The biomass-normalized Onsager framework is applied to the classic five-compartment energy budget of Cone Spring (Tilly 1968, Patten 1978, Ulanowicz 1986). The compartments comprise: Plants ($x_1$), Detritus ($x_2$), Bacteria ($x_3$), Detritivores ($x_4$), and Carnivores ($x_5$). Table \ref{tbl:app_cone_full} summarizes the published flows.
+
+| Compartment ($i$) | $B_i^*$ ($\mathrm{kcal\,m^{-2}}$) | Inflow $z_i$ | Plants ($T_{1\to i}$) | Detritus ($T_{2\to i}$) | Bacteria ($T_{3\to i}$) | Detritivores ($T_{4\to i}$) | Carnivores ($T_{5\to i}$) | Exports $E_i$ | Respiration $R_i$ | Throughflow $T_i$ |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **1. Plants** | $285.0$ | $11\,184$ | $0$ | $0$ | $0$ | $0$ | $0$ | $300$ | $2\,003$ | $11\,184$ |
+| **2. Detritus** | $3\,580.0$ | $635$ | $8\,881$ | $0$ | $1\,600$ | $200$ | $167$ | $860$ | $3\,109$ | $11\,483$ |
+| **3. Bacteria** | $116.6$ | $0$ | $0$ | $5\,205$ | $0$ | $0$ | $0$ | $255$ | $3\,275$ | $5\,205$ |
+| **4. Detritivores** | $60.0$ | $0$ | $0$ | $2\,309$ | $75$ | $0$ | $0$ | $0$ | $1\,814$ | $2\,384$ |
+| **5. Carnivores** | $17.0$ | $0$ | $0$ | $0$ | $0$ | $370$ | $0$ | $0$ | $203$ | $370$ |
+
+Table: Complete steady-state energy flow matrix for Cone Spring ($\mathrm{kcal\,m^{-2}\,yr^{-1}}$). {#tbl:app_cone_full}
+
+For the living heterotrophic subsystem (Bacteria, Detritivores, Carnivores), the demographic community matrix is:
+
+$$\mathbf{A}_{\mathrm{CS}} = \begin{bmatrix} -2.8087 & -1.2500 & 0 \\ 0.1538 & -3.0233 & -21.7647 \\ 0 & 2.7833 & -1.1941 \end{bmatrix}\ \mathrm{yr^{-1}}$$
+
+The eigenvalues are $\lambda_1 = -2.8036\ \mathrm{yr^{-1}}$ and a complex pair $\lambda_{2,3} = -2.1113 \pm 7.7414i\ \mathrm{yr^{-1}}$ ($T = 296\ \mathrm{days}$).
+
+Naive attempts to multiply $-\mathbf{A}_{\mathrm{CS}}$ by diagonal biomass yield an indefinite symmetric part ($\lambda_{\min} = -29.16$), falsely implying a violation of the Second Law. In contrast, solving the continuous Lyapunov equation with diffusion $\mathbf{D}_{\mathrm{CS}} = s\operatorname{Diag}(R_i B_i^*)$ ($s = 0.10$) yields the strictly positive-definite stationary covariance matrix:
+
+$$\mathbf{C}_{\mathrm{CS}} = \begin{bmatrix} 13\,629.90 & -77.16 & -69.10 \\ -77.16 & 3\,240.05 & 49.46 \\ -69.10 & 49.46 & 404.28 \end{bmatrix}\ (\mathrm{kcal\,m^{-2}})^2$$
+
+and the skew-symmetric non-equilibrium circulation tensor:
+
+$$\boldsymbol{\Omega}_{\mathrm{CS}} = \begin{bmatrix} 0 & -3\,833.33 & 132.26 \\ 3\,833.33 & 0 & -8\,959.08 \\ -132.26 & 8\,959.08 & 0 \end{bmatrix}\ (\mathrm{kcal\,m^{-2}})^2\,\mathrm{yr}^{-1}$$
+
+The non-zero circulation entries directly capture the driven cyclic feeding flux: detritivores graze bacteria, and carnivores consume detritivores.
+
 
 ## The Open-Ocean Plankton Ecosystem: High-Resilience Kinetic Turnover (BATS Site)
 
@@ -85,10 +136,36 @@ The biological community inhabiting the epipelagic euphotic zone is characterize
 
 The thermodynamic properties of the BATS surface mixed layer contrast sharply with Cone Spring. In the upper mixed layer (0 to 52 m), standing capacitance is low ($B_{\text{tot}} \approx 0.028\ \mathrm{g\ C\ m^{-3}}$), but mass-specific primary production and grazing rates are rapid, driving fast kinetic turnover. In winter, strong convective wind mixing breaks down thermal stratification, deepening the mixed layer to 150 to 200 meters and entraining deep nitrate into the illuminated surface, sparking the annual spring diatom bloom. The dominant complex eigenvalue pair ($\lambda_{3,4} = -62.95 \pm 57.73i\ \mathrm{yr^{-1}}$) yields an oscillation period of approximately 39.8 days, which is over seven times faster than Cone Spring. Furthermore, driven by continuous solar photon throughput, the BATS upper mixed layer operates at a high entropy production rate density of $\sigma = 257.65\ \mathrm{yr^{-1}}$, nearly three times that of Cone Spring. The system stabilizes itself not through massive static storage, but through high-resilience kinetic turnover and rapid microbial self-damping. In addition, vertical stratification establishes a pronounced Resistance-Resilience gradient across the water column: while the warm, illuminated surface mixed layer operates in the high-Resilience / low-Resistance regime, the subsurface Deep Chlorophyll Maximum (52 to 250 m) maintains a deep dissolved inorganic nitrogen pool ($N^* \approx 1.73\ \mathrm{mmol\ N\ m^{-3}}$) that acts as a massive nutrient buffer, providing entropic Resistance against seasonal stratification breakdown and convective mixing.
 
-## Structural Truncation Under Exploitation: The Marine Pelagic Fishery
+### BATS Upper Mixed Layer NPZD Model and Fluctuation Dynamics
 
-To investigate the thermodynamic consequences of anthropogenic harvesting, the BATS plankton model is extended to include demersal and pelagic fish ($F$), creating a five-pool NPZD-Fish food web (Appendix B.2.3). 
+To examine high-turnover marine ecosystems, a pelagic mixed layer is modeled via the four-pool nutrient-phytoplankton-zooplankton-detritus (NPZD) network (Fasham et al. 1990) and its extension to pelagic fish (NPZD-Fish).
 
+The governing differential equations for $(N, P, Z, D)$ in $\mathrm{mmol\,N\,m^{-3}}$ are:
+
+$$\frac{dN}{dt} = I - \frac{V_{\max} N}{k_s + N}P + \mu_d D$$
+
+$$\frac{dP}{dt} = \frac{V_{\max} N}{k_s + N}P - \frac{g Z P^2}{k_p^2 + P^2} - m_p P$$
+
+$$\frac{dZ}{dt} = \beta \frac{g Z P^2}{k_p^2 + P^2} - m_z Z^2$$
+
+$$\frac{dD}{dt} = (1 - \beta)\frac{g Z P^2}{k_p^2 + P^2} + m_p P + m_z Z^2 - \mu_d D$$
+
+Parameters: $V_{\max} = 1.5\ \mathrm{d^{-1}}$, $k_s = 0.5\ \mathrm{mmol\,N\,m^{-3}}$, $g = 1.0\ \mathrm{d^{-1}}$, $k_p = 0.5\ \mathrm{mmol\,N\,m^{-3}}$, assimilation $\beta = 0.70$, $m_p = 0.05\ \mathrm{d^{-1}}$, $m_z = 0.20\ (\mathrm{mmol\,N\,m^{-3}})^{-1}\mathrm{d^{-1}}$, $\mu_d = 0.05\ \mathrm{d^{-1}}$, and nutrient flux $I = 0.005\ \mathrm{mmol\,N\,m^{-3}\,d^{-1}}$.
+
+Reference steady state: $(N^*, P^*, Z^*, D^*) = (0.1000, 0.1615, 0.1906, 0.2492)\ \mathrm{mmol\,N\,m^{-3}}$. In carbon units (Redfield $106\mathrm{C}:16\mathrm{N}$), plankton biomass is $B_{\text{tot}} = 0.02802\ \mathrm{g\,C\,m^{-3}}$.
+
+Linearizing around the steady state yields the pelagic Jacobian:
+
+$$\mathbf{A}_{\mathrm{NPZD}} = \begin{bmatrix} -73.05 & -36.52 & 0 & 18.26 \\ 73.05 & -18.26 & -91.31 & 0 \\ 0 & 36.52 & -36.52 & 0 \\ 0 & 18.26 & 36.52 & -27.39 \end{bmatrix}\ \mathrm{yr^{-1}}$$
+
+Leading eigenvalues are $\lambda_{1,2} = -50.82 \pm 54.66i\ \mathrm{yr^{-1}}$, corresponding to an oscillation period $T = 42\ \mathrm{days}$, which is over twenty-four times faster than that of Cone Spring.
+
+ 
+To investigate the thermodynamic consequences of anthropogenic harvesting, the BATS plankton model is extended to include demersal and pelagic fish ($F$), creating a five-pool NPZD-Fish food web. When pelagic fish ($F$) are coupled to zooplankton grazing ($Z + F \to (1+e_f)F + (1-e_f)D$), the system shifts along the Resistance-Resilience trade-off continuum: total standing biomass expands ($B_{\text{tot}} \approx 0.15\ \mathrm{g\,C\,m^{-3}}$), specific turnover decreases ($\mathcal{R} \approx 18.7\ \mathrm{yr^{-1}}$), and the oscillation period lengthens ($T \approx 254\ \mathrm{days}$). The addition of apex predators increases entropic Resistance (shock absorption) at the cost of kinetic recovery speed.
+
+Simulating industrial fishery harvest ($H = q E F$) demonstrates the destabilizing effect of biomass removal: harvesting drains the biomass capacitance ($B_{\text{tot}} \to 0$), flattens the entropic potential well ($\mathbf{H} \to 0$), and triggers variance explosion in zooplankton and phytoplankton.
+
+ 
 Under unexploited conditions, the addition of fish shifts the ecosystem along the Resistance-Resilience trade-off continuum toward higher Resistance: standing biomass expands ($B_{\text{tot}} \approx 0.15\ \mathrm{g\ C\ m^{-3}}$), specific turnover decreases, and the dominant relaxation timescale lengthens to approximately 254 days. The fish population functions as a high-capacity entropic storage buffer ($C_{55}$) that dampens planktonic bloom-and-bust volatility.
 
 When heavy industrial fishing mortality is imposed ($H = q E F$), the thermodynamic consequences parallel documented marine groundfish collapses, such as the historical collapse of Atlantic cod (*Gadus morhua*) across the Scotian Shelf and Grand Banks of eastern Canada (Frank et al. 2005, Choi 2023). Industrial trawling selectively removes large, long-lived predatory fish that typically live ten to twenty years and act as multi-year biomass capacitors ($C_{55} \to 0$), stripping the slow, high-inertia buffer that stabilized lower trophic tiers against climatic and recruiting shocks. Deprived of predatory damping, the marine food web undergoes a trophic cascade, truncating into a high-turnover community of short-lived pelagic forage fish (herring and capelin) and benthic macroinvertebrates (snow crab and northern shrimp). Under these conditions, probability circulation between zooplankton and phytoplankton surges, and internal dissipation increases dramatically, driving entropy production rate density to $\sigma = 425.03\ \mathrm{yr^{-1}}$ (4.7 times that of Cone Spring). Consequently, the removal of biomass capacitance flattens the entropic potential well ($\mathbf{H} \to 0$), such that small temperature anomalies and seasonal wind fluctuations previously buffered by fish biomass now induce volatile, boom-bust swings in plankton stocks, preconditioning the ecosystem for sudden collapse into alternative degraded regimes.
@@ -173,7 +250,7 @@ While linear non-equilibrium thermodynamics characterizes relaxation near steady
 
 The quasi-potential landscape $U(\mathbf{x})$ represents the topographical basin of ecological stability. A deep, steep potential well signifies a resilient, well-buffered ecosystem that absorbs perturbations and returns promptly to baseline. Conversely, a wide, shallow, or flattened basin signifies a degraded ecosystem on the brink of tipping into an alternative state.
 
-As proven in Appendix A.6, any smooth non-linear ecological drift field $\mathbf{f}(\mathbf{x})$ admits an orthogonal Helmholtz-Hodge decomposition into two distinct components. The first component is downhill dissipative gradient drift, governed by a symmetric, positive-definite diffusion operator $\mathbf{D}(\mathbf{x})$ that drives trajectories downhill along the gradient of the scalar quasi-potential landscape $U(\mathbf{x})$, representing thermodynamic free-energy dissipation. The second component is transverse probability circulation, an antisymmetric vector field $\mathbf{v}_{\mathrm{curl}}(\mathbf{x})$ that circulates along the iso-potential contours of $U(\mathbf{x})$ and satisfies the strict orthogonality condition $\nabla U(\mathbf{x}) \cdot \mathbf{v}_{\mathrm{curl}}(\mathbf{x}) = 0$.
+As shown in Appendix A (below), any smooth non-linear ecological drift field $\mathbf{f}(\mathbf{x})$ admits an orthogonal Helmholtz-Hodge decomposition into two distinct components. The first component is downhill dissipative gradient drift, governed by a symmetric, positive-definite diffusion operator $\mathbf{D}(\mathbf{x})$ that drives trajectories downhill along the gradient of the scalar quasi-potential landscape $U(\mathbf{x})$, representing thermodynamic free-energy dissipation. The second component is transverse probability circulation, an antisymmetric vector field $\mathbf{v}_{\mathrm{curl}}(\mathbf{x})$ that circulates along the iso-potential contours of $U(\mathbf{x})$ and satisfies the strict orthogonality condition $\nabla U(\mathbf{x}) \cdot \mathbf{v}_{\mathrm{curl}}(\mathbf{x}) = 0$.
 
 Because the circulating current is orthogonal to the potential gradient, it does no work against the potential landscape. The quasi-potential $U(\mathbf{x})$ functions as a generalized non-equilibrium Lyapunov function: within the basin of attraction, trajectories spiral inward toward the steady-state attractor, while non-equilibrium circulation sustains persistent cyclic currents.
 
@@ -203,7 +280,7 @@ When human activity selectively harvests and degrades these slow macroscopic cap
 
 ## Practical Guidelines for Empirical Ecologists
 
-For field ecologists seeking to measure non-equilibrium thermodynamic properties in natural ecosystems, a systematic empirical protocol involves four interrelated steps. First, state variables must be measured in extensive mass or energy units. Dimensionless or purely spatial metrics should be avoided; quantifying ecosystem states in extensive biomass units (grams of carbon, kilocalories, or moles of nitrogen per individual or total volume) preserves tensor transformation rules and prevents coordinate singularities (Appendix B.3). Second, researchers must construct full mass-balanced flow budgets that account for both living compartment biomasses and non-living detrital reservoirs. Detritus frequently constitutes the primary entropic capacitor of terrestrial and aquatic ecosystems, and omitting it creates false stability paradoxes. Third, empirical investigations should solve the continuous Lyapunov equation rather than evaluating raw community matrices directly; constructing empirical covariance matrices $\mathbf{C}$ from time-series observations and evaluating $\mathbf{A}\mathbf{C} + \mathbf{C}\mathbf{A}^{\mathsf{T}} = -2\mathbf{D}_{\mathrm{sym}}$ isolates symmetric dissipation from non-equilibrium circulation. Fourth, monitoring protocols should track the circulation ratio ($\chi$) and entropy production rate density ($\sigma$) over time. A persistent increase in $\chi$ accompanied by variance inflation signals the loss of storage capacitance and serves as an early-warning diagnostic for impending state shifts.
+For field ecologists seeking to measure non-equilibrium thermodynamic properties in natural ecosystems, a systematic empirical protocol involves four interrelated steps. First, state variables must be measured in extensive mass or energy units. Dimensionless or purely spatial metrics should be avoided; quantifying ecosystem states in extensive biomass units (grams of carbon, kilocalories, or moles of nitrogen per individual or total volume) preserves tensor transformation rules and prevents coordinate singularities (Appendix B, below). Second, researchers must construct full mass-balanced flow budgets that account for both living compartment biomasses and non-living detrital reservoirs. Detritus frequently constitutes the primary entropic capacitor of terrestrial and aquatic ecosystems, and omitting it creates false stability paradoxes. Third, empirical investigations should solve the continuous Lyapunov equation rather than evaluating raw community matrices directly; constructing empirical covariance matrices $\mathbf{C}$ from time-series observations and evaluating $\mathbf{A}\mathbf{C} + \mathbf{C}\mathbf{A}^{\mathsf{T}} = -2\mathbf{D}_{\mathrm{sym}}$ isolates symmetric dissipation from non-equilibrium circulation. Fourth, monitoring protocols should track the circulation ratio ($\chi$) and entropy production rate density ($\sigma$) over time. A persistent increase in $\chi$ accompanied by variance inflation signals the loss of storage capacitance and serves as an early-warning diagnostic for impending state shifts.
 
 
 # Glossary of Core Concepts
@@ -233,9 +310,9 @@ For field ecologists seeking to measure non-equilibrium thermodynamic properties
 **Quasi-Potential Landscape ($U(\mathbf{x})$).** The non-equilibrium scalar potential governing the stationary probability distribution and global stability basins of non-linear ecological dynamical systems.
 
 
-# Appendix A: Mathematical Derivations and Invariance Proofs
+# Appendix A: Extensions
 
-The mathematical derivations linking the demographic community matrix $\mathbf{A}$ to the Onsager conductivity matrix $\mathbf{L}$ via the continuous Lyapunov equation, and the algebraic proof of the Le Chatelier-Braun principle via the Schur complement, are laid out in the Appendix of Paper 1 (Choi 2026a, Appendices A.1 and A.2). The derivations presented in this appendix extend that analysis to coordinate transformations, extremum dissipation principles under clamped versus unconstrained boundary conditions, non-linear phase-space Helmholtz-Hodge decompositions, and explicit phase-space trace formulas for stationary entropy production.
+The mathematical derivations linking the demographic community matrix $\mathbf{A}$ to the Onsager conductivity matrix $\mathbf{L}$ via the continuous Lyapunov equation, and the algebraic proof of the Le Chatelier-Braun principle via the Schur complement, are laid out (Choi and Hansell, 2026: Appendix A). Here we extend that analysis to coordinate transformations, extremum dissipation principles under clamped versus unconstrained boundary conditions, non-linear phase-space Helmholtz-Hodge decompositions, and explicit phase-space trace formulas for stationary entropy production.
 
 ## A.1 Second-Order Expansion of Total System Entropy and Free Energy
 
@@ -312,7 +389,7 @@ Furthermore, in the natural Riemannian metric defined by the covariance tensor, 
 
 ## A.3 Schur Complement Derivation of the Le Chatelier-Braun Principle (Schur 1917, Prigogine and Defay 1954)
 
-While the Schur complement derivation of Le Chatelier-Braun moderation under zero-flux stationary relaxation is established in Paper 1 (Choi 2026a, Appendix A.2), the formulation is summarized here to define the primary-secondary partitioning notation required for the extremum dissipation analysis (A.4) and the multiscale coordinate transformations (A.2).
+While the Schur complement derivation of Le Chatelier-Braun moderation under zero-flux stationary relaxation is established in Paper 1 (Choi 2026a: Appendix B), the formulation is summarized here to define the primary-secondary partitioning notation required for the extremum dissipation analysis (A.4, below) and the multiscale coordinate transformations (B).
 
 Consider an ecosystem whose irreversible transport processes are partitioned into a primary process (subscript 1) and $m$ secondary coupled processes (subscript 2):
 
@@ -530,91 +607,7 @@ Strict non-negativity of entropy production follows directly: because $\mathbf{D
 
 \newpage
 
-# Appendix B: Biomass Normalization, Empirical Food-Web Data, and Coordinate Geometry
-
-## B.1 Dimensional Derivation of Biomass Capacitance
-
-Let an ecological compartment contain standing biomass $B_i^*$ (in $\mathrm{g\,C}$ or wet biovolume $\mathrm{cm}^3$). In chemical thermodynamics, the chemical potential of a dilute biological constituent is $\mu_i = \mu_i^0 + R_{\mathrm{gas}}T \ln(x_i / x_0)$. Differentiating with respect to extensive state $x_i$ yields the local entropic curvature:
-
-$$H_{ii} = \frac{1}{T}\frac{\partial \mu_i}{\partial x_i} = \frac{R_{\mathrm{gas}}}{x_i^*}$$
-
-In an ecological compartment, stored biomass $B_i^*$ acts as the physical capacitance container. Defining relative departures $\delta\tilde{x}_i = \delta B_i / B_i^*$ non-dimensionalizes the state coordinates by standing crop.
-
-Total ecosystem Resistance represents the physical capacity to absorb an external thermodynamic force perturbation $\Delta\mathbf{X}$:
-
-$$\delta\mathbf{x} = \mathbf{H}^{-1}\Delta\mathbf{X} = \frac{1}{k_{\mathrm{B}}}\mathbf{C}\Delta\mathbf{X}$$
-
-Because $\mathbf{C} \propto \operatorname{Diag}(\mathbf{B}^*)$, state displacement $\delta\mathbf{x}$ scales inversely with total biomass: a massive standing stock ($B_{\text{tot}}$) minimizes relative displacement, providing high entropic Resistance.
-
-Total ecosystem Resilience is the aggregate mass-specific dissipation rate:
-
-$$\mathcal{R} = \frac{\sum_i R_i}{\sum_i B_i^*} \quad (\mathrm{yr}^{-1})$$
-
-representing the mean eigenvalue return rate to the stationary attractor.
-
-## B.2 Mathematical Formulations and Flow Matrices for Empirical Case Studies
-
-### B.2.1 Cone Spring Empirical Flow Matrix and Lyapunov Decomposition
-
-The biomass-normalized Onsager framework is applied to the classic five-compartment energy budget of Cone Spring (Tilly 1968, Patten 1978, Ulanowicz 1986). The compartments comprise: Plants ($x_1$), Detritus ($x_2$), Bacteria ($x_3$), Detritivores ($x_4$), and Carnivores ($x_5$). Table \ref{tbl:app_cone_full} summarizes the published flows.
-
-| Compartment ($i$) | $B_i^*$ ($\mathrm{kcal\,m^{-2}}$) | Inflow $z_i$ | Plants ($T_{1\to i}$) | Detritus ($T_{2\to i}$) | Bacteria ($T_{3\to i}$) | Detritivores ($T_{4\to i}$) | Carnivores ($T_{5\to i}$) | Exports $E_i$ | Respiration $R_i$ | Throughflow $T_i$ |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **1. Plants** | $285.0$ | $11\,184$ | $0$ | $0$ | $0$ | $0$ | $0$ | $300$ | $2\,003$ | $11\,184$ |
-| **2. Detritus** | $3\,580.0$ | $635$ | $8\,881$ | $0$ | $1\,600$ | $200$ | $167$ | $860$ | $3\,109$ | $11\,483$ |
-| **3. Bacteria** | $116.6$ | $0$ | $0$ | $5\,205$ | $0$ | $0$ | $0$ | $255$ | $3\,275$ | $5\,205$ |
-| **4. Detritivores** | $60.0$ | $0$ | $0$ | $2\,309$ | $75$ | $0$ | $0$ | $0$ | $1\,814$ | $2\,384$ |
-| **5. Carnivores** | $17.0$ | $0$ | $0$ | $0$ | $0$ | $370$ | $0$ | $0$ | $203$ | $370$ |
-
-Table: Complete steady-state energy flow matrix for Cone Spring ($\mathrm{kcal\,m^{-2}\,yr^{-1}}$). {#tbl:app_cone_full}
-
-For the living heterotrophic subsystem (Bacteria, Detritivores, Carnivores), the demographic community matrix is:
-
-$$\mathbf{A}_{\mathrm{CS}} = \begin{bmatrix} -2.8087 & -1.2500 & 0 \\ 0.1538 & -3.0233 & -21.7647 \\ 0 & 2.7833 & -1.1941 \end{bmatrix}\ \mathrm{yr^{-1}}$$
-
-The eigenvalues are $\lambda_1 = -2.8036\ \mathrm{yr^{-1}}$ and a complex pair $\lambda_{2,3} = -2.1113 \pm 7.7414i\ \mathrm{yr^{-1}}$ ($T = 296\ \mathrm{days}$).
-
-Naive attempts to multiply $-\mathbf{A}_{\mathrm{CS}}$ by diagonal biomass yield an indefinite symmetric part ($\lambda_{\min} = -29.16$), falsely implying a violation of the Second Law. In contrast, solving the continuous Lyapunov equation with diffusion $\mathbf{D}_{\mathrm{CS}} = s\operatorname{Diag}(R_i B_i^*)$ ($s = 0.10$) yields the strictly positive-definite stationary covariance matrix:
-
-$$\mathbf{C}_{\mathrm{CS}} = \begin{bmatrix} 13\,629.90 & -77.16 & -69.10 \\ -77.16 & 3\,240.05 & 49.46 \\ -69.10 & 49.46 & 404.28 \end{bmatrix}\ (\mathrm{kcal\,m^{-2}})^2$$
-
-and the skew-symmetric non-equilibrium circulation tensor:
-
-$$\boldsymbol{\Omega}_{\mathrm{CS}} = \begin{bmatrix} 0 & -3\,833.33 & 132.26 \\ 3\,833.33 & 0 & -8\,959.08 \\ -132.26 & 8\,959.08 & 0 \end{bmatrix}\ (\mathrm{kcal\,m^{-2}})^2\,\mathrm{yr}^{-1}$$
-
-The non-zero circulation entries directly capture the driven cyclic feeding flux: detritivores graze bacteria, and carnivores consume detritivores.
-
-### B.2.2 BATS Upper Mixed Layer NPZD Model and Fluctuation Dynamics
-
-To examine high-turnover marine ecosystems, a pelagic mixed layer is modeled via the four-pool nutrient-phytoplankton-zooplankton-detritus (NPZD) network (Fasham et al. 1990) and its extension to pelagic fish (NPZD-Fish).
-
-The governing differential equations for $(N, P, Z, D)$ in $\mathrm{mmol\,N\,m^{-3}}$ are:
-
-$$\frac{dN}{dt} = I - \frac{V_{\max} N}{k_s + N}P + \mu_d D$$
-
-$$\frac{dP}{dt} = \frac{V_{\max} N}{k_s + N}P - \frac{g Z P^2}{k_p^2 + P^2} - m_p P$$
-
-$$\frac{dZ}{dt} = \beta \frac{g Z P^2}{k_p^2 + P^2} - m_z Z^2$$
-
-$$\frac{dD}{dt} = (1 - \beta)\frac{g Z P^2}{k_p^2 + P^2} + m_p P + m_z Z^2 - \mu_d D$$
-
-Parameters: $V_{\max} = 1.5\ \mathrm{d^{-1}}$, $k_s = 0.5\ \mathrm{mmol\,N\,m^{-3}}$, $g = 1.0\ \mathrm{d^{-1}}$, $k_p = 0.5\ \mathrm{mmol\,N\,m^{-3}}$, assimilation $\beta = 0.70$, $m_p = 0.05\ \mathrm{d^{-1}}$, $m_z = 0.20\ (\mathrm{mmol\,N\,m^{-3}})^{-1}\mathrm{d^{-1}}$, $\mu_d = 0.05\ \mathrm{d^{-1}}$, and nutrient flux $I = 0.005\ \mathrm{mmol\,N\,m^{-3}\,d^{-1}}$.
-
-Reference steady state: $(N^*, P^*, Z^*, D^*) = (0.1000, 0.1615, 0.1906, 0.2492)\ \mathrm{mmol\,N\,m^{-3}}$. In carbon units (Redfield $106\mathrm{C}:16\mathrm{N}$), plankton biomass is $B_{\text{tot}} = 0.02802\ \mathrm{g\,C\,m^{-3}}$.
-
-Linearizing around the steady state yields the pelagic Jacobian:
-
-$$\mathbf{A}_{\mathrm{NPZD}} = \begin{bmatrix} -73.05 & -36.52 & 0 & 18.26 \\ 73.05 & -18.26 & -91.31 & 0 \\ 0 & 36.52 & -36.52 & 0 \\ 0 & 18.26 & 36.52 & -27.39 \end{bmatrix}\ \mathrm{yr^{-1}}$$
-
-Leading eigenvalues are $\lambda_{1,2} = -50.82 \pm 54.66i\ \mathrm{yr^{-1}}$, corresponding to an oscillation period $T = 42\ \mathrm{days}$, which is over twenty-four times faster than that of Cone Spring.
-
-### B.2.3 BATS Exploited NPZD-Fish Model and Fishery Harvest Parameters
-
-When pelagic fish ($F$) are coupled to zooplankton grazing ($Z + F \to (1+e_f)F + (1-e_f)D$), the system shifts along the Resistance-Resilience trade-off continuum: total standing biomass expands ($B_{\text{tot}} \approx 0.15\ \mathrm{g\,C\,m^{-3}}$), specific turnover decreases ($\mathcal{R} \approx 18.7\ \mathrm{yr^{-1}}$), and the oscillation period lengthens ($T \approx 254\ \mathrm{days}$). The addition of apex predators increases entropic Resistance (shock absorption) at the cost of kinetic recovery speed.
-
-Simulating industrial fishery harvest ($H = q E F$) demonstrates the destabilizing effect of biomass removal: harvesting drains the biomass capacitance ($B_{\text{tot}} \to 0$), flattens the entropic potential well ($\mathbf{H} \to 0$), and triggers variance explosion in zooplankton and phytoplankton.
-
-## B.3 Coordinate Breakdown Under Simplex and Logarithmic Transformations (Aitchison 1986, Itô 1951)
+# Appendix B: Coordinate Breakdown Under Simplex and Logarithmic Transformations (Aitchison 1986, Itô 1951)
 
 Following the mathematical principles of compositional data analysis (Aitchison 1986), relative coordinates introduce geometric singularities that destroy physical Onsager symmetry.
 
@@ -649,12 +642,8 @@ While the first-order Taylor expansion matches the relative coordinate $\delta\t
 
 
 # Appendix C: Stochastic Simulation Models, Gillespie Algorithm, and Software Suite
-
-## C.1 Discrete Chemical Master Equation and Van Kampen System-Size Expansion
-
+ 
 In continuous-time discrete-state Markov jump processes, ecological population configurations within control volume element $V^{\ddagger}$ are represented by integer counts $\mathbf{x} = (N_1, \dots, N_n)^{\mathsf{T}} \in \mathbb{N}_0^n$. 
-
-### Reaction Channels and Allometric Propensities
 
 For the size-structured predation channel ($\alpha = (i, j)$ with $m_i > m_j$), predation reduces prey $j$ by $k_{ij} = \lceil m_i / (\epsilon m_j) \rceil$ individuals and increases predator $i$ by $+1$, yielding stoichiometric vector:
 $$\boldsymbol{\nu}_{ij} = -k_{ij}\mathbf{e}_j + 1\mathbf{e}_i$$
@@ -662,19 +651,16 @@ with mass-action encounter propensity:
 $$a_{ij}(\mathbf{x}) = \frac{\gamma_{ij}}{V^{\ddagger}} m_i^{-0.25} N_i N_j$$
 For the unimolecular respiration decay channel, metabolic maintenance drains compartment $i$ at rate $d_i(\mathbf{x}) = \mu_i m_i^{-0.25} N_i$ with stoichiometric vector $\boldsymbol{\nu}_i^{\mathrm{resp}} = -\mathbf{e}_i$.
 
-### Multivariate Step Operator CME
 Using discrete step operator $\mathbb{E}_k^{-m} f(N_k) = f(N_k - m)$, the Chemical Master Equation for size-structured predation is:
 
 $$\frac{\partial P(\mathbf{x}, t)}{\partial t} = \sum_{i > j} \left( \mathbb{E}_i^{-1} \mathbb{E}_j^{+k_{ij}} - 1 \right) \left[ \left( \frac{\gamma_{ij}}{V^{\ddagger}} m_i^{-0.25} N_i N_j \right) P(\mathbf{x}, t) \right] + \sum_{i=1}^n \left( \mathbb{E}_i^{+1} - 1 \right) \left[ \left( \mu_i m_i^{-0.25} N_i \right) P(\mathbf{x}, t) \right]$$
 
-### Asymptotic System-Size Expansion
 
 Decomposing $\mathbf{x} = V^{\ddagger} \boldsymbol{\phi}(t) + \sqrt{V^{\ddagger}}\,\boldsymbol{\xi}$ and Taylor-expanding the step operators $\mathbb{E}_k^{-\nu} = 1 - \frac{\nu}{\sqrt{V^{\ddagger}}}\frac{\partial}{\partial \xi_k} + \frac{\nu^2}{2 V^{\ddagger}}\frac{\partial^2}{\partial \xi_k^2} + \dots$ separates the dynamics across perturbative orders. At macroscopic order $\mathcal{O}((V^{\ddagger})^0)$, one obtains the deterministic mean-field dynamics $\frac{d\boldsymbol{\phi}}{dt} = \mathbf{B}\mathbf{J}(\boldsymbol{\phi})$, yielding the demographic Jacobian $\mathbf{A} = \mathbf{B}\left.\frac{\partial \mathbf{J}}{\partial \mathbf{x}}\right|_{\mathbf{x}^*}$. At fluctuation order $\mathcal{O}((V^{\ddagger})^{-1/2})$, one recovers the continuous Fokker-Planck equation for the fluctuation density $P(\boldsymbol{\xi}, t)$ with linear drift matrix $\mathbf{A}$ and noise diffusion matrix $\mathbf{D} = \frac{1}{2}\mathbf{B}\operatorname{Diag}(\mathbf{J}^*)\mathbf{B}^{\mathsf{T}} \succeq 0$.
 
 At stationarity, $P_{\mathrm{ss}}(\delta\mathbf{x}) \propto \exp(-U(\mathbf{x})) = \exp\left(-\frac{1}{2}\delta\mathbf{x}^{\mathsf{T}}\mathbf{C}^{-1}\delta\mathbf{x}\right)$, where $\mathbf{C}$ satisfies $\mathbf{A}\mathbf{C} + \mathbf{C}\mathbf{A}^{\mathsf{T}} + 2\mathbf{D} = \mathbf{0}$, and barrier escape rate scales as $\tau_{\mathrm{escape}} \propto \exp(\Delta U / D)$.
 
-## C.2 Gillespie Stochastic Simulation Algorithm (SSA) and Quasi-Potential Reconstruction
-
+ 
 The Gillespie Direct SSA simulates exact realizations of the Chemical Master Equation (Gillespie 1977). Reaction channels and propensities directly evaluate allometric encounter rates $a_{ij}(\mathbf{n})$ and respiration losses $d_i(\mathbf{n})$.
 
 The simulation executes sequentially through five procedural steps. The algorithm initializes by setting $t = 0$ and discrete integer population count $\mathbf{n} = \mathbf{n}_0$. Next, propensities are evaluated: for each reaction channel $r \in \{1, \dots, R\}$, the propensity $w_r(\mathbf{n})$ is computed, along with total propensity $w_0(\mathbf{n}) = \sum_r w_r(\mathbf{n})$. The waiting time interval is sampled by drawing $u_1 \sim \mathcal{U}(0, 1)$ and evaluating:
@@ -685,20 +671,19 @@ Stationary probability density $\widehat{P}_{\mathrm{ss}}(\mathbf{x})$ is recons
 
 ![Discrete stochastic Chemical Master Equation jump trajectories and quasi-potential landscape for the Cone Spring ecosystem. Continuous-time Gillespie Stochastic Simulation Algorithm (SSA) runs for integer species counts across trophic compartments, illustrating finite-particle demographic fluctuations, stationary probability distribution, and non-equilibrium probability circulation in state space.](media/cone-spring-gillespie-simulation.png){#fig_cone_spring_gillespie width=85%}
 
-## C.3 Software Suite and Code Availability
-
+ 
 All algorithms, models, and diagnostic estimators are implemented in the modular Julia package `OnsagerNetwork` located in `src/onsagernetwork.jl`, with unit tests in `test/runtests.jl` and driver scripts in `thermodynamics_onsager.jl`.
 
 The core computational routines cover the complete mathematical workflow. Continuous Lyapunov equations are solved via `solve_lyapunov_covariance(A, D)` using the Bartels-Stewart Schur decomposition. The canonical decomposition into symmetric dissipation $\mathbf{D}_{\mathrm{sym}}$ and antisymmetric circulation $\boldsymbol{\Omega}$ is executed by `decompose_covariance_weighted_drift(A, C)`. Biomass-normalized empirical networks and diffusion matrices are constructed by `cone_spring_network(; s=0.10)`. The pelagic marine NPZD model is parameterized, balanced, and linearized via `npzd_diagnostics(params)`. Allometric size-spectrum distributions of biomass and metabolic dissipation are evaluated by `compute_size_spectrum_indices(params)`, while multi-scale frequency transfer functions for the canopy dissipation cascade are simulated using `simulate_size_spectrum_filtering(params)`. Finally, exact continuous-time demographic jump simulations are carried out by `run_gillespie_population(params)`.
 
 The codebase is open source and available at:  
-`https://github.com/jae-choi/thermodynamics_onsager`.
+`https://github.com/mum0n/thermodynamics_onsager`.
 
 
 \newpage
 
 
-# Appendix D: Interdisciplinary Connections: Circuits, Information Geometry, Cybernetics, and Stochastic Thermodynamics
+# Appendix D: Interdisciplinary Connections 
 
 ## D.1 Network Thermodynamics and Circuit Theory
 
@@ -800,180 +785,6 @@ $$\frac{\operatorname{Var}(J)}{\langle J \rangle^2} \ge \frac{2 k_{\mathrm{B}}}{
 This inequality has fundamental ecological implications. Achieving high ecological fidelity, characterized by low relative variance $\operatorname{Var}(J)/\langle J \rangle^2$ in nutrient and biomass currents, requires substantial thermodynamic entropy production $\sigma$. An ecosystem cannot achieve both noiseless metabolic throughput ($\operatorname{Var}(J) \to 0$) and near-zero dissipation ($\sigma \to 0$), establishing the thermodynamic impossibility of frictionless stability. Consequently, natural selection for reliable, homeostatic physiological and ecological rates operates under an inescapable physical constraint: reducing current fluctuations incurs an unavoidable metabolic entropy cost.
 
 
-# Coda: Reconciliation with Classical and Contemporary Ecological Paradigms
-
-The non-equilibrium thermodynamic framework developed across Part I (Choi 2026a) and Part II resolves long-standing tensions among several conceptual schools in theoretical ecology, systems science, and evolutionary physics. By decoupling the asymmetric community matrix $\mathbf{A}$ into a symmetric, positive-definite Onsager dissipation tensor $\mathbf{D}_{\mathrm{sym}}$ and an antisymmetric probability circulation tensor $\boldsymbol{\Omega}$ weighted by the biomass capacitance metric $\mathbf{H} = k_{\mathrm{B}}\mathbf{C}^{-1}$, the framework establishes direct analytical bridges to classical and modern paradigms.
-
-To properly situate these bridges, it is essential to recognize that the mathematical and physical machinery employed here is well established across adjacent physical and engineering disciplines. In modern stochastic thermodynamics and biophysical chemistry, decomposing non-equilibrium drift into a symmetric dissipative gradient and an antisymmetric probability circulation tensor is textbook physics. For driven molecular motors, chemical master equations, and metabolic reaction cycles, physicists routinely recognize that non-conservative currents break detailed balance ($\boldsymbol{\Omega} \ne \mathbf{0}$) while symmetric friction ($\mathbf{D}_{\mathrm{sym}} \succ 0$) governs entropy production. Similarly, in electrical network theory, Bernard Tellegen proved in 1948 that any non-reciprocal linear system can be uniquely factored into symmetric dissipative conductances (resistors) and skew-symmetric, non-dissipative coupling elements termed gyrators, which shuttle energy across ports without generating heat. In control engineering and linear systems theory, the algebraic Lyapunov equation has long served as the standard tool to partition state-space matrices into symmetric damping and rotational circulation. In continuum mechanics, this separation is the exact analogue of the Helmholtz-Hodge decomposition, which partitions vector fields into downhill potential flows and divergence-free, solenoidal vorticity cascades.
-
-The framework appears surprising almost exclusively within theoretical ecology. Historically, ecology inherited the Lotka-Volterra equations through phenomenological population modeling rather than statistical physics. When ecological theorists examined the demographic community matrix $\mathbf{A}$, they treated it either as an unstructured random draw or as an unmediated physical conductivity. Because predator-prey couplings exhibit opposing demographic signs ($A_{12} < 0, A_{21} > 0$), ecologists concluded for over half a century that trophic predation violated Onsager reciprocity and placed living ecosystems outside the laws of physical thermodynamics. The contribution of this work is therefore not the invention of novel linear algebra, but the overdue interdisciplinary translation of established non-equilibrium physics into biology. By showing that $\mathbf{A}$ is a composite operator convoluting symmetric dissipation $\mathbf{D}_{\mathrm{sym}}$, antisymmetric circulation $\boldsymbol{\Omega}$, and biomass capacitance storage $\mathbf{C}$, the framework resolves the historical schisms between ecological dynamics and thermodynamics, providing a unified physical foundation for the classical and contemporary ecological paradigms examined below.
-
-
-**Bernard C. Patten: Transitive Path Integration and Conservative Network Cycling**:
-
-Patten (1978; Fath et al. 2001) addressed a fundamental question in ecosystem analysis: do direct pairwise interactions (such as predator eating prey) govern ecosystem behavior, or does the broader network of indirect pathways dominate? Through Network Environ Analysis (NEA), Patten demonstrated that indirect flows—matter passing through multiple intermediate species before returning—dominate direct exchanges, generating system-wide mutualism and cycling.
-
-The continuous Lyapunov formulation confirms Patten’s findings through two distinct physical mechanisms. First, the stationary covariance of biomass fluctuations $\mathbf{C}$ is generated by integrating the community propagator over all historical times:
-$$\mathbf{C} = \int_0^{\infty} e^{\mathbf{A}t} (2\mathbf{D}_{\mathrm{sym}}) e^{\mathbf{A}^{\mathsf{T}}t}\, dt$$
-The inverse community matrix $\mathbf{A}^{-1} = -\int_0^{\infty} e^{\mathbf{A}t}\, dt$ represents the cumulative sum of all direct and indirect network pathways ($\mathbf{A}^{-1} = -\sum_{k=0}^{\infty} \mathbf{T}^k$), confirming mathematically that the covariance structure of living communities is governed by multi-step, transitive network pathways rather than isolated pairwise links. Second, in the decomposition $-\mathbf{A}\mathbf{C} = \mathbf{D}_{\mathrm{sym}} + \boldsymbol{\Omega}$, Patten's network cycling maps strictly to the antisymmetric probability circulation tensor $\boldsymbol{\Omega} = -\boldsymbol{\Omega}^{\mathsf{T}}$. Because $\boldsymbol{\Omega}$ is skew-symmetric, its contraction with the Riemannian metric tensor vanishes identically: $\operatorname{Tr}(\boldsymbol{\Omega}\mathbf{C}^{-1}) = 0$. This separates internal, conservative throughflow cycling ($\boldsymbol{\Omega}$) from irreversible thermodynamic dissipation ($\mathbf{D}_{\mathrm{sym}}$), proving that closed ecological cycles transfer matter without generating internal thermodynamic entropy.
-
-**Ichiro Aoki: Phenomenological Entropy Budgets and Succession**:
-
-Aoki (1989, 1993, 1995) investigated macroscopic entropy budgets in aquatic ecosystems ($dS/dt = d_i S/dt + d_e S/dt$), documenting an empirical succession rule: as ecosystems mature, total entropy dissipation to the environment increases, but the internal entropy production *per unit biomass* declines systematically.
-
-The continuous Lyapunov framework derives Aoki's empirical observations from physical first principles. Aoki's internal entropy production rate $d_i S/dt$ is precisely the trace of the Onsager dissipation tensor:
-$$\frac{d_i S}{dt} = \sigma = \operatorname{Tr}(\mathbf{D}_{\mathrm{sym}}\mathbf{C}^{-1}) = \sum_{i,j} D_{\mathrm{sym},ij} H_{ij}$$
-where $\mathbf{H} = k_{\mathrm{B}}\mathbf{C}^{-1}$ is the Riemannian metric tensor governing the curvature of the non-equilibrium potential. As an ecosystem matures through succession, standing biomass accumulates ($B_{\mathrm{tot}} \to \max$), and biomass capacitance expands proportionally ($\mathbf{C} \propto B_{\mathrm{tot}}$). Consequently, the inverse metric tensor contracts ($\|\mathbf{C}^{-1}\|_2 \propto 1/B_{\mathrm{tot}}$). The specific entropy production per unit biomass:
-$$\frac{\sigma}{B_{\mathrm{tot}}} = \frac{\operatorname{Tr}(\mathbf{D}_{\mathrm{sym}}\mathbf{C}^{-1})}{B_{\mathrm{tot}}} \propto \frac{1}{B_{\mathrm{tot}}^2}$$
-declines monotonically toward a minimum. Aoki's empirical succession laws therefore emerge directly from the accumulation of entropic standing capacitance.
-
-**Howard T. Odum: Emergy, Transformity, and Reinforcing Feedback Loops**:
-
-H. T. Odum (1983, 1988; Odum and Pinkerton 1955) formulated the Maximum Power Principle (MPP) and the concept of "transformity," arguing that energy converges through food webs from high-volume, low-quality solar inputs into low-volume, high-quality apex control pools that feed regulatory work back down to stabilize the network.
-
-The continuous Lyapunov framework formalizes Odum’s hierarchical energetic concepts. Odum's transformity maps directly to the ratio of biomass capacitance to metabolic throughput:
-$$\text{Transformity} \propto \tau(M) = \frac{C(M)}{J(M)}$$
-Apex predators maintain small standing energy stocks but possess large capacitance per unit throughput, functioning as low-frequency thermodynamic inductors that govern the slow relaxation envelope of the entire ecosystem. Furthermore, Odum’s downward reinforcing work loops correspond to the off-diagonal entries of the antisymmetric circulation tensor $\boldsymbol{\Omega}$. Because $\operatorname{Tr}(\boldsymbol{\Omega}\mathbf{C}^{-1}) = 0$, these control feedbacks steer energy and biomass cyclically across trophic levels without dissipating work against the free-energy gradient.
-
-**Eugene P. Odum: The Strategy of Ecosystem Development and the Stability Frontier**:
-
-E. P. Odum (1969) cataloged 24 empirical attributes that distinguish developing ecosystems from mature climax states. Among the most prominent trends are the decline in the production-to-biomass ratio ($P/B$), the shift toward maintenance respiration ($R/B \to 1$), and the closing of nutrient cycling loops.
-
-The continuous Lyapunov framework derives Odum’s 24 attributes from the fundamental trade-off between Resistance and Resilience. Early successional stages maximize turnover velocity $\mathcal{R} \approx \|\mathbf{D}_{\mathrm{sym}}\|_2 / \|\mathbf{C}\|_2$ (Resilience), enabling fast recovery from displacement but holding minimal standing capacitance ($\|\mathbf{C}\|_2 \approx 0$). In contrast, mature climax ecosystems shift along the trade-off continuum toward maximal Resistance: metabolic energy is reallocated from rapid biomass production into constructing massive standing capacitance $\|\mathbf{C}\|_2 \propto B_{\mathrm{tot}}$. This standing capacitor acts as a low-pass filter that absorbs environmental fluctuations, lowering $P/B$ and directing dissipation toward structural maintenance ($\mathbf{D}_{\mathrm{sym}}$). In addition, Odum's observation that mature ecosystems close their nutrient cycles maps directly onto the maximization of the circulation ratio $\chi = \|\boldsymbol{\Omega}\|_{F} / \|\mathbf{D}_{\mathrm{sym}}\|_{F}$. Rather than leaking nutrients to the boundary, climax food webs cycle them through extended trophic loops, prolonging their residence time in biomass.
-
-**Robert E. Ulanowicz: Resolution of the Reciprocity Paradox and the Window of Vitality**:
-
-Ulanowicz (1986; Ulanowicz and Hannon 1987) raised a major theoretical challenge: because predator-prey interactions are inherently asymmetric ($A_{ij} \ne A_{ji}$), Ulanowicz argued that Onsager reciprocity is broken in living networks, concluding that ecosystems operate outside physical thermodynamics. In parallel, Ulanowicz proposed that sustainable ecosystems must operate within a "Window of Vitality," balancing organized constraint (Ascendency) against disorganized reserve capacity (Overhead).
-
-The continuous Lyapunov formulation resolves both concepts. The claim that ecology violates Onsager reciprocity was based on conflating the demographic community matrix $\mathbf{A}$ with the physical Onsager phenomenological conductivity $\mathbf{L}$. In the identity $\mathbf{A} = -(\mathbf{D}_{\mathrm{sym}} + \boldsymbol{\Omega})\mathbf{C}^{-1}$, the physical dissipation tensor $\mathbf{D}_{\mathrm{sym}} = \mathbf{D}_{\mathrm{sym}}^{\mathsf{T}} \succ 0$ strictly satisfies Onsager reciprocity, while trophic predation asymmetry belongs entirely to the orthogonal circulation tensor $\boldsymbol{\Omega} = -\boldsymbol{\Omega}^{\mathsf{T}}$, confirming that ecology operates fully within non-equilibrium thermodynamics. In phase space, Ulanowicz's Ascendency corresponds to the organized cyclic circulation $\boldsymbol{\Omega}$ and the circulation ratio $\chi$, while Overhead corresponds to symmetric dissipative dampening $\mathbf{D}_{\mathrm{sym}}$ and biomass capacitance $\mathbf{C}$. Dynamic persistence requires both: circulation $\boldsymbol{\Omega}$ drives non-normal trophic flows, while symmetric dissipation $\mathbf{D}_{\mathrm{sym}} \succ 0$ provides the Le Chatelier restorative pull that prevents reactive amplification from triggering population collapse.
-
-
-**Jeffrey S. Wicken: Distinguishing Informational Entropy from Thermodynamic Metrics**:
-
-Wicken (1980, 1987) cautioned against conflating informational entropy (such as Shannon diversity indices) with physical thermodynamic entropy. He argued that ecosystems self-organize by establishing hierarchical kinetic constraints that channel irreversible energy dissipation into structured work.
-
-The continuous Lyapunov framework formalizes Wicken's distinction by demonstrating that statistical covariance $\mathbf{C}$ among species fluctuations does not constitute a thermodynamic potential on its own. It acquires physical thermodynamic meaning only through the Riemannian metric tensor $\mathbf{H} = k_{\mathrm{B}}\mathbf{C}^{-1} = \nabla^2 S$, which quantifies the energetic cost of displacing the community from stationarity. Furthermore, Wicken's kinetic constraints are formalized by the antisymmetric circulation operator $\boldsymbol{\Omega}$. The mathematical identity $\operatorname{Tr}(\boldsymbol{\Omega}\mathbf{C}^{-1}) = 0$ separates biological predation into two orthogonal physical processes: irreversible metabolic dissipation and conservative biomass shuttling. Frictional costs—foraging locomotion, digestion (specific dynamic action), assimilation inefficiency, and basal repair—generate waste heat ($T\Delta S > 0$), producing thermodynamic entropy $\sigma = \operatorname{Tr}(\mathbf{D}_{\mathrm{sym}}\mathbf{C}^{-1}) > 0$ within the symmetric dissipation tensor $\mathbf{D}_{\mathrm{sym}} \succ 0$. In contrast, the directional transfer and assimilation of prey biomass into predator biomass rotates state variables along non-normal orbits in phase space. Because $\boldsymbol{\Omega} = -\boldsymbol{\Omega}^{\mathsf{T}}$ is skew-symmetric, this circulation shuttles matter and free energy across species boundaries without directly contributing to the entropy trace, delaying degradative thermal dissipation.
-
-**Gencer Gündüz: Non-Conservative Evolutionary Vector Fields**:
-
-Gündüz (2004, 2012) explored the chemical physics of evolutionary paths and autocatalytic networks, challenging the standard assumption in evolutionary biology that adaptation occurs via simple gradient descent on a scalar fitness landscape ($\mathbf{J} = -\nabla \Psi$).
-
-The continuous Lyapunov framework grounds Gündüz’s non-conservative dynamics in physical transport theory. In driven ecosystems, the non-conservative circulation field $\boldsymbol{\Omega}\mathbf{X}$ produces curl ($\nabla \times \mathbf{J} \ne \mathbf{0}$). Because the vector field possesses non-zero curl, no global scalar fitness function exists that can fully describe ecological or evolutionary trajectories. Instead, ecological dynamics are governed by a composite vector field:
-$$\mathbf{J} = (\mathbf{D}_{\mathrm{sym}} + \boldsymbol{\Omega})\mathbf{X}$$
-where symmetric dissipation $\mathbf{D}_{\mathrm{sym}}$ drives monotonic downhill relaxation toward the steady state, while antisymmetric circulation $\boldsymbol{\Omega}$ drives perpetual, non-conservative trophic rotations. Trajectory probabilities across this landscape are governed by the Onsager-Machlup path action functional rather than static potential minimization.
-
-**Alfred J. Lotka: Maximum Power, Predation Rotations, and the Resistance-Resilience Trade-Off**:
-
-Lotka (1920, 1922, 1925) made two seminal contributions to mathematical biology: the Maximum Power Principle (the hypothesis that natural selection maximizes energy throughput) and the classical Lotka-Volterra predator-prey equations. May (1972, 1973) famously criticized the latter because conservative, frictionless Lotka-Volterra orbits are structurally fragile to infinitesimal perturbation.
-
-The continuous Onsager-Lyapunov framework clarifies both contributions. Near equilibrium, maximum power transfer occurs when exactly half the available energy is dissipated through symmetric conductance $\mathbf{D}_{\mathrm{sym}}$ and half is captured as work. However, ecosystems do not maximize power throughput across all successional stages. Pioneer ecosystems maximize kinetic turnover $\mathcal{R}$ (Resilience) to capture flux rapidly, whereas climax ecosystems shift toward maximal Resistance: they build massive standing capacitance $\mathbf{C} \propto B_{\mathrm{tot}}$, suppressing specific entropy production $\sigma / B_{\mathrm{tot}}$ and buffering environmental volatility.
-
-In the factorization $-\mathbf{A}\mathbf{C} = \mathbf{D}_{\mathrm{sym}} + \boldsymbol{\Omega}$, classical predator-prey cycling is isolated in the skew-symmetric circulation tensor $\boldsymbol{\Omega} = -\boldsymbol{\Omega}^{\mathsf{T}}$, which transfers biomass non-dissipatively ($\operatorname{Tr}(\boldsymbol{\Omega}\mathbf{C}^{-1}) = 0$). The structural fragility identified by May is resolved because real ecosystems embed this circulation within a positive-definite symmetric dissipation tensor $\mathbf{D}_{\mathrm{sym}} \succ 0$. Symmetric dissipation provides the Le Chatelier restorative pull that anchors the community attractor, while external driving (solar irradiance) pumps the circulation against dissipative dampening. Predator-prey asymmetry ($A_{12} < 0, A_{21} > 0$) does not violate Onsager reciprocity; reciprocity holds in $\mathbf{D}_{\mathrm{sym}} = \mathbf{D}_{\mathrm{sym}}^{\mathsf{T}}$, while directional predation is isolated in $\boldsymbol{\Omega}$. Furthermore, under the Thermodynamic Uncertainty Relation (TUR; Appendix D.4), sustaining these directional trophic currents $\langle J \rangle$ with low relative variance requires finite metabolic dissipation $\sigma \ge 2 k_{\mathrm{B}} \langle J \rangle^2 / (\operatorname{Var}(J)\tau)$, linking Lotka's cyclic predation directly to the energetic cost of homeostatic precision.
-
-
-**Hermann Haken: Synergetics and Allometric Slaving Across the Canopy Cascade**:
-
-Haken (1983) formulated the slaving principle in synergetics: near system instabilities, fast-relaxing microscopic variables are adiabatically eliminated and become "slaved" to slow-moving macroscopic order parameters that govern large-scale collective behavior.
-
-The allometric size spectrum provides an explicit physical realization of Haken's principle. Organismal capacitance $C(M)$ and relaxation rate $\lambda(M) \propto M^{b-1}$ scale systematically with body mass $M$. Small organisms (bacteria, unicellular algae) have small individual capacitance and rapid turnover, acting as fast-relaxing degrees of freedom. Large organisms (canopy trees, apex consumers) possess massive biomass capacitance and slow turnover, acting as macroscopic order parameters. The slow macro-compartments define the overarching thermodynamic envelope and stability basin. High-frequency environmental and metabolic fluctuations are absorbed by macroscopic capacitors and cascaded downstream, where fast microscopic organisms dissipate them through rapid respiration without causing structural fracture.
-
-
-**Roderick Dewar and the Maximum Entropy Production (MaxEnt/MEPP) School**:
-
-Dewar (2003, 2005) proposed that open non-equilibrium steady states select paths that maximize the time-integrated rate of entropy production (MEPP), deriving this principle via information-theoretic Maximum Caliber (MaxCal). In ecology, Dewar’s hypothesis triggered debate: if ecosystems unconditionally maximized entropy production, organisms would short-circuit free energy into immediate thermal heat rather than assembling complex, multi-tiered food webs.
-
-The continuous Onsager-Lyapunov framework resolves this debate by clarifying the role of boundary constraints, probability circulation, and biomass capacitance. The apparent contradiction between Dewar's MEPP and Prigogine's Minimum Entropy Production (MinEP) is resolved by distinguishing boundary driving from internal transport. At the external boundary, solar photon chemical potential is a clamped force $X_0$. As photosynthetic canopies expand pigments and enzymatic conductance $L$, boundary throughflow $J = L X_0$ increases, maximizing total dissipation ($P = \sigma = L X_0^2$), recovering MEPP. Internally, stoichiometric conservation and nutrient supply clamp mass throughflow fluxes $J_0$. For a fixed flux, dissipated power is $P = R J_0^2 = J_0^2 / L$. To preserve scarce chemical potential, internal networks minimize internal resistance $R$, minimizing internal dissipation ($\partial^2 \sigma / \partial \mathbf{X}^2 \succ 0$) and recovering MinEP.
-
-Furthermore, unconstrained MEPP assumes systems maximize scalar dissipation density. In living ecosystems, the antisymmetric circulation tensor $\boldsymbol{\Omega} = -\boldsymbol{\Omega}^{\mathsf{T}}$ directs absorbed exergy into non-dissipative trophic loops ($\operatorname{Tr}(\boldsymbol{\Omega}\mathbf{C}^{-1}) = 0$). Instead of burning up in immediate thermal dissipation, energy is retained in living biomass, maximizing the non-equilibrium circulation ratio $\chi = \|\boldsymbol{\Omega}\|_{F} / \|\mathbf{D}_{\mathrm{sym}}\|_{F}$. Climax ecosystems shift along the Resistance-Resilience trade-off toward maximal standing capacitance $\mathbf{C} \propto B_{\mathrm{tot}}$, contracting $\mathbf{C}^{-1}$ and driving specific entropy production $\sigma / B_{\mathrm{tot}} \propto B_{\mathrm{tot}}^{-2}$ to a minimum. Massive standing capacitance deepens the Lyapunov quasi-potential basin $V(\delta\mathbf{x}) = \frac{1}{2}\delta\mathbf{x}^{\mathsf{T}}\mathbf{C}^{-1}\delta\mathbf{x}$, purchasing long-term structural resistance against environmental shocks.
-
-**Jeremy England et al.: Dissipative Adaptation and Fluctuation Relations**:
-
-England (2013, 2015) addressed a central question in non-equilibrium statistical mechanics: why does matter exposed to an external energy source (such as solar radiation) spontaneously self-organize into complex, lifelike structures? Grounded in microscopic fluctuation theorems (Crooks 1999), England showed that when a system is persistently driven by an external energy flux and coupled to a thermal bath, random fluctuations cause it to explore configuration space. Configurations that happen to resonate with the external drive absorb more work and dissipate it as heat into the surroundings. Because the reverse transitions require an improbable spontaneous extraction of heat from the thermal bath, the system becomes kinetically trapped in states that are exceptionally effective at absorbing and dissipating work from that specific drive. England termed this process dissipative adaptation.
-
-The continuous Lyapunov framework provides a direct macroscopic realization of dissipative adaptation in ecosystems. In an abiotic environment, incident solar radiation degrades directly into heat through unstructured friction, corresponding in the matrix decomposition $\mathbf{A} = -(\mathbf{D}_{\mathrm{sym}} + \boldsymbol{\Omega})\mathbf{C}^{-1}$ to pure symmetric dissipation ($\mathbf{D}_{\mathrm{sym}} \succ 0$) with zero probability circulation ($\boldsymbol{\Omega} = \mathbf{0}$, $\chi = 0$). By contrast, an ecosystem undergoes dissipative adaptation by reorganizing incoming energy into the antisymmetric circulation tensor $\boldsymbol{\Omega} = -\boldsymbol{\Omega}^{\mathsf{T}}$—the directional feeding loops, herbivory, predation, and nutrient spirals. The circulation ratio $\chi = \|\boldsymbol{\Omega}\|_{F} / \|\mathbf{D}_{\mathrm{sym}}\|_{F}$ measures the degree to which an ecosystem converts external driving forces into sustained, non-equilibrium cyclic currents ($\chi > 0$) rather than shedding absorbed work immediately as uniform heat.
-
-For an ecosystem to persist, its internal metabolic and nutrient flows cannot fluctuate erratically; living networks require homeostatic precision. The Thermodynamic Uncertainty Relation (TUR; Barato and Seifert 2015, Gingrich et al. 2016, Horowitz and Gingrich 2020; Appendix D.4) establishes a rigorous physical bound on these fluctuations:
-$$\frac{\operatorname{Var}(J)}{\langle J \rangle^2} \ge \frac{2 k_{\mathrm{B}}}{\sigma \tau} \quad \iff \quad \sigma \ge \frac{2 k_{\mathrm{B}} \langle J \rangle^2}{\operatorname{Var}(J) \tau}$$
-Suppressing relative variance in vital ecological currents $J$ (such as primary production or nutrient spiraling) over an observation time $\tau$ requires a proportional rate of thermodynamic entropy production $\sigma = \operatorname{Tr}(\mathbf{D}_{\mathrm{sym}}\mathbf{C}^{-1})$. Metabolic dissipation is therefore not wasteful friction. It is the inescapable physical price paid to keep non-equilibrium trophic currents precise, stable, and buffered against stochastic environmental noise.
-
-**Richard Dawkins: The Limits of Gene-Centric Reductionism and Whole-System Thermodynamics**:
-
-Dawkins (1976, 1982) formulated the gene-centric view of evolution, asserting that replicators (discrete genetic sequences) are the primary units of natural selection, while individual organisms and their extended phenotypes (such as nests, burrows, and dams) act merely as transient, disposable vehicles constructed to maximize replicator propagation. By conceptualizing adaptation as an autonomous competition among context-free genetic fragments, the gene-centric paradigm seeks to explain macro-evolutionary phenomena through bottom-up micro-reductionism.
-
-From the standpoint of non-equilibrium thermodynamics and complex systems physics, Dawkins’ gene-centric view is fundamentally limited because it decouples the informational microstate from the thermodynamic whole. In isolation, a sequence of nucleic acids possesses neither energetic agency nor independent selective fitness. A genetic replicator cannot transcribe, replicate, or dissipate free energy without the non-equilibrium boundary conditions, chemiosmotic gradients, and macroscopic catalytic engines supplied by the integrated cell and ecosystem. Replicators do not govern evolution from the bottom up in an unconstrained vacuum. Rather, their microscopic expression is strictly constrained and context-dependent, operating under top-down boundary conditions imposed by the macroscopic order parameters of the system.
-
-The continuous Onsager-Lyapunov framework formalizes this limitation by demonstrating that natural selection cannot evaluate naked genetic replicators independently of the collective community matrix $\mathbf{A} = -(\mathbf{D}_{\mathrm{sym}} + \boldsymbol{\Omega})\mathbf{C}^{-1}$. Replicators encode microscopic catalytic conductivities ($\mathbf{L}$) and allometric scaling exponents ($b$), but evolutionary persistence is governed by the collective stability eigenvalues of the whole network ($\operatorname{Re}(\lambda_i) < 0$). If an egoistic replicator successfully maximizes its own short-term demographic replication rate while destabilizing the collective dissipation tensor $\mathbf{D}_{\mathrm{sym}}$ or disrupting the non-equilibrium circulation tensor $\boldsymbol{\Omega}$, the community attractor collapses, extinguishing the replicator along with its host. Evolution is constrained by the thermodynamic viability of the whole: micro-scale genetic variation is adiabatically slaved to macro-scale dissipation and capacitance.
-
-Furthermore, non-equilibrium thermodynamics inverts Dawkins’ hierarchy between the replicator and the vehicle. In Dawkins’ formulation, the vehicle is merely an instrument built to serve the informational replicator. Physically, however, the fundamental imperative of living matter is sustaining an organized state far from thermodynamic equilibrium against spontaneous entropic decay ($\Delta S > 0$). The genetic sequence is not the prime mover of this process, but an informational memory device that records the kinetic architectures of successful dissipative engines. The macroscopic vehicle—extending outward to large-scale biomass capacitors such as coral reefs, beaver dams, detrital beds, and forest canopies—is what physically constructs and maintains the thermodynamic basin of attraction. By expanding standing biomass capacitance $\mathbf{C} \propto B_{\mathrm{tot}}$, the macroscopic system creates a low-pass filter that dampens environmental temperature, moisture, and nutrient fluctuations. This structural capacitance shields fragile genetic polymers from destructive thermal noise and demographic volatility, providing the entropic Resistance required for reliable transcription. The extended phenotype is therefore not an egoistic apparatus for gene propagation, but an ecological thermodynamic capacitor that secures the homeostatic persistence of the collective whole.
-
-## E.4 Classical Non-Equilibrium Thermodynamics and Exergy Schools: Bertalanffy, Prigogine, Jørgensen, and Schneider-Kay
-
-**Ludwig von Bertalanffy: Open Systems, Fliessgleichgewicht, and Equifinality**:
-
-Bertalanffy (1950, 1968) demonstrated that living organisms and ecosystems are not closed thermodynamic systems doomed to inexorable decay toward static equilibrium and maximum entropy. Rather, living systems are fundamentally open systems that maintain a dynamic, non-equilibrium steady state—termed a *Fliessgleichgewicht* (flowing balance)—through the continuous throughput, transformation, and dissipation of environmental matter and free energy. In an open system, total entropy change decomposes into external exchange and internal production ($dS = d_e S + d_i S$); by continuously exporting entropy to the surroundings ($d_e S < 0$), an open system compensates for unavoidable internal metabolic entropy generation ($d_i S > 0$), sustaining low internal entropy and macroscopic structural integrity. Furthermore, Bertalanffy identified *equifinality* as the defining property of open systems: the capacity of a living network to reach the same stationary state from disparate initial conditions and along diverse developmental trajectories, governed by systemic transport parameters rather than historical starting states.
-
-The continuous Onsager-Lyapunov framework provides an exact mathematical realization of Bertalanffy's open systems theory. Bertalanffy's *Fliessgleichgewicht* corresponds directly to the driven non-equilibrium stationary state governed by the continuous Lyapunov balance:
-
-$$\mathbf{A}\mathbf{C} + \mathbf{C}\mathbf{A}^{\mathsf{T}} = -2\mathbf{D}_{\mathrm{sym}}$$
-
-In a closed system without external driving, probability circulation vanishes ($\boldsymbol{\Omega} = \mathbf{0}$) and symmetric dissipation $\mathbf{D}_{\mathrm{sym}} \succ 0$ drags the system monotonically to static, dead equilibrium. In contrast, continuous boundary inflows of solar irradiance or detritus sustain the non-equilibrium circulation tensor $\boldsymbol{\Omega} = -\boldsymbol{\Omega}^{\mathsf{T}}$, maintaining a non-zero circulation ratio $\chi = \|\boldsymbol{\Omega}\|_{F} / \|\mathbf{D}_{\mathrm{sym}}\|_{F} > 0$. Directional trophic loops and nutrient spirals continuously rotate biomass across state space without direct thermodynamic friction ($\operatorname{Tr}(\boldsymbol{\Omega}\mathbf{C}^{-1}) = 0$), preserving the flowing balance far from detailed balance. 
-
-Moreover, the Lyapunov quasi-potential $V(\delta\mathbf{x}) = \frac{1}{2}\delta\mathbf{x}^{\mathsf{T}}\mathbf{C}^{-1}\delta\mathbf{x}$ provides a rigorous statistical-mechanical proof of Bertalanffy's equifinality. Because symmetric dissipation is strictly positive definite ($\mathbf{D}_{\mathrm{sym}} \succ 0$) and biomass capacitance is positive definite ($\mathbf{C} \succ 0$), all eigenvalues of the community matrix $\mathbf{A} = -(\mathbf{D}_{\mathrm{sym}} + \boldsymbol{\Omega})\mathbf{C}^{-1}$ possess strictly negative real parts ($\operatorname{Re}(\lambda_i) < 0$). Consequently, arbitrary initial perturbations relax monotonically back to the unique non-equilibrium attractor $\mathbf{x}^*$, governed entirely by the systemic conductivities and capacitances of the network. Bertalanffy's classical growth dynamics (balancing anabolism scaling with surface area and catabolism scaling with volume) map directly onto the allometric size spectrum, where organismal capacitance $C(M) \propto M^{1-b}$ and turnover $\lambda(M) \propto M^{b-1}$ pace metabolic throughput, ensuring equifinal stability across all trophic scales.
-
-**Ilya Prigogine and the Brussels School: Minimum Entropy Production and Dissipative Structures**:
-
-Prigogine (1947, 1955) proved the Theorem of Minimum Entropy Production (MinEP): near equilibrium with linear phenomenological laws and symmetric Onsager conductivities ($\mathbf{L} = \mathbf{L}^{\mathsf{T}} \succ 0$), an open system evolves toward a steady state characterized by minimal entropy production ($d_X \sigma / dt \le 0$). Farther from equilibrium, the Glansdorff-Prigogine universal evolution criterion ($d_X P \le 0$) governs stability, where non-linear instabilities produce self-organized dissipative structures (Glansdorff and Prigogine 1971).
-
-The continuous Lyapunov framework delineates the precise domain of Prigogine's MinEP in ecological networks. While an isolated linear system relaxes to detailed balance ($\boldsymbol{\Omega} = \mathbf{0}$) with minimal dissipation, an ecosystem driven by solar irradiance and nutrient inflows operates as a driven non-equilibrium steady state characterized by persistent probability circulation ($\boldsymbol{\Omega} \ne \mathbf{0}$, $\chi > 0$). Stability does not require detailed balance. The asymptotic stability of the community attractor is governed by the Lyapunov quasi-potential $V(\delta\mathbf{x}) = \frac{1}{2}\delta\mathbf{x}^{\mathsf{T}}\mathbf{C}^{-1}\delta\mathbf{x}$. The second-order Glansdorff-Prigogine stability criterion ($\delta^2 S < 0$) is guaranteed by the positive-definiteness of the biomass capacitance metric $\mathbf{H} = k_{\mathrm{B}}\mathbf{C}^{-1} \succ 0$, ensuring homeostatic stability in the presence of strong non-equilibrium circulation.
-
-**Sven Erik Jørgensen and Brian D. Fath: Eco-Exergy and Goal Function Optimization**:
-
-Jørgensen and colleagues (Jørgensen and Mejer 1977, Jørgensen 1992, 2002; Fath et al. 2001) proposed that ecosystems evolve along developmental trajectories that maximize stored "Eco-Exergy"—the total work capacity and genetic information stored in living biomass relative to an inorganic reference environment.
-
-The continuous Onsager-Lyapunov formulation provides an analytical basis for Eco-Exergy theory. Eco-Exergy ($\mathrm{Ex} \propto \sum_i x_i \ln(x_i / x_{i,0})$) measures the Kullback-Leibler directed divergence between the living non-equilibrium state and the abiotic reference state. Near stationarity, this divergence maps onto the quadratic Lyapunov potential $V(\delta\mathbf{x}) = \frac{1}{2}\delta\mathbf{x}^{\mathsf{T}}\mathbf{C}^{-1}\delta\mathbf{x}$. Furthermore, the hypothesized maximization of stored exergy during succession corresponds directly to the expansion of the biomass capacitance metric $\mathbf{C} = B_{\mathrm{tot}} / k_{\mathrm{B}}$. Constructing standing capacitance enhances entropic Resistance ($\|\mathbf{C}\|_2 \to \max$), buffering the ecosystem against environmental shocks and securing the stability of the non-equilibrium attractor.
-
-
-**Eric D. Schneider and James J. Kay: Gradient Degradation vs. Internal Dissipation**:
-
-Schneider and Kay (1994; Schneider and Sagan 2005) proposed that the Second Law of Thermodynamics acts as the primary organizing principle of life, arguing that open, non-equilibrium systems self-organize to resist and destroy externally imposed gradients. Known colloquially as the proposition that "nature abhors a gradient," the Schneider-Kay hypothesis asserts that more mature, highly organized ecosystems develop complex structures specifically to maximize the degradation of incident thermodynamic gradients. Empirically, Schneider and Kay supported this proposition by analyzing satellite thermal infrared imagery: mature climax ecosystems, such as old-growth Amazonian rainforests or ancient temperate canopies, systematically re-radiate surface energy at lower effective brightness temperatures than simpler, clear-cut, or pioneer systems. By capturing high-exergy, shortwave solar photons ($\sim 5800\text{ K}$) and re-emitting them as degraded, diffuse longwave thermal infrared ($\sim 288\text{ K}$), developing ecosystems maximize boundary exergy destruction and planetary entropy generation.
-
-The Schneider-Kay hypothesis generated significant controversy because it appeared to directly contradict Prigogine's Theorem of Minimum Entropy Production (MinEP) and classical ecological theories of metabolic efficiency. If ecosystems unconditionally evolve to destroy gradients as aggressively as possible, natural selection would favor immediate, short-circuited combustion—such as wildfires or bare blackbody rock surfaces—rather than the slow, intricate construction of multi-tiered food webs and massive standing biomass. 
-
-The continuous Onsager-Lyapunov framework resolves this fundamental tension by establishing the mathematical separation between external boundary exergy destruction and internal state-space dissipation. At the open ecosystem boundary, incident solar irradiance acts as a clamped thermodynamic force ($X_0 = \Delta \mu_{\mathrm{photon}} / T$). In response to this clamped force, living systems develop biochemical pigments, multi-layered photosynthetic canopies, and vascular evapotranspiration machinery that expand phenomenological boundary conductance $L_{\mathrm{boundary}}$. The total rate of boundary gradient degradation:
-
-$$P_{\mathrm{boundary}} = \sigma_{\mathrm{boundary}} = L_{\mathrm{boundary}} X_0^2$$
-
-increases as the canopy matures, directly confirming Schneider and Kay's observations of heightened exergy destruction and lowered surface brightness temperatures. 
-
-Internally, however, ecological channels operate under stoichiometric conservation and nutrient supply constraints that clamp matter and energy throughflow fluxes ($J_0$). For a fixed throughflow flux, the dissipated power is $P_{\mathrm{internal}} = R_{\mathrm{internal}} J_0^2 = J_0^2 / L_{\mathrm{internal}}$. To prevent metabolic reserves from exhausting in wasteful friction, internal physiological and trophic networks minimize internal phenomenological resistance $R_{\mathrm{internal}}$, minimizing internal entropy production ($\partial^2 \sigma / \partial \mathbf{X}^2 \succ 0$) in strict accordance with Prigogine's MinEP.
-
-Crucially, the Lyapunov decomposition reveals the structural mechanism that bridges these dual regimes: the non-conservative probability circulation tensor $\boldsymbol{\Omega} = -\boldsymbol{\Omega}^{\mathsf{T}}$. External gradient destruction does not short-circuit into internal thermal burnout because incoming exergy is diverted into directional trophic loops and nutrient spirals. Because $\boldsymbol{\Omega}$ is skew-symmetric, its contraction with the Riemannian covariance metric vanishes identically: $\operatorname{Tr}(\boldsymbol{\Omega}\mathbf{C}^{-1}) = 0$. This orthogonality proves that trophic feeding webs function as non-dissipative internal conveyor belts that shuttle energy and matter across species boundaries without directly generating thermodynamic entropy. Rather than maximizing scalar dissipation density, climax ecosystems maximize the circulation ratio $\chi = \|\boldsymbol{\Omega}\|_{F} / \|\mathbf{D}_{\mathrm{sym}}\|_{F}$, retaining energy in living structure and extending the residence time of biomass before its ultimate release through symmetric dissipation $\mathbf{D}_{\mathrm{sym}}$. 
-
-Finally, the construction of massive standing capacitance $\mathbf{C} \propto B_{\mathrm{tot}}$ contracts the metric tensor $\mathbf{C}^{-1}$, driving specific internal entropy production per unit biomass $\sigma / B_{\mathrm{tot}} = \operatorname{Tr}(\mathbf{D}_{\mathrm{sym}}\mathbf{C}^{-1}) / B_{\mathrm{tot}} \propto B_{\mathrm{tot}}^{-2}$ toward a minimum. The apparent paradox is thus completely resolved: climax ecosystems act as Schneider-Kay gradient degraders with respect to boundary solar radiation, while simultaneously operating as Prigogine minimum dissipation engines and capacitive fluctuation buffers with respect to internal biomass dynamics.
-
-
-**Robert M. May: Resolution of the Complexity-Stability Paradox**:
-
-May (1972, 1973) applied random matrix theory to ecological food webs, proving that randomly connected networks become abruptly unstable when complexity exceeds a critical threshold ($\sigma_a \sqrt{S C_c} < d$, where $S$ is species richness, $C_c$ is connectance, and $\sigma_a$ is interaction variance). This created the famous complexity-stability paradox, because real ecosystems are simultaneously species-rich, densely connected, and persistent.
-
-The Onsager-Lyapunov framework resolves May's paradox by showing that ecological community matrices are not random draws, but are strictly constrained by thermodynamic conservation:
-
-$$\mathbf{A} = -(\mathbf{D}_{\mathrm{sym}} + \boldsymbol{\Omega})\mathbf{C}^{-1}$$
-
-May's random matrices lacked thermodynamic constraints. In living systems, stability is guaranteed by the positive-definiteness of the symmetric dissipation tensor ($\mathbf{D}_{\mathrm{sym}} \succ 0$), which anchors all eigenvalues of $\mathbf{A}$ in the stable left complex half-plane ($\operatorname{Re}(\lambda_i) < 0$). In addition, predator-prey interactions are antisymmetric ($\boldsymbol{\Omega} = -\boldsymbol{\Omega}^{\mathsf{T}}$). Rather than driving real eigenvalue expansion toward instability, non-zero $\boldsymbol{\Omega}$ rotates state variables perpendicularly, producing stable cyclic oscillations. Combined with allometric capacitance hierarchies $C(M) \propto M^{1-b}$, non-dissipative circulation stabilizes complex food webs without triggering May's explosive instability.
-
-**Lionel Johnson: Arctic Lake Climax Ecosystems, Least Action, and the Biomass Capacitance Pole**:
-
-Johnson (1981, 1990, 1994) conducted decadal studies on unperturbed fish communities in pristine Arctic lakes, formulating a thermodynamic theory of ecosystem development rooted in Maupertuis' Principle of Least Action and Fermat's Principle of Least Time. Johnson documented that unexploited populations (e.g., Arctic charr and lake trout) converge to dense, uniform standing stocks characterized by minimal juvenile recruitment, low mass-specific turnover, and exceptional resistance to environmental perturbations. He posited that ecosystems autonomously self-organize along paths of least action to damp internal oscillations, decelerate mass-specific energy turnover, and sustain maximum biomass under boundary thermodynamic constraints.
-
-The continuous Onsager-Lyapunov framework provides an exact mathematical and physical foundation for Johnson's Least Action and climax theories. Johnson's pristine Arctic lakes provide the canonical empirical embodiment of the high-Resistance pole along the continuous trade-off continuum ($B_{\mathrm{tot}} \times \mathcal{R} \approx \text{constant}$). In the absence of exploitation, metabolic power is systematically invested into expanding standing biomass capacitance $\mathbf{C} \propto B_{\mathrm{tot}}$. This extends the characteristic relaxation time $\Delta t_{\mathrm{relax}} \approx \|\mathbf{C}\|_2 / \|\mathbf{D}_{\mathrm{sym}}\|_2$ to multi-decadal scales, decelerating kinetic turnover ($\mathcal{R} \to \min$) and stabilizing large-bodied, slow-turnover allometric order parameters.
-
-Johnson's Principle of Least Action is formalized by the Onsager-Machlup path action functional (Appendix A.3):
-
-$$\mathcal{S}[\mathbf{x}(t)] = \int \frac{1}{4} (\dot{\mathbf{x}} - \mathbf{A}\mathbf{x})^{\mathsf{T}} \mathbf{D}_{\mathrm{sym}}^{-1} (\dot{\mathbf{x}} - \mathbf{A}\mathbf{x})\, dt$$
-
-Fluctuating ecological trajectories follow path-space geodesics that minimize $\mathcal{S}[\mathbf{x}(t)]$. In non-equilibrium thermodynamics, action represents the time integral of dissipated energy ($\mathcal{S} \sim \int \sigma\, dt$); minimizing action is therefore functionally equivalent to minimizing the cumulative dissipation of free energy required to sustain a unit of biomass over time. Climax ecosystems minimize this time-integrated dissipative action per unit biomass by channeling throughflow into non-dissipative trophic loops ($\operatorname{Tr}(\boldsymbol{\Omega}\mathbf{C}^{-1}) = 0$), eliminating unnecessary internal friction while satisfying boundary throughput requirements. In turn, the expansion of biomass capacitance $\mathbf{C}$ contracts the Riemannian curvature metric $\mathbf{H} = k_{\mathrm{B}}\mathbf{C}^{-1}$, which flattens the Lyapunov quasi-potential landscape $V(\delta\mathbf{x}) = \frac{1}{2}\delta\mathbf{x}^{\mathsf{T}}\mathbf{C}^{-1}\delta\mathbf{x}$. Specific entropy production per unit biomass $\sigma / B_{\mathrm{tot}} = \operatorname{Tr}(\mathbf{D}_{\mathrm{sym}}\mathbf{C}^{-1})/B_{\mathrm{tot}} \propto B_{\mathrm{tot}}^{-2}$ is driven to a minimum. Massive standing biomass acts as a thermodynamic low-pass filter, dampening high-frequency environmental noise and maximizing Le Chatelier-Braun structural resistance against external perturbations.
-
 
 # References
 
@@ -983,21 +794,13 @@ Amari, S. (1985). *Differential-Geometrical Methods in Statistics*. Lecture Note
 
 Amari, S. (2016). *Information Geometry and Its Applications*. Applied Mathematical Sciences, Vol. 194. Springer, Tokyo.
 
-Aoki, I. (1989). Entropy flow and entropy production in the human body in basal conditions. *Journal of Theoretical Biology*, 141, pp.11-21.
-
-Aoki, I. (1993). Inclusive Kullback index - a macroscopic measure in ecological systems. *Ecological Modelling*, 66, pp.289-299.
-
-Aoki, I. (1995). Entropy production in living systems: from organisms to ecosystems. *Thermochimica Acta*, 250, pp.359-370.
-
 Ao, P. (2004). Potential in stochastic differential equations: novel construction. *Journal of Physics A: Mathematical and General*, 37(3), pp.L25-L30.
+
+Andersen, K. H. (2019). *Fish Ecology, Evolution, and Exploitation: A New Theoretical Synthesis*. Princeton University Press, Princeton.
 
 Babloyantz, A. (1986). *Molecules, Dynamics and Life: An Introduction to Self-Organization of Matter*. Wiley-Interscience, Toronto.
 
 Barato, A. C. and Seifert, U. (2015). Thermodynamic uncertainty relation for biomolecular processes. *Physical Review Letters*, 114(15), p.158101.
-
-Bertalanffy, L. von. (1950). The theory of open systems in physics and biology. *Science*, 111, pp.23-29.
-
-Bertalanffy, L. von. (1968). *General System Theory: Foundations, Development, Applications*. George Braziller, New York.
 
 Bode, H. W. (1945). *Network Analysis and Feedback Amplifier Design*. D. Van Nostrand Company, New York.
 
@@ -1005,9 +808,11 @@ Boltzmann, L. (1877). Über die Beziehung zwischen dem zweiten Hauptsatze der me
 
 Boyd, S. and Vandenberghe, L. (2004). *Convex Optimization*. Cambridge University Press, Cambridge.
 
+Brown, J. H., Gillooly, J. F., Allen, A. P., Savage, V. M. and West, G. B. (2004). Toward a metabolic theory of ecology. *Ecology*, 85(7), pp. 1771-1789.
+
 Braun, F. (1887). De l'elasticite et de la compressibilite des solutions salines. *Annales de Chimie et de Physique*, 12, pp. 145-168.
 
-Byers, R. E. and Hansell, R. I. (1996). Attack-decay dynamics in systems of interacting populations. *Journal of Theoretical Biology*, 180(3), pp.211-226.
+Byers, R. E. and Hansell, R. I. C. (1996). Attack-decay dynamics in systems of interacting populations. *Journal of Theoretical Biology*, 180(3), pp.211-226.
 
 Callen, H. B. (1985). *Thermodynamics and an Introduction to Thermostatistics*. 2nd ed. John Wiley & Sons, New York.
 
@@ -1019,13 +824,9 @@ Choi, J. S. and Patten, B. C. (2001). Sustainable development: Lessons from the 
 
 Choi, J. S., Frank, K. T., Leggett, W. C. and Drinkwater, K. (2004). Transition to an alternate state in a continental shelf ecosystem. *Nature*, 430(6996), pp.211-215.
 
+Choi, J. S. (2023). Nonlinear dynamics, environmental forcing, and alternative stable states in collapsed marine fisheries. *Canadian Journal of Fisheries and Aquatic Sciences*, 80(5), pp. 812-828.
+
 Choi, J. S., Mazumder, A. and Hansell, R. I. C. (1999). Measuring perturbation in ecosystems: an intensive thermodynamic approach. *Ecosystems*, 2(5), pp.416-430.
-
-Crooks, G. E. (1999). Entropy production fluctuation theorem and the nonequilibrium work relation for free energy differences. *Physical Review E*, 60(3), pp.2721-2726.
-
-Dawkins, R. (1976). *The Selfish Gene*. Oxford University Press, Oxford.
-
-Dawkins, R. (1982). *The Extended Phenotype: The Long Reach of the Gene*. Oxford University Press, Oxford.
 
 de Groot, S. R. and Mazur, P. (1962). *Non-Equilibrium Thermodynamics*. North-Holland Publishing Company, Amsterdam.
 
@@ -1033,13 +834,9 @@ de Ruiter, P. C., Neutel, A. M. and Moore, J. C. (1995). Energetics, patterns of
 
 Dewar, R. C. (2003). Information theory explanation of the fluctuation theorem, maximum entropy production and self-organized criticality in non-equilibrium stationary states. *Journal of Physics A: Mathematical and General*, 36(3), pp. 631-641.
 
-Dewar, R. C. (2005). Maximum entropy production and the fluctuation theorem. *Journal of Physics A: Mathematical and General*, 38(21), pp. L371-L381.
-
 Eigen, M. and Schuster, P. (1979). *The Hypercycle: A Principle of Natural Self-Organization*. Springer-Verlag, Berlin.
 
 Einstein, A. (1910). Theorie der Opaleszenz von homogenen Flussigkeiten und Flussigkeitsgemischen in der Nahe des kritischen Zustandes. *Annalen der Physik*, 338(16), pp. 1275-1298.
-
-England, J. L. (2013). Statistical physics of self-replication. *The Journal of Chemical Physics*, 139(12), p.121923.
 
 Estes, J. A., Tinker, M. T., Williams, T. M. and Doak, D. F. (1998). Killer whale predation on sea otters linking oceanic and nearshore ecosystems. *Science*, 282(5388), pp.473-476.
 
@@ -1047,7 +844,7 @@ Eyink, G. L. (1990). Dissipation and large fluctuations in nonequilibrium thermo
 
 Fasham, M. J. R., Ducklow, H. W. and McKelvie, S. M. (1990). A nitrogen-based model of plankton dynamics in the oceanic mixed layer. *Journal of Marine Research*, 48(3), pp.591-639.
 
-Fath, B. D., Patten, B. C. and Choi, J. S. (2001). Complementarity of ecological goal functions. *Journal of Theoretical Biology*, 208(4), pp.493-506.
+Frank, K. T., Petrie, B., Choi, J. S. and Leggett, W. C. (2005). Trophic cascades in a formerly cod-dominated ecosystem. *Science*, 308(5728), pp. 1621-1623.
 
 Freidlin, M. I. and Wentzell, A. D. (1984). *Random Perturbations of Dynamical Systems*. Springer-Verlag, New York.
 
@@ -1065,9 +862,7 @@ Graham, R. (1977). Path integral formulation of general diffusion processes. *Ze
 
 Grebogi, C., Ott, E. and Yorke, J. A. (1983). Crises, sudden changes in chaotic attractors, and transient chaos. *Physica D: Nonlinear Phenomena*, 7(1-3), pp.181-200.
 
-Gündüz, G. (2004). Thermodynamics of living systems and evolution. In: *Non-Equilibrium Thermodynamics and the Production of Entropy*, Springer, Berlin, pp. 241-260.
-
-Gündüz, G. (2012). Autocatalysis as the natural philosophy underlying complexity and biological evolution. *Interdisciplinary Description of Complex Systems*, 10(2), pp. 119-142.
+Gunderson, L. H. (2000). Ecological resilience—in theory and application. *Annual Review of Ecology and Systematics*, 31, pp. 425-439.
 
 Haken, H. (1983). *Synergetics: An Introduction. Nonequilibrium Phase Transitions and Self-Organization in Physics, Chemistry, and Biology*. Springer-Verlag, Berlin.
 
@@ -1077,19 +872,17 @@ Helmholtz, H. von. (1858). Uber Integrale der hydrodynamischen Gleichungen, welc
 
 Hodge, W. V. D. (1941). *The Theory and Applications of Harmonic Integrals*. Cambridge University Press, Cambridge.
 
+Holling, C. S. (1973). Resilience and stability of ecological systems. *Annual Review of Ecology and Systematics*, 4, pp. 1-23.
+
+Holling, C. S. (1996). Engineering resilience versus ecological resilience. In: Schulze, P. C. (ed.), *Engineering Within Ecological Constraints*. National Academy Press, Washington, DC, pp. 31-44.
+
 Horn, R. A. and Johnson, C. R. (2012). *Matrix Analysis*. 2nd ed. Cambridge University Press, Cambridge.
 
-Johnson, L. (1981). The thermodynamic origin of ecosystems. *Canadian Journal of Fisheries and Aquatic Sciences*, 38(5), pp.571-590.
-
-Johnson, L. (1990). The thermodynamic origin of ecosystems: a hypothesis of thermodynamic ascendency. *Canadian Journal of Fisheries and Aquatic Sciences*, 47(1), pp.2-14.
-
-Johnson, L. (1994). Pattern and process in food webs: a thermodynamic view. In *Aquatic Ecology: Scale, Pattern and Process* (eds P. S. Giller, A. G. Hildrew and D. G. Raffaelli), pp.367-412. Blackwell Scientific, Oxford.
-
-Jørgensen, S. E. (1992). *Integration of Ecosystem Theories: A Pattern*. Kluwer Academic Publishers, Dordrecht.
-
-Jørgensen, S. E. and Mejer, H. (1977). A holistic approach to ecological modelling. *Ecological Modelling*, 3(1), pp.35-46.
+Itô, K. (1951). On stochastic differential equations. *Memoirs of the American Mathematical Society*, 4, pp. 1-51.
 
 Kerr, S. R. and Dickie, L. M. (2001). *The Biomass Spectrum: A Predator-Prey Theory of Aquatic Production*. Columbia University Press, New York.
+
+Kleiber, M. (1932). Body size and metabolism. *Hilgardia*, 6(11), pp. 315-353.
 
 Kleiber, M. (1947). Body size and metabolic rate. *Physiological Reviews*, 27(4), pp.511-541.
 
@@ -1103,10 +896,6 @@ Le Chatelier, H. (1884). Sur un Гриnоnce general des lois des equilibres chi
 
 Lindeman, R. L. (1942). The trophic-dynamic aspect of ecology. *Ecology*, 23(4), pp.399-417.
 
-Lotka, A. J. (1920). Analytical note on certain rhythmic relations in organic systems. *Proceedings of the National Academy of Sciences*, 6(7), pp.410-415.
-
-Lotka, A. J. (1922). Contribution to the energetics of evolution. *Proceedings of the National Academy of Sciences*, 8(6), pp.147-151.
-
 Lotka, A. J. (1925). *Elements of Physical Biology*. Williams & Wilkins, Baltimore.
 
 Lyapunov, A. M. (1892). *The General Problem of the Motion's Stability*. Kharkov Mathematical Society, Kharkov. (English translation: *International Journal of Control*, 1992, 55(3), pp. 531-773).
@@ -1119,6 +908,8 @@ May, R. M. (1973). *Stability and Complexity in Model Ecosystems*. Princeton Uni
 
 May, R. M. (1974). Biological populations with nonoverlapping generations: stable points, stable cycles, and chaos. *Science*, 186(4164), pp.645-647.
 
+May, R. M. (1977). Thresholds and breakpoints in ecosystems with a multiplicity of stable states. *Nature*, 269(5628), pp. 471-477.
+
 McCann, K. and Yodzis, P. (1994). Nonlinear dynamics and amoebic persistence. *The American Naturalist*, 144(6), pp.873-879.
 
 Meysman, F. J. R. and Bruers, S. (2010). Ecosystem functioning and maximum entropy production: a quantitative test of hypotheses. *Philosophical Transactions of the Royal Society B: Biological Sciences*, 365(1545), pp.1405-1416.
@@ -1129,14 +920,6 @@ Mikulecky, D. C. (1985). Network thermodynamics in biology and medicine. *Americ
 
 Nicolis, G. and Prigogine, I. (1977). *Self-Organization in Nonequilibrium Systems: From Dissipative Structures to Order through Fluctuations*. John Wiley & Sons, New York.
 
-Odum, E. P. (1969). The strategy of ecosystem development. *Science*, 164(3877), pp.262-270.
-
-Odum, H. T. and Pinkerton, R. C. (1955). Time's speed regulator: the optimum efficiency for maximum power output in physical and biological systems. *American Scientist*, 43(2), pp.331-343.
-
-Odum, H. T. (1983). *Systems Ecology: An Introduction*. John Wiley & Sons, New York.
-
-Odum, H. T. (1988). Self-organization, transformity, and information. *Science*, 242(4882), pp. 1132-1139.
-
 Onsager, L. (1931a). Reciprocal relations in irreversible processes. I. *Physical Review*, 37(4), pp.405-426.
 
 Onsager, L. (1931b). Reciprocal relations in irreversible processes. II. *Physical Review*, 38(12), pp.2265-2279.
@@ -1146,6 +929,8 @@ Onsager, L. and Machlup, S. (1953). Fluctuations and irreversible processes. *Ph
 Oster, G. F., Perelson, A. S. and Katchalsky, A. (1971). Network thermodynamics. *Nature*, 234(5329), pp.393-399.
 
 Patten, B. C. (1978). Systems approach to the concept of environment. *The Ohio Journal of Science*, 78(4), pp.206-222.
+
+Pimm, S. L. (1984). The complexity and stability of ecosystems. *Nature*, 307(5949), pp. 321-326.
 
 Prigogine, I. (1947). *Étude Thermodynamique des Phénomènes Irréversibles*. Desoer, Liège.
 
@@ -1159,13 +944,15 @@ Prigogine, I., Nicolis, G. and Babloyantz, A. (1972). Thermodynamics of evolutio
 
 Qian, H. (2001). Mesoscopic biochemical basis of entropy production and the detailed balance. *Physical Review E*, 65(1), p.012101.
 
+Qian, H. (2006). Open-system nonequilibrium steady state: statistical thermodynamics, fluctuations, and chemical oscillations. *The Journal of Physical Chemistry B*, 110(31), pp. 15063-15074.
+
 Scheffer, M., Carpenter, S., Foley, J. A., Folke, C. and Walker, B. (2001). Catastrophic shifts in ecosystems. *Nature*, 413(6856), pp.591-596.
+
+Scheffer, M. (2009). *Critical Transitions in Nature and Society*. Princeton University Press, Princeton.
 
 Schnakenberg, J. (1976). Network theory of microscopic and macroscopic behavior of master equation systems. *Reviews of Modern Physics*, 48(4), pp. 571-585.
 
-Schneider, E. D. and Kay, J. J. (1994). Life as a manifestation of the second law of thermodynamics. *Mathematical and Computer Modelling*, 19(6-8), pp.25-48.
-
-Schneider, E. D. and Sagan, D. (2005). *Into the Cool: Energy Flow, Thermodynamics, and Life*. University of Chicago Press, Chicago.
+Schur, J. (1917). Über Potenzreihen, die im Innern des Einheitskreises beschränkt sind. *Journal für die reine und angewandte Mathematik*, 147, pp. 205-232.
 
 Schrödinger, E. (1944). *What is Life? The Physical Aspect of the Living Cell*. Cambridge University Press, Cambridge.
 
@@ -1193,11 +980,11 @@ van Kampen, N. G. (1992). *Stochastic Processes in Physics and Chemistry*. North
 
 Volterra, V. (1926). Variazioni e fluttuazioni del numero d'individui in specie animali conviventi. *Memorie della Reale Accademia Nazionale dei Lincei*, 2, pp.31-113.
 
+Wang, J., Xu, L. and Wang, E. (2008). Potential landscape and flux framework of nonequilibrium networks: robustness, dissipation, and coherence of biochemical oscillations. *Proceedings of the National Academy of Sciences*, 105(34), pp. 12271-12276.
+
+Webster, J. R., Waide, J. B. and Patten, B. C. (1975). Nutrient cycling and the stability of ecosystems. In: Howell, F. G., Gentry, J. B. and Smith, M. H. (eds.), *Mineral Cycling in Southeastern Ecosystems*. ERDA Symposium Series, Washington, DC, pp. 1-27.
+
 West, G. B., Brown, J. H. and Enquist, B. J. (1997). A general model for the origin of allometric scaling laws in biology. *Science*, 276(5309), pp. 122-126.
-
-Wicken, J. S. (1980). A thermodynamic theory of evolution. *Journal of Theoretical Biology*, 87(1), pp.9-23.
-
-Wicken, J. S. (1987). *Evolution, Thermodynamics, and Information: Extending the Darwinian Program*. Oxford University Press, New York.
 
 Wiesenfeld, K. and Moss, F. (1995). Stochastic resonance and the benefits of noise: from ice ages to crayfish and SQUIDs. *Nature*, 373(6509), pp. 33-36.
 
@@ -1218,4 +1005,6 @@ Spitz, Y. H., Moisan, J. R., and Abbott, M. R. (2001). Configuring an ecosystem 
 Steinberg, D. K., Carlson, C. A., Bates, N. R., Johnson, R. J., Michaels, A. F., and Knap, A. H. (2001). Overview of the US JGOFS Bermuda Atlantic Time-series Study (BATS): a decade-scale look at ocean biology and biogeochemistry. *Deep Sea Research Part II: Topical Studies in Oceanography*, 48(8-9), pp. 1405-1447.
 
 Zheng, Y., Pasquero, C., and Schartau, M. (2024). Multi-decadal biogeochemical dynamics and planktonic turnover at the Bermuda Atlantic Time-series Study site. *Global Biogeochemical Cycles*, 38(2), e2023GB007890.
+
+Zhou, J. X., Aliyu, M. D. S., Aurell, E. and Huang, S. (2012). Quasi-potential landscape in complex multi-stable systems. *Journal of the Royal Society Interface*, 9(77), pp. 3539-3553.
 
