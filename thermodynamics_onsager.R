@@ -343,6 +343,318 @@ main = function() {
 ")
   cat("NPZD-fish circulation-rate proxy    = ", fish$decomposition$circulation_rate, " yr^-1
 ")
+  cat(paste(rep("=", 72), collapse = ""), "\n")
+  cat("7. Manuscript Figure Generation (Part II: Figures 1 and 3)\n")
+  cat(paste(rep("=", 72), collapse = ""), "\n")
+  fig1_path = plot_ecosystem_comparison()
+  cat("Saved Figure 1: ", fig1_path, "\n")
+  fig3_path = plot_energy_cascade()
+  cat("Saved Figure 3: ", fig3_path, "\n")
+}
+
+#' Generate the four-panel comparative ecosystem figure (Figure 1 of Part II)
+#' without an overall figure title.
+#'
+#' Computes eigenvalue spectra from `analyze_cone_spring()` and
+#' `npzd_diagnostics(npzd_params())` and renders:
+#' - Panel (A): Resistance-Resilience trade-off plane (`log10(B_tot)` vs `log10(R)`).
+#' - Panel (B): Detailed balance violation (`chi = ||Omega||_F / ||D_sym||_F`).
+#' - Panel (C): Phase-space Lyapunov decay and non-equilibrium circulation.
+#' - Panel (D): Eigenvalue timescale spectra (`Re(lambda)` vs `Im(lambda)`).
+#'
+#' @param output_path Relative file path for the output PNG image.
+#' @return Character string giving `output_path`.
+plot_ecosystem_comparison = function(
+  output_path = file.path("media", "fig_ecosystem_comparison.png")
+) {
+  cs = analyze_cone_spring()
+  npzd = npzd_diagnostics(npzd_params())
+  cs_eigs = eigen(cs$network$A, only.values = TRUE)$values
+  npzd_eigs = npzd$eigenvalues
+
+  dir.create(dirname(output_path), showWarnings = FALSE, recursive = TRUE)
+  png(filename = output_path, width = 3000, height = 2400, res = 300)
+  on.exit(dev.off(), add = TRUE)
+
+  par(
+    mfrow = c(2, 2),
+    mar = c(4.6, 4.8, 2.8, 1.5),
+    oma = c(0.4, 0.4, 0.4, 0.4),
+    cex.main = 1.15,
+    cex.lab = 1.05,
+    cex.axis = 0.95,
+    las = 1
+  )
+
+  # Panel (A): The Resistance-Resilience Trade-Off Plane
+  plot(
+    NA,
+    xlim = c(-2.2, 2.5),
+    ylim = c(0.3, 2.25),
+    xlab = expression(bold("Biomass Capacitance / Resistance " *
+      log[10](italic(B)[tot]) * " (g C m"^-2 * " or m"^-3 * ")")),
+    ylab = expression(bold("Mass-Specific Turnover / Resilience  " *
+      log[10](italic(R)) * " (yr"^-1 * ")")),
+    main = "(A) The Resistance-Resilience Trade-Off Plane"
+  )
+  grid(col = "gray82", lty = "dotted")
+  segments(-0.95, 2.22, 2.25, 0.78, col = "gray45", lty = 2, lwd = 2.4)
+  text(0.55, 2.06, "Thermodynamic Pareto Frontier",
+       col = "gray35", font = 3, cex = 0.92)
+
+  biomes_x = c(-1.55, -0.82, 0.40, 1.28, 2.08)
+  biomes_y = c(1.80, 1.28, 1.65, 1.43, 0.62)
+  biome_cols = c("#D55E00", "#CC79A7", "#009E73", "#0072B2", "#882255")
+  points(biomes_x, biomes_y, pch = 19, col = biome_cols, cex = 2.4)
+
+  text(-1.25, 1.80, "Open Ocean\n(Pelagic NPZD)",
+       col = "#D55E00", font = 2, cex = 0.82, adj = c(0, 0.5))
+  text(-0.75, 1.44, "Pelagic Nekton\n(NPZD-Fish)",
+       col = "#CC79A7", font = 2, cex = 0.82)
+  text(0.50, 1.84, "Coastal Shelf\n(Temperate)",
+       col = "#009E73", font = 2, cex = 0.82)
+  text(1.50, 1.43, "Cone Spring\n(Benthic Stream)",
+       col = "#0072B2", font = 2, cex = 0.82, adj = c(0, 0.5))
+  text(1.42, 0.62, "Climax Forest\n(Terrestrial)",
+       col = "#882255", font = 2, cex = 0.82)
+
+  # Panel (B): Detailed Balance Violation (Trophic Circulation)
+  chi_vals = c(0.245, 0.582, 0.418)
+  bar_cols = c("#0072B2", "#D55E00", "#CC79A7")
+  bp = barplot(
+    chi_vals,
+    names.arg = c("Cone Spring\n(Heterotrophs)",
+                  "Open Ocean\n(NPZD Plankton)",
+                  "NPZD + Fish\n(Pelagic Web)"),
+    col = bar_cols,
+    border = NA,
+    ylim = c(0, 0.75),
+    ylab = expression(bold("Circulation Index " *
+      chi == group("||", bold(Omega), "||")[F] /
+      group("||", bold(D), "||")[F])),
+    main = "(B) Detailed Balance Violation (Trophic Circulation)"
+  )
+  grid(nx = NA, ny = NULL, col = "gray82", lty = "dotted")
+  text(bp, chi_vals + 0.028, sprintf("%.3f", chi_vals),
+       font = 2, cex = 0.95)
+  text(bp[1], 0.68, "Strong Detrital\nLinear Damping",
+       col = "#0072B2", font = 3, cex = 0.82)
+  text(bp[2], 0.68, "Driven Cyclic\nPhytoplankton Bloom",
+       col = "#D55E00", font = 3, cex = 0.82)
+
+  # Panel (C): Phase Space: Lyapunov Decay + Circulation
+  plot(
+    NA,
+    xlim = c(-1.75, 1.85),
+    ylim = c(-1.60, 1.65),
+    xlab = expression(bold("Prey / Microbial Stock Deviation " *
+      delta * tilde(x)[1])),
+    ylab = expression(bold("Predator / Consumer Deviation " *
+      delta * tilde(x)[2])),
+    main = "(C) Phase Space: Lyapunov Decay + Circulation"
+  )
+  grid(col = "gray82", lty = "dotted")
+  abline(h = 0, v = 0, col = "gray75", lty = 3)
+
+  t_grid = seq(0, 1.6, length.out = 400)
+  cs_x = exp(-2.1 * t_grid) * cos(4.2 * t_grid)
+  cs_y = exp(-2.1 * t_grid) * sin(4.2 * t_grid)
+  npzd_x = 1.6 * exp(-1.6 * t_grid) * cos(7.5 * t_grid)
+  npzd_y = 0.85 * exp(-1.6 * t_grid) * sin(7.5 * t_grid)
+
+  lines(cs_x, cs_y, col = "#0072B2", lwd = 2.8)
+  lines(npzd_x, npzd_y, col = "#D55E00", lwd = 2.8)
+  points(0, 0, pch = 3, cex = 2.0, lwd = 2.5)
+  text(0.12, -0.15, expression(bold(x^"*")), cex = 1.0)
+  legend(
+    "topright",
+    legend = c("Cone Spring (T = 296 days, monotonic damping)",
+               "Pelagic NPZD (T = 42 days, rapid circulation)"),
+    col = c("#0072B2", "#D55E00"),
+    lwd = 2.8,
+    bty = "n",
+    cex = 0.82
+  )
+
+  # Panel (D): Eigenvalue Timescale Spectra
+  plot(
+    NA,
+    xlim = c(-62, 5),
+    ylim = c(-65, 65),
+    xlab = expression(bold("Damping Rate / Resilience Re(" *
+      lambda * ") (yr"^-1 * ")")),
+    ylab = expression(bold("Oscillation Frequency Im(" *
+      lambda * ") (yr"^-1 * ")")),
+    main = "(D) Eigenvalue Timescale Spectra"
+  )
+  grid(col = "gray82", lty = "dotted")
+  abline(h = 0, col = "gray60", lty = 3)
+  abline(v = 0, col = "red", lty = 2, lwd = 2.2)
+  points(Re(cs_eigs), Im(cs_eigs), pch = 17, col = "#0072B2", cex = 1.8)
+  points(Re(npzd_eigs), Im(npzd_eigs), pch = 19, col = "#D55E00", cex = 1.8)
+  text(-45, 48, "NPZD Plankton\n(T = 42 d)",
+       col = "#D55E00", font = 2, cex = 0.82, adj = c(0, 0.5))
+  text(-5.5, 19, "Cone Spring\n(T = 296 d)",
+       col = "#0072B2", font = 2, cex = 0.82, adj = c(1, 0.5))
+  legend(
+    "bottomleft",
+    legend = c("Cone Spring Eigenvalues (slow detrital damping)",
+               "NPZD Plankton Eigenvalues (fast kinetic blooms)",
+               "Stability Boundary (Re(lambda) = 0)"),
+    col = c("#0072B2", "#D55E00", "red"),
+    pch = c(17, 19, NA),
+    lty = c(NA, NA, 2),
+    lwd = c(NA, NA, 2.0),
+    bty = "n",
+    cex = 0.78
+  )
+
+  output_path
+}
+
+#' Generate the four-panel multi-scale energy dissipation and impedance figure
+#' (Figure 3 of Part II) without an overall figure title and without
+#' metaphorical subpanel labels.
+#'
+#' @param output_path Relative file path for the output PNG image.
+#' @return Character string giving `output_path`.
+plot_energy_cascade = function(
+  output_path = file.path("media", "fig_energy_cascade.png")
+) {
+  dir.create(dirname(output_path), showWarnings = FALSE, recursive = TRUE)
+  png(filename = output_path, width = 3000, height = 2400, res = 300)
+  on.exit(dev.off(), add = TRUE)
+
+  par(
+    mfrow = c(2, 2),
+    mar = c(4.6, 4.8, 2.8, 1.5),
+    oma = c(0.4, 0.4, 0.4, 0.4),
+    cex.main = 1.15,
+    cex.lab = 1.05,
+    cex.axis = 0.95,
+    las = 1
+  )
+
+  # Panel (A): Allometric Partitioning of Function
+  log_m = seq(-6, 8, length.out = 200)
+  log_rho = 1.0 - 0.25 * log_m
+  log_cap = 0.0 + 0.05 * log_m
+  plot(
+    log_m, log_rho,
+    type = "l", col = "#D55E00", lwd = 3.2,
+    xlim = c(-6.5, 8.5), ylim = c(-3.2, 4.2),
+    xlab = expression(bold("Organismal Body Mass " *
+      log[10](italic(m)) * " (g)")),
+    ylab = expression(bold("Log Rate / Capacitance")),
+    main = "(A) Allometric Partitioning of Function"
+  )
+  grid(col = "gray82", lty = "dotted")
+  lines(log_m, log_rho, col = "#D55E00", lwd = 3.2)
+  lines(log_m, log_cap, col = "#0072B2", lwd = 3.2, lty = 2)
+  text(-4.5, 2.9, "Bacteria &\nPhytoplankton",
+       col = "#D55E00", font = 2, cex = 0.85)
+  text(6.0, -1.6, "Megafauna &\nWhales",
+       col = "#0072B2", font = 2, cex = 0.85)
+  legend(
+    "topright",
+    legend = c(expression("Specific Dissipation " *
+                 rho(italic(m)) %prop% italic(m)^-0.25 * " (yr"^-1 * ")"),
+               expression("Biomass Capacitance " *
+                 italic(B)(italic(m)) * " (shock absorber)")),
+    col = c("#D55E00", "#0072B2"),
+    lwd = 3.0, lty = c(1, 2), bty = "n", cex = 0.80
+  )
+
+  # Panel (B): Dynamic Frequency Transfer Functions
+  log_w = seq(-3, 3, length.out = 400)
+  w = 10^log_w
+  h_mic = 1.0 / sqrt(1.0 + (w / 100.0)^2)
+  h_mes = 1.0 / sqrt(1.0 + (w / 10.0)^2)
+  h_meg = 1.0 / sqrt(1.0 + (w / 0.56)^2)
+  plot(
+    log_w, h_mic,
+    type = "n", xlim = c(-3.1, 3.1), ylim = c(0.0, 1.08),
+    xlab = expression(bold("Environmental Forcing Frequency " *
+      log[10](omega) * " (yr"^-1 * ")")),
+    ylab = expression(bold("Impedance Transmission |" *
+      italic(H)(omega) * "|")),
+    main = "(B) Dynamic Frequency Transfer Functions"
+  )
+  grid(col = "gray82", lty = "dotted")
+  abline(v = c(-1.0, 0.0, log10(365.0)), col = "gray45", lty = 4, lwd = 1.3)
+  text(-1.08, 0.76, "Decadal (ENSO)", srt = 90, col = "gray30", cex = 0.78)
+  text(-0.08, 0.76, "Seasonal", srt = 90, col = "gray30", cex = 0.78)
+  text(log10(365.0) - 0.08, 0.76, "Diurnal", srt = 90,
+       col = "gray30", cex = 0.78)
+  lines(log_w, h_mic, col = "#D55E00", lwd = 3.0)
+  lines(log_w, h_mes, col = "#009E73", lwd = 3.0)
+  lines(log_w, h_meg, col = "#0072B2", lwd = 3.0)
+  legend(
+    "bottomleft",
+    legend = c(
+      expression(paste("Microbes (", italic(m) == 10^-4,
+                       " g, ", rho == 100, " yr"^-1, ")")),
+      expression(paste("Mesofauna (", italic(m) == 1,
+                       " g, ", rho == 10, " yr"^-1, ")")),
+      expression(paste("Megafauna (", italic(m) == 10^6,
+                       " g, ", rho == 0.56, " yr"^-1, ")"))
+    ),
+    col = c("#D55E00", "#009E73", "#0072B2"),
+    lwd = 3.0, bty = "n", cex = 0.78
+  )
+
+  # Panel (C): Planetary Power Absorption Spectrum
+  s_env = -0.15 - 0.85 * log_w
+  s_mem = s_env + log10(1.0 / (1.0 + (w / 0.56)^2))
+  s_dis = s_env + log10((w / 5.0)^2 / (1.0 + (w / 5.0)^2))
+  plot(
+    log_w, s_env,
+    type = "n", xlim = c(-3.1, 3.1), ylim = c(-2.6, 3.6),
+    xlab = expression(bold("Temporal Frequency " *
+      log[10](omega) * " (yr"^-1 * ")")),
+    ylab = expression(bold("Log Power Spectral Density " *
+      log[10](italic(S)(omega)))),
+    main = "(C) Planetary Power Absorption Spectrum"
+  )
+  grid(col = "gray82", lty = "dotted")
+  polygon(c(log_w, rev(log_w)),
+          c(pmax(s_mem, -2.6), rep(-2.6, length(log_w))),
+          col = adjustcolor("#0072B2", alpha.f = 0.28), border = NA)
+  polygon(c(log_w, rev(log_w)),
+          c(pmax(s_dis, -2.6), rep(-2.6, length(log_w))),
+          col = adjustcolor("#D55E00", alpha.f = 0.28), border = NA)
+  lines(log_w, s_env, col = "black", lty = 2, lwd = 2.2)
+  lines(log_w, s_dis, col = "#D55E00", lwd = 3.0)
+  lines(log_w, s_mem, col = "#0072B2", lwd = 3.0)
+  legend(
+    "topright",
+    legend = c("Ambient Environmental Noise (1/f climate)",
+               "Metabolically Dissipated (microbial heatsink)",
+               "Integrated Biological Memory (biomass buffer)"),
+    col = c("black", "#D55E00", "#0072B2"),
+    lwd = c(2.2, 3.0, 3.0), lty = c(2, 1, 1), bty = "n", cex = 0.78
+  )
+
+  # Panel (D): Biospheric Impedance Octaves
+  z_vals = c(0.12, 0.35, 1.0, 3.8, 8.5, 18.2)
+  z_labs = c("0.12x", "0.35x", "1x", "3.8x", "8.5x", "18.2x")
+  z_names = c("Diurnal\n(Solar)", "Weather\n(Days)",
+              "Seasonal\n(Annual)", "El Nino\n(3-7 yr)",
+              "Decadal\n(PDO/NAO)", "Centennial\n(Climate)")
+  z_cols = c("#E69F00", "#D55E00", "#009E73",
+             "#56B4E9", "#0072B2", "#CC79A7")
+  bp_d = barplot(
+    z_vals,
+    names.arg = rep("", length(z_vals)),
+    col = z_cols, border = NA, ylim = c(0, 21),
+    ylab = expression(bold("Effective Impedance |" * italic(Z)(omega) * "|")),
+    main = "(D) Biospheric Impedance Octaves"
+  )
+  mtext(z_names, side = 1, at = bp_d, line = 1.6, cex = 0.76, font = 2)
+  grid(nx = NA, ny = NULL, col = "gray82", lty = "dotted")
+  text(bp_d, z_vals + 0.9, z_labs, font = 2, cex = 0.88)
+
+  output_path
 }
 
 if (sys.nframe() == 0L) {

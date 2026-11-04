@@ -57,16 +57,13 @@
 
 \renewcommand{\headrulewidth}{0pt} % Top horizontal rule thickness
 
-% \fancyhf{} % Clear default headers/footers
+\fancyhf{} % Clear default headers/footers
 
-\fancyhead[L]{\small\textit{$header$} }  
-% \fancyhead[L]{\small\textit{$header$} % Left-even page header
-
-\fancyfoot[L]{\footnotesize{$footer$} }
-% \fancyfoot[RO]{\small\textbf{\thepage}} % Right-odd page footer
-% \fancyfoot[LO]{\footnotesize\$footer$} % Left-odd page footer
-% \fancyfoot[LE]{\small\textbf{\thepage}} % Left-even page footer
-% \fancyfoot[RE]{\footnotesize\$footer$} % Left-even page footer
+\fancyhead[L]{\small\textit{$header$}}
+\fancyhead[R]{\small\thepage}
+$if(footer)$
+\fancyfoot[L]{\footnotesize{$footer$}}
+$endif$
  
  
 %----------------------------------------------------------------------------------------
@@ -144,8 +141,10 @@
 %----------------------------------------------------------------------------------------
 
 \usepackage{booktabs} % Required for better horizontal rules in tables
-
 \usepackage{array} % Required for manipulating table columns
+\usepackage{calc} % Required for calculating minipage and column widths in pandoc tables
+\usepackage{longtable}
+\AtBeginEnvironment{longtable}{\footnotesize}
 
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % Define a new right-aligned paragraph column type
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % Define a new left-aligned (no justification) paragraph column type
@@ -254,7 +253,7 @@ $endif$
  
 $for(author)$
 $if(author.name)$
-\author[$author.footnote$ $if(author.corresponding)$,$$\ast$$ $endif$]{$author.name$}
+\author$if(author.footnote)$[$author.footnote$$if(author.corresponding)$,$$\ast$$ $endif$]$elseif(author.corresponding)$[$$*$$]$endif${$author.name$}
 $endif$
 $endfor$
 

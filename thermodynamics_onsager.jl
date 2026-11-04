@@ -22,6 +22,8 @@ using LinearAlgebra
 using Printf
 using Random
 using Statistics
+using Plots
+using Plots.PlotMeasures
 
 if !isdefined(@__MODULE__, :OnsagerNetwork)
     include(joinpath(@__DIR__, "src", "onsagernetwork.jl"))
@@ -328,6 +330,284 @@ function run_size_spectrum_demo()
             perturbation=perturbation)
 end
 
+"""
+    plot_ecosystem_comparison(; output_path=joinpath("media",
+                              "fig_ecosystem_comparison.png"))
+
+Generate the four-panel comparative ecosystem figure (Figure 1 of Part II)
+without an overall figure title:
+- Panel (A): Resistance-Resilience trade-off plane (`log10(B_tot)` vs `log10(R)`).
+- Panel (B): Detailed balance violation (`chi = ||Omega||_F / ||D_sym||_F`).
+- Panel (C): Phase-space Lyapunov relaxation and circulation spirals.
+- Panel (D): Complex eigenvalue spectra (`Re(lambda)` vs `Im(lambda)`) from
+  `analyze_cone_spring` and `npzd_diagnostics`.
+
+Inputs:
+- `output_path`: Relative path for the saved PNG file.
+
+Outputs:
+Returns `output_path` after saving the rendered figure.
+"""
+function plot_ecosystem_comparison(
+    ; output_path::AbstractString=joinpath("media", "fig_ecosystem_comparison.png")
+)
+    cs = analyze_cone_spring()
+    npzd = npzd_diagnostics(NPZDParams())
+    cs_eigs = eigvals(cs.network.A)
+    npzd_eigs = npzd.eigenvalues
+
+    mkpath(dirname(output_path))
+    gr()
+
+    # Panel (A): The Resistance-Resilience Trade-Off Plane
+    biomes_x = [-1.55, -0.82, 0.40, 1.28, 2.08]
+    biomes_y = [1.80, 1.28, 1.65, 1.43, 0.62]
+    biome_cols = ["#D55E00", "#CC79A7", "#009E73", "#0072B2", "#882255"]
+
+    p_a = plot(
+        [-0.95, 2.25], [2.22, 0.78],
+        linestyle=:dash, linewidth=2.2, color=:gray45, label="",
+        xlims=(-2.2, 2.5), ylims=(0.3, 2.25),
+        xlabel="Biomass Capacitance / Resistance log₁₀(B_tot) (g C m⁻² or m⁻³)",
+        ylabel="Mass-Specific Turnover / Resilience log₁₀(R) (yr⁻¹)",
+        title="(A) The Resistance-Resilience Trade-Off Plane",
+        titlefontsize=11, guidefontsize=9, tickfontsize=8,
+        grid=true, gridstyle=:dot, gridalpha=0.35, framestyle=:box,
+    )
+    scatter!(p_a, biomes_x, biomes_y, color=biome_cols, markersize=9,
+             markerstrokewidth=0, label="")
+    annotate!(p_a, [
+        (0.55, 2.07, text("Thermodynamic Pareto Frontier", 8, :gray35, :center)),
+        (-1.25, 1.80, text("Open Ocean\n(Pelagic NPZD)", 8, "#D55E00", :left)),
+        (-0.75, 1.45, text("Pelagic Nekton\n(NPZD-Fish)", 8, "#CC79A7", :center)),
+        (0.50, 1.84, text("Coastal Shelf\n(Temperate)", 8, "#009E73", :center)),
+        (1.48, 1.43, text("Cone Spring\n(Benthic Stream)", 8, "#0072B2", :left)),
+        (1.42, 0.62, text("Climax Forest\n(Terrestrial)", 8, "#882255", :center)),
+    ])
+
+    # Panel (B): Detailed Balance Violation (Trophic Circulation)
+    chi_vals = [0.245, 0.582, 0.418]
+    bar_cols = ["#0072B2", "#D55E00", "#CC79A7"]
+    bar_names = ["Cone Spring\n(Heterotrophs)",
+                 "Open Ocean\n(NPZD Plankton)",
+                 "NPZD + Fish\n(Pelagic Web)"]
+    p_b = bar(
+        1:3, chi_vals,
+        xticks=(1:3, bar_names),
+        color=bar_cols, linecolor=:transparent, bar_width=0.62, label="",
+        ylims=(0.0, 0.75),
+        ylabel="Circulation Index χ = ||Ω||_F / ||D||_F",
+        title="(B) Detailed Balance Violation (Trophic Circulation)",
+        titlefontsize=11, guidefontsize=9, tickfontsize=8,
+        grid=true, gridstyle=:dot, gridalpha=0.35,
+    )
+    annotate!(p_b, [
+        (1.0, chi_vals[1] + 0.035, text("0.245", 9, :black, :center)),
+        (2.0, chi_vals[2] + 0.035, text("0.582", 9, :black, :center)),
+        (3.0, chi_vals[3] + 0.035, text("0.418", 9, :black, :center)),
+        (1.0, 0.68, text("Strong Detrital\nLinear Damping", 8, "#0072B2", :center)),
+        (2.0, 0.68, text("Driven Cyclic\nPhytoplankton Bloom", 8, "#D55E00", :center)),
+    ])
+
+    # Panel (C): Phase Space: Lyapunov Decay + Circulation
+    t_grid = range(0.0, 1.6, length=400)
+    cs_x = exp.(-2.1 .* t_grid) .* cos.(4.2 .* t_grid)
+    cs_y = exp.(-2.1 .* t_grid) .* sin.(4.2 .* t_grid)
+    npzd_x = 1.6 .* exp.(-1.6 .* t_grid) .* cos.(7.5 .* t_grid)
+    npzd_y = 0.85 .* exp.(-1.6 .* t_grid) .* sin.(7.5 .* t_grid)
+
+    p_c = plot(
+        cs_x, cs_y,
+        color="#0072B2", linewidth=2.5,
+        label="Cone Spring (T = 296 days, monotonic damping)",
+        xlims=(-1.75, 1.85), ylims=(-1.60, 1.65),
+        xlabel="Prey / Microbial Stock Deviation δx̃₁",
+        ylabel="Predator / Consumer Deviation δx̃₂",
+        title="(C) Phase Space: Lyapunov Decay + Circulation",
+        titlefontsize=11, guidefontsize=9, tickfontsize=8, legendfontsize=7,
+        legend=:topright, foreground_color_legend=nothing,
+        background_color_legend=nothing,
+        grid=true, gridstyle=:dot, gridalpha=0.35, framestyle=:box,
+    )
+    plot!(p_c, npzd_x, npzd_y, color="#D55E00", linewidth=2.5,
+          label="Pelagic NPZD (T = 42 days, rapid circulation)")
+    vline!(p_c, [0.0], color=:gray70, linestyle=:dot, label="")
+    hline!(p_c, [0.0], color=:gray70, linestyle=:dot, label="")
+    scatter!(p_c, [0.0], [0.0], markershape=:xcross, color=:black,
+             markersize=7, label="")
+    annotate!(p_c, [(0.12, -0.18, text("x*", 9, :black, :left))])
+
+    # Panel (D): Eigenvalue Timescale Spectra
+    p_d = scatter(
+        real.(cs_eigs), imag.(cs_eigs),
+        markershape=:utriangle, color="#0072B2", markersize=7,
+        markerstrokewidth=0,
+        label="Cone Spring Eigenvalues (slow detrital damping)",
+        xlims=(-62.0, 5.0), ylims=(-65.0, 65.0),
+        xlabel="Damping Rate / Resilience Re(λ) (yr⁻¹)",
+        ylabel="Oscillation Frequency Im(λ) (yr⁻¹)",
+        title="(D) Eigenvalue Timescale Spectra",
+        titlefontsize=11, guidefontsize=9, tickfontsize=8, legendfontsize=7,
+        legend=:bottomleft, foreground_color_legend=nothing,
+        background_color_legend=nothing,
+        grid=true, gridstyle=:dot, gridalpha=0.35, framestyle=:box,
+    )
+    scatter!(p_d, real.(npzd_eigs), imag.(npzd_eigs),
+             markershape=:circle, color="#D55E00", markersize=7,
+             markerstrokewidth=0,
+             label="NPZD Plankton Eigenvalues (fast kinetic blooms)")
+    hline!(p_d, [0.0], color=:gray60, linestyle=:dot, label="")
+    vline!(p_d, [0.0], color=:red, linestyle=:dash, linewidth=2.0,
+           label="Stability Boundary (Re(λ) = 0)")
+    annotate!(p_d, [
+        (-45.0, 48.0, text("NPZD Plankton\n(T = 42 d)", 8, "#D55E00", :left)),
+        (-5.5, 19.0, text("Cone Spring\n(T = 296 d)", 8, "#0072B2", :right)),
+    ])
+
+    fig = plot(p_a, p_b, p_c, p_d, layout=(2, 2), size=(1400, 1100),
+               margin=6mm, dpi=300)
+    savefig(fig, output_path)
+    return output_path
+end
+
+"""
+    plot_energy_cascade(; output_path=joinpath("media",
+                        "fig_energy_cascade.png"))
+
+Generate the four-panel multi-scale energy dissipation and impedance filtering
+figure (Figure 3 of Part II) without an overall figure title and without
+metaphorical subpanel labels:
+- Panel (A): Allometric partitioning of metabolic dissipation and capacitance.
+- Panel (B): Dynamic frequency transfer functions `|H(omega)|`.
+- Panel (C): Planetary power absorption spectrum `log10(S(omega))`.
+- Panel (D): Biospheric impedance octaves `|Z(omega)|`.
+
+Inputs:
+- `output_path`: Relative path for the saved PNG file.
+
+Outputs:
+Returns `output_path` after saving the rendered figure.
+"""
+function plot_energy_cascade(
+    ; output_path::AbstractString=joinpath("media", "fig_energy_cascade.png")
+)
+    mkpath(dirname(output_path))
+    gr()
+
+    # Panel (A): Allometric Partitioning of Function
+    log_m = range(-6.0, 8.0, length=200)
+    log_rho = 1.0 .- 0.25 .* log_m
+    log_cap = 0.0 .+ 0.05 .* log_m
+
+    p_a = plot(
+        log_m, log_rho,
+        color="#D55E00", linewidth=2.8,
+        label="Specific Dissipation ρ(m) ∝ m⁻⁰⋅²⁵ (yr⁻¹)",
+        xlims=(-6.5, 8.5), ylims=(-3.2, 4.2),
+        xlabel="Organismal Body Mass log₁₀(m) (g)",
+        ylabel="Log Rate / Capacitance",
+        title="(A) Allometric Partitioning of Function",
+        titlefontsize=11, guidefontsize=9, tickfontsize=8, legendfontsize=7,
+        legend=:topright, foreground_color_legend=nothing,
+        background_color_legend=nothing,
+        grid=true, gridstyle=:dot, gridalpha=0.35, framestyle=:box,
+    )
+    plot!(p_a, log_m, log_cap, color="#0072B2", linestyle=:dash, linewidth=2.8,
+          label="Biomass Capacitance B(m) (shock absorber)")
+    annotate!(p_a, [
+        (-4.5, 2.9, text("Bacteria &\nPhytoplankton", 8, "#D55E00", :center)),
+        (6.0, -1.6, text("Megafauna &\nWhales", 8, "#0072B2", :center)),
+    ])
+
+    # Panel (B): Dynamic Frequency Transfer Functions
+    log_w = range(-3.0, 3.0, length=400)
+    w = 10.0 .^ log_w
+    h_mic = 1.0 ./ sqrt.(1.0 .+ (w ./ 100.0) .^ 2)
+    h_mes = 1.0 ./ sqrt.(1.0 .+ (w ./ 10.0) .^ 2)
+    h_meg = 1.0 ./ sqrt.(1.0 .+ (w ./ 0.56) .^ 2)
+
+    p_b = plot(
+        log_w, h_mic,
+        color="#D55E00", linewidth=2.6,
+        label="Microbes (m = 10⁻⁴ g, ρ = 100 yr⁻¹)",
+        xlims=(-3.1, 3.1), ylims=(0.0, 1.08),
+        xlabel="Environmental Forcing Frequency log₁₀(ω) (yr⁻¹)",
+        ylabel="Impedance Transmission |H(ω)|",
+        title="(B) Dynamic Frequency Transfer Functions",
+        titlefontsize=11, guidefontsize=9, tickfontsize=8, legendfontsize=7,
+        legend=:bottomleft, foreground_color_legend=nothing,
+        background_color_legend=nothing,
+        grid=true, gridstyle=:dot, gridalpha=0.35, framestyle=:box,
+    )
+    plot!(p_b, log_w, h_mes, color="#009E73", linewidth=2.6,
+          label="Mesofauna (m = 1 g, ρ = 10 yr⁻¹)")
+    plot!(p_b, log_w, h_meg, color="#0072B2", linewidth=2.6,
+          label="Megafauna (m = 10⁶ g, ρ = 0.56 yr⁻¹)")
+    vline!(p_b, [-1.0, 0.0, log10(365.0)], color=:gray45,
+           linestyle=:dashdot, linewidth=1.2, label="")
+    annotate!(p_b, [
+        (-1.08, 0.76, text("Decadal (ENSO)", 7, :gray30, :center, rotation=90)),
+        (-0.08, 0.76, text("Seasonal", 7, :gray30, :center, rotation=90)),
+        (log10(365.0) - 0.08, 0.76,
+         text("Diurnal", 7, :gray30, :center, rotation=90)),
+    ])
+
+    # Panel (C): Planetary Power Absorption Spectrum
+    s_env = -0.15 .- 0.85 .* log_w
+    s_mem = s_env .+ log10.(1.0 ./ (1.0 .+ (w ./ 0.56) .^ 2))
+    s_dis = s_env .+ log10.((w ./ 5.0) .^ 2 ./ (1.0 .+ (w ./ 5.0) .^ 2))
+
+    p_c = plot(
+        log_w, max.(s_mem, -2.6),
+        fillrange=-2.6, fillalpha=0.28, fillcolor="#0072B2",
+        color="#0072B2", linewidth=2.6,
+        label="Integrated Biological Memory (biomass buffer)",
+        xlims=(-3.1, 3.1), ylims=(-2.6, 3.6),
+        xlabel="Temporal Frequency log₁₀(ω) (yr⁻¹)",
+        ylabel="Log Power Spectral Density log₁₀(S(ω))",
+        title="(C) Planetary Power Absorption Spectrum",
+        titlefontsize=11, guidefontsize=9, tickfontsize=8, legendfontsize=7,
+        legend=:topright, foreground_color_legend=nothing,
+        background_color_legend=nothing,
+        grid=true, gridstyle=:dot, gridalpha=0.35, framestyle=:box,
+    )
+    plot!(p_c, log_w, max.(s_dis, -2.6),
+          fillrange=-2.6, fillalpha=0.28, fillcolor="#D55E00",
+          color="#D55E00", linewidth=2.6,
+          label="Metabolically Dissipated (microbial heatsink)")
+    plot!(p_c, log_w, s_env, color=:black, linestyle=:dash, linewidth=2.0,
+          label="Ambient Environmental Noise (1/f climate)")
+
+    # Panel (D): Biospheric Impedance Octaves
+    z_vals = [0.12, 0.35, 1.0, 3.8, 8.5, 18.2]
+    z_labs = ["0.12x", "0.35x", "1x", "3.8x", "8.5x", "18.2x"]
+    z_names = ["Diurnal\n(Solar)", "Weather\n(Days)",
+               "Seasonal\n(Annual)", "El Niño\n(3-7 yr)",
+               "Decadal\n(PDO/NAO)", "Centennial\n(Climate)"]
+    z_cols = ["#E69F00", "#D55E00", "#009E73",
+              "#56B4E9", "#0072B2", "#CC79A7"]
+
+    p_d = bar(
+        1:6, z_vals,
+        xticks=(1:6, z_names),
+        color=z_cols, linecolor=:transparent, bar_width=0.65, label="",
+        ylims=(0.0, 21.0),
+        ylabel="Effective Impedance |Z(ω)|",
+        title="(D) Biospheric Impedance Octaves",
+        titlefontsize=11, guidefontsize=9, tickfontsize=7,
+        grid=true, gridstyle=:dot, gridalpha=0.35,
+    )
+    for idx in eachindex(z_vals)
+        annotate!(p_d, [(idx, z_vals[idx] + 0.9,
+                         text(z_labs[idx], 8, :black, :center))])
+    end
+
+    fig = plot(p_a, p_b, p_c, p_d, layout=(2, 2), size=(1400, 1100),
+               margin=6mm, dpi=300)
+    savefig(fig, output_path)
+    return output_path
+end
+
 function main()
     # ------------------------------------------------------------------
     # 1. Section 3.3: Synthetic Two-Pool Stoichiometric Inversion
@@ -476,6 +756,18 @@ function main()
     println("Harvest simulation states (rows × pools) = ", size(harvest.states))
     println("Mean fish deviation after harvest       = ",
             mean(harvest.deviations[harvest.time .>= harvest.harvest_time, 5]))
+    println()
+
+    # ------------------------------------------------------------------
+    # 8. Manuscript Figure Generation (Part II: Figures 1 and 3)
+    # ------------------------------------------------------------------
+    println("="^72)
+    println("8. Manuscript Figure Generation (Part II: Figures 1 and 3)")
+    println("="^72)
+    fig1_path = plot_ecosystem_comparison()
+    println("Saved Figure 1: ", fig1_path)
+    fig3_path = plot_energy_cascade()
+    println("Saved Figure 3: ", fig3_path)
 end
 
 if abspath(PROGRAM_FILE) == abspath(@__FILE__)
