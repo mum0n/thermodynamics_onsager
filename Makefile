@@ -1,4 +1,4 @@
-PAPERS = thermodynamics_onsager_I thermodynamics_onsager_II
+PAPERS = thermodynamics_onsager_I thermodynamics_onsager_II thermodynamics_onsager_III conjugate_effects
 FILENAME ?= thermodynamics_onsager_I
 TEMPLATE = my_template.tex
 PDFENGINE = pdflatex
@@ -9,7 +9,7 @@ PANDOC_DOC_FLAGS = --from=markdown+tex_math_single_backslash+tex_math_dollars
 TEX_FILES = $(addsuffix .tex,$(PAPERS))
 PDF_FILES = $(addsuffix .pdf,$(PAPERS))
 
-.PHONY: all latex pdf paper1 paper2 figures html epub docx odt clean view
+.PHONY: all latex pdf paper0 paper1 paper2 paper3 figures html epub docx odt clean view
 
 all: pdf
 
@@ -17,9 +17,14 @@ latex: $(TEX_FILES)
 
 pdf: $(PDF_FILES)
 
+paper0: conjugate_effects
+
 paper1: thermodynamics_onsager_I.pdf
 
 paper2: thermodynamics_onsager_II.pdf
+
+paper3: thermodynamics_onsager_III.pdf
+
 
 %.tex: %.md $(TEMPLATE)
 	pandoc $< $(PANDOC_LATEX_FLAGS) --output=$@
