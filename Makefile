@@ -17,7 +17,7 @@ latex: $(TEX_FILES)
 
 pdf: $(PDF_FILES)
 
-paper0: conjugate_effects
+paper0: conjugate_effects.pdf
 
 paper1: thermodynamics_onsager_I.pdf
 
